@@ -89,7 +89,7 @@ def rebuild_g_t(g_aux_t: Callable[[float], complex]) -> Callable[[float], comple
     """
     Rebuilds the full G(T) from the G_aux(T) by imposing a 1 jump in 0 and anti-periodicity of period BETA
     """
-    return g_aux_t
+    return lambda t: g_aux_t(t) - 1 / (2 * BETA)
 
 
 if __name__ == '__main__':
