@@ -282,8 +282,14 @@
   the momentum distribution is given by <math|N<rsub|<wide|k|\<vect\>>><separating-space|0.2em>=<separating-space|0.2em>G<around*|(|<wide|k|\<vect\>>,\<tau\>=0<rsup|->|)>>.
   But what we're really interested in is the spectral function. As for the
   <math|T=0> case, we inject the closure relations for
-  <math|<with|math-condensed|true|N+1>> particules eigenstates (indexed by
-  <math|\<alpha\>>) against what was the ground state
+  <math|<with|math-condensed|true|N+1>> particules eigenstates<\footnote>
+    As for the <math|T=0> case, we take the closure relation on the full Fock
+    space (all <math|N\<in\>\<bbb-N\>> a priori) obviously, but because of
+    the <math|<around*|\<langle\>|\<Psi\><rsub|\<gamma\>><rsup|<very-small|<around*|(|N|)>>>|\|>*\<b-c\><rsub|<wide|k|\<vect\>>>>,
+    only remains <math|<around*|\||\<Psi\><rsub|\<alpha\>><rsup|<very-small|<around*|(|N+1|)>>>|\<rangle\>>>
+    states. <with|color|red|And for negative times / frequencies ? We forget
+    it, or it has no meaning with Matsubara time ?>
+  </footnote> (indexed by <math|\<alpha\>>) against what was the ground state
   <math|<around*|\||\<Psi\><rsub|<math-up|<name|gs>>><rsup|<very-small|<around*|(|N|)>>>|\<rangle\>>>,
   and now is the thermal mixture of <math|N> particules states (indexed by
   <math|\<gamma\>>) :
@@ -292,12 +298,8 @@
     G<rsub|\<beta\>><around*|(|<wide|k|\<vect\>>,\<mathi\>*\<omega\><rsub|n>|)><separating-space|0.2em>=<separating-space|0.2em><tfrac|1|Z<around*|(|\<beta\>|)>>*<big|sum><rsub|\<alpha\>,\<gamma\>><around*|<left|\||1>|<around*|\<langle\>|\<Psi\><rsub|\<gamma\>><rsup|<very-small|<around*|(|N|)>>>|\|>*\<b-c\><rsub|<wide|k|\<vect\>>>*<around*|\||\<Psi\><rsub|\<alpha\>><rsup|<very-small|<around*|(|N+1|)>>>|\<rangle\>>|<right|\||1>><rsup|2>*<frac|\<mathe\><rsup|-\<beta\>*\<cal-E\><rsub|\<gamma\>,<math-up|<name|gc>>><rsup|<very-small|<around*|(|N|)>>>>+\<mathe\><rsup|-\<beta\>*\<cal-E\><rsub|\<alpha\>,<math-up|<name|gc>>><rsup|<very-small|<around*|(|N+1|)>>>>|\<mathi\>*\<omega\><rsub|n>+\<cal-E\><rsub|\<gamma\>,<math-up|<name|gc>>><rsup|<very-small|<around*|(|N|)>>>-\<cal-E\><rsub|\<alpha\>,<math-up|<name|gc>>><rsup|<very-small|<around*|(|N+1|)>>>>
   </equation>
 
-  <with|color|red|[todo : pourquoi pas de
-  <math|<with|math-condensed|true|N-1>> ? comment ça se prouve ? ne
-  devrait-on pas prendre une closure relation sur tous les états avec un
-  nombre quelconque de nombre de particule ? pourquoi
-  <math|\<mathe\><rsup|\<ldots\>>+\<mathe\><rsup|\<ldots\>>> et pas
-  <math|\<times\>> ?]>
+  <with|color|red|[todo : pourquoi <math|\<mathe\><rsup|\<ldots\>>+\<mathe\><rsup|\<ldots\>>>
+  et pas <math|\<times\>> ?]>
 
   and define a finite-temperature spectal function
 
@@ -318,7 +320,7 @@
   (<reference|spectral-func-NIEG>),
 
   <\equation>
-    <with|color|dark cyan|G<rsub|0,\<beta\>>><around*|(|<wide|k|\<vect\>>,\<mathi\>*\<omega\><rsub|n>|)>=<frac|1|\<omega\>-\<epsilon\><around*|(|<wide|k|\<vect\>>|)>+\<mu\>><label|green-func-matsubara-non-interacting>
+    <with|color|dark cyan|G<rsub|0,\<beta\>>><around*|(|<wide|k|\<vect\>>,\<mathi\>*\<omega\><rsub|n>|)>=<frac|1|\<mathi\>*\<omega\><rsub|n>-\<epsilon\><around*|(|<wide|k|\<vect\>>|)>+\<mu\>><label|green-func-matsubara-non-interacting>
   </equation>
 
   Also, from (<reference|green-func-matsubara-freq-from-spectral-func>), we
@@ -348,10 +350,15 @@
   <math|G<around*|(|\<tau\>|)>>). We have to resort to exotic and approximate
   invertion methods.
 
-  <with|color|red|[dont we compute <math|G<around*|(|\<mathi\>*\<omega\><rsub|n>|)>>
-  and not <math|G<around*|(|\<tau\>|)>>, so it is
-  (<reference|green-func-matsubara-freq-from-spectral-func>) which need to be
-  inversed, not (<reference|green-func-matsubara-from-spectral-func>) ?]>
+  It looks simpler to invert (<reference|green-func-matsubara-freq-from-spectral-func>)
+  because there is no exponential tail, but
+  (<reference|green-func-matsubara-freq-from-spectral-func>) and
+  (<reference|green-func-matsubara-from-spectral-func>) are directly
+  (linearly) related so if the problem is ill-defined/hard for
+  (<reference|green-func-matsubara-from-spectral-func>), it is also for
+  (<reference|green-func-matsubara-freq-from-spectral-func>). Choosing to
+  invert from <math|G<around*|(|\<mathi\>*\<omega\><rsub|n>|)>> or
+  <math|G<around*|(|\<tau\>|)>> is then just a matter of taste.
 
   The second reason for using Matsubara time is that we'll use Quantum Monte
   Carlo to solve the problem.
@@ -362,10 +369,11 @@
   <math|<around*|{|i|}>> :
 
   <\equation*>
-    <block|<tformat|<cwith|1|1|1|1|cell-lsep|5pt>|<cwith|1|1|1|1|cell-rsep|5pt>|<cwith|1|1|1|1|cell-bsep|5pt>|<cwith|1|1|1|1|cell-tsep|5pt>|<table|<row|<cell|\<b-H\><separating-space|0.2em>=<separating-space|0.2em><wide*|<rigid|-<with|color|dark
-    cyan|t>>*<big|sum><rsub|<around*|\<langle\>|i,j|\<rangle\>>,\<sigma\>><around*|(|\<b-c\><rsub|i
-    \<sigma\>><rsup|\<dag\>>*\<b-c\><rsub|j
-    \<sigma\>>+<math-up|h.c.>|)>|\<wide-underbrace\>><rsub|<stack|<tformat|<table|<row|<cell|<text|hopping
+    <block|<tformat|<cwith|1|1|1|1|cell-lsep|5pt>|<cwith|1|1|1|1|cell-rsep|5pt>|<cwith|1|1|1|1|cell-bsep|5pt>|<cwith|1|1|1|1|cell-tsep|5pt>|<table|<row|<cell|\<b-H\><separating-space|0.2em>=<separating-space|0.2em><wide*|-<big|sum><rsub|<around*|\<langle\>|i,j|\<rangle\>>,\<sigma\>><with|color|dark
+    cyan|t<rsub|i j>>*<around*|(|\<b-c\><rsub|i
+    \<sigma\>><rsup|\<dag\>>*\<b-c\><rsub|j \<sigma\>>+\<b-c\><rsub|j
+    \<sigma\>><rsup|\<dag\>>*\<b-c\><rsub|i
+    \<sigma\>>|)>|\<wide-underbrace\>><rsub|<stack|<tformat|<table|<row|<cell|<text|hopping
     / tight-binding>>>|<row|<cell|<text|/ Bloch
     hybridization>>>>>>><separating-space|0.2em>+<separating-space|0.2em><wide*|<with|color|#bf4040|U>*<big|sum><rsub|i>\<b-n\><rsub|i
     \<uparrow\>>*\<b-n\><rsub|i \<downarrow\>>|\<wide-underbrace\>><rsub|<stack|<tformat|<table|<row|<cell|<text|Coulomb
@@ -377,10 +385,15 @@
   The <math|t\<gg\><with|color|#bf4040|U>> limit leads to full delocalization
   and <with|color|dark cyan|non-interacting> electrons, that is a
   <with|color|dark cyan|<em|band> <math|\<epsilon\><around*|(|<wide|k|\<vect\>>|)>>>
-  which is computed by the usual tight-binding methods. <math|\<rightarrow\>>
+  which is computed by the usual tight-binding methods <math|\<rightarrow\>>
   non-interacting electron gas <math|<with|color|dark
   cyan|A<rsub|0>><around*|(|<wide|k|\<vect\>>,\<omega\>|)>=\<delta\><around*|(|\<omega\>-<with|color|dark
-  cyan|\<epsilon\>><around*|(|<wide|k|\<vect\>>|)>|)>>.
+  cyan|\<epsilon\>><around*|(|<wide|k|\<vect\>>|)>|)>>, with
+
+  <\equation>
+    <with|color|dark cyan|\<epsilon\><around*|(|<wide|k|\<vect\>>|)>>=<big|sum><rsub|i,j><with|color|dark
+    cyan|t<rsub|i j>>*\<mathe\><rsup|\<mathi\>*<wide|k|\<vect\>>\<cdot\><around*|(|<wide|R|\<vect\>><rsub|i>-<wide|R|\<vect\>><rsub|j>|)>><label|hubbard-non-interacting-band>
+  </equation>
 
   The <math|<with|color|#bf4040|U>\<gg\>t> limit leads to a sum of isolated
   sites <math|\<b-H\><rsub|<math-up|<name|gc>>><rsup|<around*|(|1|)>><rsub|>=<with|color|#bf4040|U>*\<b-n\><rsub|i
@@ -450,22 +463,27 @@
   <math|<with|color|#bf4040|\<Sigma\>><rsub|i j>>) are non-local even if the
   interaction is local <math|\<Rightarrow\>> <em|non-local correlations>.
 
-  In Matsubara time, <math|<with|color|#bf4040|\<Sigma\>><around*|(|<wide|k|\<vect\>>,\<mathi\>
+  In Matsubara time, <math|<with|color|#bf4040|\<Sigma\>><rsub|i
+  j><around*|(|\<mathi\> \<omega\><rsub|n>|)><separating-space|0.2em>\<assign\><separating-space|0.2em><with|color|dark
+  cyan|G<rsub|0>><rsub|,i j><around*|(|\<mathi\>
+  \<omega\><rsub|n>|)><rsup|-1>-<with|color|#bf4040|G><rsub|i
+  j><around*|(|\<mathi\> \<omega\><rsub|n>|)><rsup|-1>> in the site basis, or
+  in the wavevector basis <math|<with|color|#bf4040|\<Sigma\>><around*|(|<wide|k|\<vect\>>,\<mathi\>
   \<omega\><rsub|n>|)><separating-space|0.2em>\<assign\><separating-space|0.2em><with|color|dark
   cyan|G<rsub|0>><around*|(|<wide|k|\<vect\>>,\<mathi\>
   \<omega\><rsub|n>|)><rsup|-1>-<with|color|#bf4040|G><around*|(|<wide|k|\<vect\>>,\<mathi\>
-  \<omega\><rsub|n>|)><rsup|-1>>. Using that <math|<with|color|dark
+  \<omega\><rsub|n>|)><rsup|-1>><math|>. Using that <math|<with|color|dark
   cyan|G<rsub|0>><around*|(|<wide|k|\<vect\>>,\<mathi\>
-  \<omega\><rsub|n>|)><rsup|-1>=\<omega\>-<with|color|dark
+  \<omega\><rsub|n>|)><rsup|-1>=\<mathi\>*\<omega\><rsub|n>-<with|color|dark
   cyan|\<epsilon\>><around*|(|<wide|k|\<vect\>>|)>+\<mu\>>
   (<reference|green-func-matsubara-non-interacting>), the interacting Green's
   function can be written
 
   <\equation>
     <block|<tformat|<cwith|1|1|1|1|cell-lsep|5pt>|<cwith|1|1|1|1|cell-rsep|5pt>|<cwith|1|1|1|1|cell-bsep|5pt>|<cwith|1|1|1|1|cell-tsep|5pt>|<table|<row|<cell|<with|color|#bf4040|G><rsub|\<beta\>><around*|(|<wide|k|\<vect\>>,\<mathi\>
-    \<omega\><rsub|n>|)><separating-space|0.2em>=<separating-space|0.2em><frac|1|\<omega\>-<with|color|dark
+    \<omega\><rsub|n>|)><separating-space|0.2em>=<separating-space|0.2em><frac|1|\<mathi\>*\<omega\><rsub|n>-<with|color|dark
     cyan|\<epsilon\><around*|(|<wide|k|\<vect\>>|)>>+\<mu\>-<with|color|#bf4040|\<Sigma\>><rsub|\<beta\>><around*|(|<wide|k|\<vect\>>,\<mathi\>
-    \<omega\><rsub|n>|)>>>>>>>
+    \<omega\><rsub|n>|)>>>>>>><label|interacting-green-func-self-energy>
   </equation>
 
   We see that the interactions, via the self-energy
@@ -502,8 +520,8 @@
     </big-figure>
   </itemize-arrow>
 
-  <subsection|The <name|lisa> approximation : mapping the Hubbard model on an
-  mean-field impurity model self-consistently>
+  <page-break*><subsection|The Hubbard model in infinite dimensions : towards
+  a DMFT>
 
   Authoritative review by Georges, Kotliar, Krauth & Rozenberg :
   <slink|https://www.physics.rutgers.edu/~gkguest/papers/rmp63_1996_p13_Kotliar.pdf>
@@ -512,10 +530,9 @@
   framework (which should be exact in the infinite dimensional limit), where
   by the law of large numbers, <em|fluctuations between sites vanishes>, and
   <em|quantum fluctuations become purely local>. We do not want to freeze out
-  all fluctuations (would give Hartree-Fock), and in the LISA (Local Impurity
-  Self-consistent Approximation) framework, we'll keep these local, temporal
-  in nature, fluctuations, hence the name of Dynamical Mean Field Therory, or
-  DMFT.
+  all fluctuations (would give Hartree-Fock), and in the present framework,
+  we'll keep these local, temporal in nature, fluctuations, hence the name of
+  Dynamical Mean Field Therory, or DMFT.
 
   More precisely, in infinite dimensional limit, where the coordinance
   <math|z\<rightarrow\>\<infty\>> (and with <math|t\<mapsto\>t/<sqrt|z>> to
@@ -527,25 +544,54 @@
 
   <\equation*>
     <with|color|#bf4040|\<Sigma\>><rsub|i
-    j><separating-space|0.2em>=<separating-space|0.2em><with|color|#bf4040|\<Sigma\>><rsub|i
-    i>*\<delta\><rsub|i j><separating-space|0.2em>=<separating-space|0.2em><with|color|#bf4040|\<Sigma\>><rsub|<text|site>>*\<delta\><rsub|i
+    j><separating-space|0.2em><separating-space|0.2em><above|=|d=\<infty\>><separating-space|0.2em><separating-space|0.2em><with|color|#bf4040|\<Sigma\>><rsub|i
+    i>*\<delta\><rsub|i j><separating-space|0.2em>=<separating-space|0.2em><with|color|#bf4040|\<Sigma\>><rsub|<text|loc>>*\<delta\><rsub|i
     j>
   </equation*>
 
   where we are only left with a single number
-  <math|<with|color|#bf4040|\<Sigma\>><rsub|<text|site>>> because of
+  <math|<with|color|#bf4040|\<Sigma\>><rsub|<text|loc>>> because of
   translational invariance. It looks very much like an isolated site problem,
   but still we allow for on-site charge fluctuations and we still have to
   account for the effects of the periodic lattice, in a mean-field way : the
   site is <em|bathed> in the \Pfield\Q created by its neighbors.
 
+  And we'll use this approximation in finite dimensions :
+
+  <\equation>
+    <block|<tformat|<cwith|1|1|1|1|cell-lsep|5pt>|<cwith|1|1|1|1|cell-rsep|5pt>|<cwith|1|1|1|1|cell-bsep|5pt>|<cwith|1|1|1|1|cell-tsep|5pt>|<table|<row|<cell|<with|color|#bf4040|\<Sigma\>><rsub|i
+    j><separating-space|0.2em><above|\<approx\>|<text|<name|dmft>>><separating-space|0.2em><with|color|#bf4040|\<Sigma\>><rsub|<text|loc>>*\<delta\><rsub|i
+    j>>>>>><space|1em>\<Leftrightarrow\><space|1em><with|color|#bf4040|\<Sigma\>><around*|(|<wide|k|\<vect\>>|)><separating-space|0.2em>\<approx\><separating-space|0.2em><with|color|#bf4040|\<Sigma\>><rsub|<text|loc>><label|DMFT-local-approx>
+  </equation>
+
+  and the Green's function (<reference|interacting-green-func-self-energy>)
+  becomes
+
+  <\equation>
+    <block|<tformat|<cwith|1|1|1|1|cell-lsep|5pt>|<cwith|1|1|1|1|cell-rsep|5pt>|<cwith|1|1|1|1|cell-bsep|5pt>|<cwith|1|1|1|1|cell-tsep|5pt>|<table|<row|<cell|<with|color|#bf4040|G><rsub|\<beta\>><around*|(|<wide|k|\<vect\>>,\<mathi\>
+    \<omega\><rsub|n>|)><separating-space|0.2em><above|\<approx\>|<text|<name|dmft>>><separating-space|0.2em><frac|1|\<mathi\>*\<omega\><rsub|n>-<with|color|dark
+    cyan|\<epsilon\><around*|(|<wide|k|\<vect\>>|)>>+\<mu\>-<with|color|#bf4040|\<Sigma\>><rsub|\<beta\>><rsup|<text|loc>><around*|(|\<mathi\>
+    \<omega\><rsub|n>|)>>>>>>><label|DMFT-interacting-green-func-self-energy>
+  </equation>
+
+  <subsection|The <name|lisa> approximation>
+
+  <subsubsection|An impurity model on which the Hubbard model is reduced>
+
   <\compact>
     Thus, as often in mean-field theories, the lattice problem is reduced to
     / mapped on a <em|single site model>, which is a fermionic model
-    describing a single site with
+    describing a <with|color|dark magenta|single site> with<\footnote>
+      Color code :<space|1em><with|color|dark cyan|\<blacksquare\>>
+      non-interacting properties<space|1em><with|color|#bf4040|\<blacksquare\>>
+      interacting properties (<math|U\<neq\>0>)<space|1em><with|color|dark
+      magenta|\<blacksquare\>> impurity<space|1em><with|color|dark
+      blue|\<blacksquare\>> bath
+    </footnote>
 
     <\itemize-arrow>
-      <item>Coulomb <with|color|#bf4040|interaction <math|U>>
+      <item>Coulomb <with|color|#bf4040|interaction <math|U>> (the same
+      <math|U> as before in standard DMFT)
 
       <item><with|color|dark blue|Coupled to a bath> to allow charge
       fluctuation, representing neighbors on the lattice in a mean-field way,
@@ -598,36 +644,86 @@
   <math|<with|color|dark magenta|\<b-c\>><rsup|\<dag\>><rsub|\<sigma\>>>, but
   a much simpler one where spatial fluctuations have been eliminated.
 
-  The bath <math|<around*|{|<with|color|dark blue|\<b-a\>><rsub|\<ell\>
-  \<sigma\>><rsup|\<dag\>>|}>> is described by effective energy levels
-  <math|<with|color|dark blue|E<rsub|\<ell\>>>>, here discrete, but it is a
-  band structure really, which can be <em|metalic> or <em|insulating>
-  depending if there are states at the Fermi energy <math|\<mu\>> or not. The
-  effective coupling constants <math|V<rsub|\<ell\>>> and effective energy
-  levels <math|<with|color|dark blue|E<rsub|\<ell\>>>> are choosen/solved so
-  as to reproduce our initial Hubbard system self-consistently. However, it
-  is more useful to work with an action representation of
-  <math|\<b-H\><rsub|<text|imp>>> :
+  The natural framework for relating the initial Hubbard model and the
+  impurity model is the one of Green's functions. In the initial probem, the
+  Green's function describes processes on-site
+  <math|<wide|R|\<vect\>>\<rightarrow\><wide|R|\<vect\>>>
+  (<math|<with|color|#bf4040|G><rsub|i i>\<equiv\><with|color|#bf4040|G><rsub|<text|loc>>>,
+  the <em|local part of the Green's function>) but also <em|between> sites
+  <math|<wide|R|\<vect\>><rsub|i>\<rightarrow\><wide|R|\<vect\>><rsub|j>>
+  (<math|<smash|<with|color|#bf4040|G><rsub|i
+  j>=G<rsup|\<cal-W\>><around*|(|<wide|R|\<vect\>><rsub|i>,<wide|R|\<vect\>><rsub|j>|)>>>).
+  However, in the impurity model, there is only the impurity Green's function
 
   <\equation*>
+    <with|color|#bf4040|G><rsup|<text|<with|color|dark
+    magenta|imp>>><rsub|\<sigma\>><around*|(|t|)><separating-space|0.2em>\<assign\><separating-space|0.2em><rigid|-\<mathi\>>*<around*|<left|\<langle\>|1>|\<b-T\>*<with|color|dark
+    magenta|\<b-c\>><rsub|\<sigma\>><around*|(|t|)>*<with|color|dark
+    magenta|\<b-c\>><rsub|\<sigma\>><rsup|\<dag\>><around*|(|0|)>|<right|\<rangle\>|1>><space|1em><text|(and
+    <math|<with|color|#bf4040|G><rsup|<text|imp>><rsub|\<beta\>><around*|(|\<mathi\>*\<omega\><rsub|n>|)>>)>
+  </equation*>
+
+  As always, if there is no magnetic order,
+  <math|G<rsub|\<uparrow\>>=G<rsub|\<downarrow\>><rsub|>> and we can drop
+  <math|\<sigma\>>.
+
+  The spirit of DMFT is to simply forget about non-local self-energy,
+  cf.<nbsp>(<reference|DMFT-local-approx>), and we can only impose
+
+  <\equation>
+    <block|<tformat|<cwith|1|1|1|1|cell-lsep|5pt>|<cwith|1|1|1|1|cell-rsep|5pt>|<cwith|1|1|1|1|cell-bsep|5pt>|<cwith|1|1|1|1|cell-tsep|5pt>|<cwith|1|1|2|2|cell-tborder|0ln>|<cwith|1|1|2|2|cell-bborder|0ln>|<cwith|1|1|2|2|cell-lborder|1ln>|<cwith|1|1|1|1|cell-rborder|1ln>|<cwith|1|1|2|2|cell-rborder|0ln>|<table|<row|<cell|<with|color|#bf4040|G><rsub|<text|loc>><rsup|<text|Hubbard>><separating-space|0.2em><above|=|!><separating-space|0.2em><with|color|#bf4040|G><rsup|<text|<with|color|dark
+    magenta|imp>>>>|<cell|<separating-space|0.2em>\<backassign\><separating-space|0.2em><with|color|#bf4040|G>>>>>>
+  </equation>
+
+  This is the <strong|LISA framework> (Local Impurity Self-consistent
+  Approximation). Only the local part of the Green's functions are required
+  to be the same. If we'd want to have non-local Green's functions, it would
+  be much more complicated (would need more than a single site). If we took a
+  \Pmovie\Q of a single site in the Hubbard model, it will be
+  <with|color|red|the same [is is true ?]> than in the impurity model, only
+  spatial fluctuations would be not reproduced.
+
+  The <with|color|dark blue|bath> <math|<around*|{|<with|color|dark
+  blue|\<b-a\>><rsub|\<ell\> \<sigma\>><rsup|\<dag\>>|}>> is described by
+  effective energy levels <math|<with|color|dark blue|E<rsub|\<ell\>>>>, here
+  discrete, but it is a band structure really, which can be <em|metalic> or
+  <em|insulating> depending if there are states at the Fermi energy
+  <math|\<mu\>> or not. The effective coupling constants
+  <math|V<rsub|\<ell\>>> and effective energy levels <math|<with|color|dark
+  blue|E<rsub|\<ell\>>>> <em|are choosen/solved so as to reproduce our
+  initial Hubbard system self-consistently>. However, it is more useful to
+  work with an action representation of <math|\<b-H\><rsub|<text|imp>>> :
+
+  <\equation>
     <with|color|dark magenta|\<b-S\><rsup|<text|imp>>><separating-space|0.2em>=<separating-space|0.2em><rigid|-<big|int><rsub|0><rsup|\<beta\>>\<mathd\>\<tau\>
     <big|int><rsub|0><rsup|\<beta\>>\<mathd\>\<tau\><rprime|'>>
-    <with|color|dark magenta|\<b-c\>><rsup|\<dag\>><around*|(|\<tau\>|)>*<with|color|dark
-    blue|\<cal-G\><rsub|0>><around*|(|\<tau\>-\<tau\><rprime|'>|)>*<with|color|dark
+    <with|color|dark magenta|\<b-c\>><rsup|\<dag\>><around*|(|\<tau\>|)>*<frac|1|<with|color|dark
+    blue|\<cal-G\><rsub|0>><around*|(|\<tau\>-\<tau\><rprime|'>|)>>*<with|color|dark
     magenta|\<b-c\>><around*|(|\<tau\>|)><separating-space|0.2em>+<separating-space|0.2em><with|color|#bf4040|U>*<big|int><rsub|0><rsup|\<beta\>>\<mathd\>\<tau\><separating-space|0.2em><with|color|dark
     magenta|\<b-n\>><rsub|\<uparrow\>><around*|(|\<tau\>|)>*<with|color|dark
-    magenta|\<b-n\>><rsub|\<downarrow\>><around*|(|\<tau\>|)>
-  </equation*>
+    magenta|\<b-n\>><rsub|\<downarrow\>><around*|(|\<tau\>|)><label|impurity-action>
+  </equation>
 
-  where the degrees of freedom of the bath has been integrated into the bath
-  Green's function <math|<with|color|dark blue|\<cal-G\><rsub|0>>>
+  (and <math|<big|sum><rsub|\<sigma\>><with|color|dark
+  magenta|\<b-c\>><rsub|\<sigma\>><rsup|\<dag\>><around*|(|\<tau\>|)>*<with|color|dark
+  blue|\<cal-G\><rsub|0>><rsub|,\<sigma\>><around*|(|\<tau\>-\<tau\><rprime|'>|)><rsup|-1>*<with|color|dark
+  magenta|\<b-c\>><rsub|\<sigma\>><around*|(|\<tau\>|)>> is there is magnetic
+  order) where the degrees of freedom of the bath has been
+  integrated<\footnote>
+    The hamiltonian <math|\<b-H\><rsub|<text|imp>>> is <em|quadratic> in
+    <math|<with|color|dark blue|\<b-a\>><rsub|\<ell\>
+    \<sigma\>><rsup|\<dag\>>>, <math|<with|color|dark
+    blue|\<b-a\>><rsub|\<ell\> \<sigma\>>>'s, allowing
+    inte<with|color|red|gration of bath degrees of freedom>
+  </footnote> into the <em|bath Green's function> <math|<with|color|dark
+  blue|\<cal-G\><rsub|0>>> :
 
-  <\equation*>
-    <with|color|dark blue|\<cal-G\><rsub|0>><around*|(|\<mathi\>*\<omega\><rsub|n>|)>=<frac|1|\<mathi\>*\<omega\><rsub|n>+\<mu\>-\<epsilon\><rsub|0>-<with|color|dark
+  <\equation>
+    <with|color|dark blue|\<cal-G\><rsub|0>><around*|(|\<mathi\>*\<omega\><rsub|n>|)>=<frac|1|\<mathi\>*\<omega\><rsub|n>-\<epsilon\><rsub|0>+\<mu\>-<with|color|dark
     blue|\<Delta\>><around*|(|\<mathi\>*\<omega\><rsub|n>|)>><space|1em><text|with><space|1em><with|color|dark
-    blue|\<Delta\>><around*|(|\<mathi\>*\<omega\><rsub|n>|)>=<big|sum><rsub|\<ell\>><frac|<around*|\||V<rsub|\<ell\>>|\|>|\<mathi\>*\<omega\><rsub|n>-<with|color|dark
-    blue|E<rsub|\<ell\>>>>
-  </equation*>
+    blue|\<Delta\>><around*|(|\<mathi\>*\<omega\><rsub|n>|)>=<big|sum><rsub|\<ell\>><frac|<around*|\||V<rsub|\<ell\>>|\|><rsup|2>|\<mathi\>*\<omega\><rsub|n>-<with|color|dark
+    blue|E<rsub|\<ell\>>>><label|bath-G-with-Delta-func>
+  </equation>
 
   (just like for the Ising model where neighbors have been integrated into
   the Weiss mean field; <math|<with|color|dark
@@ -637,46 +733,258 @@
     <em|number>, it is here a <em|function> of <math|\<tau\>>, encoding local
     quantum fluctuations; also contrary to a Hartree-Fock approximation where
     we reduce everything to a single state.
-  </footnote>)
+  </footnote>). The <math|<with|color|dark
+  magenta|\<b-c\>><rsup|\<dag\>><around*|(|\<tau\>|)>*<with|color|dark
+  blue|\<cal-G\><rsub|0>><around*|(|\<tau\>-\<tau\><rprime|'>|)><rsup|-1>*<with|color|dark
+  magenta|\<b-c\>><around*|(|\<tau\>|)>> process is : \Pan electron comes on
+  the site, waits a bit (<math|\<tau\>-\<tau\><rprime|'>>) depending on the
+  coupling with the bath (described by <math|<with|color|dark
+  blue|\<cal-G\><rsub|0>><around*|(|\<mathi\>*\<omega\><rsub|n>|)>\<Leftrightarrow\><with|color|dark
+  blue|\<Delta\>><around*|(|\<mathi\>*\<omega\><rsub|n>|)>>) and goes back in
+  the bath\Q. The second term <math|<with|color|#bf4040|U>*<with|color|dark
+  magenta|\<b-n\>><rsub|\<uparrow\>><around*|(|\<tau\>|)>*<with|color|dark
+  magenta|\<b-n\>><rsub|\<downarrow\>><around*|(|\<tau\>|)>> describes
+  interactions.
 
-  \;
+  In the non-interacting limit <math|U=0>, (<reference|impurity-action>) can
+  be solved and yields <math|<with|color|dark
+  cyan|G<rsub|0>><rsup|<text|<with|color|dark magenta|imp>>>=<with|color|dark
+  blue|\<cal-G\><rsub|0>>>. <with|color|red|[todo]>
 
-  \;
+  <subsubsection|Computing the Weiss field <math|<with|color|dark
+  blue|\<cal-G\><rsub|0>>> describing the bath : Self-consistency>
 
-  \;
+  Just as for the Ising model, we have to compute the effective / Weiss field
+  acting on the impurity. For that, we must derive the action
+  <math|\<b-S\><rsup|<text|imp>>> directly from the Hubbard model. The
+  simplest way is using the <strong|cavity method> [GKKR section III.A,
+  p.<nbsp>21].
 
-  \;
+  <\padded-center>
+    <image|<tuple|<#89504E470D0A1A0A0000000D494844520000039C000001CB08020000002BC400E00000233C7A5458745261772070726F66696C6520747970652065786966000078DAAD9B697224379285FFE314730438761C07ABD9DC608E3FDF43B0AA25B5643666D345914925332300B8FB5B1C4877FEE7BFAFFB2FFE35B3E452AEADF4523CFF524F3D0C7E69FEFB37DE4FF3E9FD7CFFFAF2F1E7D93F3DEFD6FCF935F0A8977C2FF3AD7C8FF6EBF99F37FC7AB4C16FF90F176AEBE70FF3CF7FE8E97B0CED2F17FAB951D48802BFEC9F0BF59F0BC5F0FDC17E2E30BE69F9D25BFDE314E6F91E7FDEFF2D03DF4E3F5A7F63D1C5BEBFFDE5FF5365F576E63E3184132D7A7E86EFAF3CBE6F17077F307E865879A1C5C6EF31667EA6683F236141FE6E9DFC1F46E5FE1A95DFBFFD252AF5FEFCF52F4189E57B85E3893F2F66F9FDF8B7CF5BFEFBC5776F89FF70E7B87EA7C39F9E2FD7CE5FA7F3EBFBDEDDDCBDE79BDD4885252D3F93FA35C5F71B2F9C2C797C6F2B7C55BE33BFD7F7D5F96A8EEC5D847CFBE5275FCBBA05C2722DD9B6618CE33D2E5B0C3185130849086185F89E6B84A887A5A819D1E1CB6EA8B1C74DD4425C8437F26CF83D167BF7EDEF76CB1A37DEC62B837131532A38FDF84F7CFDE385EE55CA9B693109BDBDF8585012320C454E3F791501B1FB2B8FF25BE05F5F7FFDA7B8462298DF32372638FCFC2E31B3FDE496F228BE40475E9879FC6ACDEAFEB9004BC4BD3383A10292F962315B315F43A8E0500C8DF80C2ED4424C611202CB396C4619528C85E0B4A07BF39E6AEFB52187EF69308B40E4586225343D0E622560237F6A6AE4D0C831A79C73C935B7DCF328B1A4924B29B508FC468D35D55C4BADB5D55E478B2DB5DC4AABADB9D6DBE8A147C031F7D26B6FBDF731B8E9E0CA83770F5E30C60C33CE34F32CB3CE36FB1C8BF45969E555565DCDADBEC60E3B6E7062975D77DB7D8F6387543AE9E4534E3DEDF4332EA976E34D37DF72EB6DB7DFF13B6AE6BEB0FEDBD7FF3D6AF62B6AE1454A2FACBFA3C65B6BFD7509139C64C58C88856444BC2A02247450CC7CB3948253E81433DF83F02C30CAACE06C53C488603A16F2B5DFB1FB57E4FE143797D2FF2B6EE157E49C42F79F889C53E8FE2172FF1EB7BF89DA16DB409AEE454865A845F591F2E34563D472C36A77F47C56D95AE9554F6E292F0FC6B016371EAE4249DCC54ACDE1EEEE4CF7E6D499FD8C2DA4D2CEB63D986806B07A6626FDE41275E512E26836671FB7F7BB6C8ECBD2F03773AB74E6D4F2DE3BDD3AABB1EC93B8A6B1523A7ED6B58C29F8546A00576DD7995362C4B5C4117A31DEC7720557195C3ED9725BE5CC95E69C6DBFEB5456404CBBBA1E5709C37AB875E536DAC935255E26D84E8528988BB7D7FD5E3A76CE6B5502375A293DDE59ACF84D34462C87546A0CA7520F79CCCAFF4E803DD6F6DE7BCC85745912BEC3BC71CCDB37412CA4602556E7ACD3DBE24DA4E3D96D1086FC464586013AC30EC163FDEFA5D656DA03ECE7BAB3DC1CADEFB50FA361ED4898D9B727410FA3888CA7905B21D5F22218795DAA2437E5058B10B753785F6CE44DCDE9D476D3B939D7C35FC27AD3F6BAB77E837F98F5A558E629EBB6064EA46B01A17522DFCCCD4FD279C35CEB1C3F887C32A072B59CEADE810A58E48F67B67E1D46613C4751E9EFD4C9703DCCCC1AE5B62DAF541BD5D6AF5156F158DA31B04E31954DCDF59059E41219C0E87191B19E25A4304197581D74B7C8D37CB8EB2CBF67F33317F2FC672E68381B639C4272B178F58CB6CB5C647E68D9BA77C7F74E044EEF641F6971532863E5BAA6DE6CBC36D513A8E4552A832DC39F5BA2ED495AB5B2CF26370B39E8321C7F6C96C114FABACC9D67E3CC75ACBBE2DC855ACA833212DF131426B9C65990374F5A15032C663BDC00398D5C6D993CD285D64E4046A156272F4903BE8BF39C3AE26609DA08175420AABE9F69953A0C005335576EC9314D8BC753A96B005380DEB243820052BB1C2654DB248946CD1472A8B796C050BBAF8C90D465C14F70FBDAD65257007D6FE066EC1B48DC7E639E60EB2E1E9CCBBD93DC3EE7767C494CE1C451193B78C54453B6E140AD0C78DF4AEE27A0B302685DE140078F32F7097EE7B9228B36790D2B1D66ED0B1288A40B605D3C8037A79BBE02084058E15DC1060389BE0200849DECCCF5AED04705A88966420DA513EE401A10F9B65B3B244AA40A5CEAB3F57249BA69A436D88C3199B5B146801B9986FA247572ED89F8C19291B200B837C0755BD808020269D38D6E54ADD4D9C91D750663557FA9D5D5015346BA0B8342465A10169E611B8AA2D6B8400A60FDCEE2A8EE4A0682182F65E017D1F435092F3208A0BA013C237105654E9D1DFC03610B6F8EF760AE28DE48892D16DE25D0C60E20CC0D8DCA0299A9DA0CE7F470BAF5BE558A2C08409B8168B4A9720DA8235C251B300B21B246641B7F1A67A4C97FDC002487FEE0E634A9F0AEF5C91BAC571573B3A99AA17AFADA7337D808F8CF680037897039817ACFBAC8E1CE94C382F94FF2AB9F57AEB922914136E8B18D5128BB17816925AD7067BF7D0AB373688B80B12CCC9760B04063C115E45766EC4D8F725FFFF858E31D0E1ABB236F02DEC895C97D5F591AF3429703E114FA086427B12701962FA0CADA3569DDC9AF0BD9C5DCAEBB43D84F0C2079B887BFBD91F81061C5ED6F7A70D2D2B6F3A076721BE0349141F92E6243BA1CD8DD51781BE200A80F853887011F49980C253DB426091EC0A558C706BC79F90A5051EEBA4DDFA81318EEB88320480B9541A0513E2C5F1FD006E62695B7DCC4144176D1239BA5DB13582356179D42C5F2F76081A4DAAE4F5C67DFB3C4D45015CB9FFEAFB95110A7654A75080923884101A97E100A0A5F69706ACB2775B89F6757451B5054F382DFDD5476AB08EC2836705AA2FD261FC6CCD7AF05B25FA40DCAE52683AE2BDE6A5657A6C2879D82810A8B5797672D6016502EC64E4A814D88105C48D9EDC825ADB87D83B8914C13A3087DCB8BF00245FE9E255E7ECB0B15E3B770E9B7C11C541A029068E601C392B705E29A7B82EC104B4ACD44A5183F506F8436641FABAAF4908BF1D5A8CA1B889AA3F901D3D85AC85156A1CB37CE2DE1CABAB0BA23DFE6F24CE410AA0C4C01CFCE864C001668A71C944CA45A76EA68824F8388A2E0593DEE1A8BF0DAB89828DB46CE4027D1E702BE0D2A27912ED947A4526E9357EE25B0AD92834C0A01D6855F811204FF32C4045EB912C82DE8A20D9FD01BF0F4F51B9B32022C093E127B460F0685C51A62092918601FF16C1D8B9B20EE2AF870482FC0B77301D41C75A09A46A33DBDC40B30CCB3B3465B20C354595744B6D7AA3289605FCE794BEED72F7F7E04318E722223C96A24511262620BCB6096310BCCB08834A555029AAEF9E466954B04A125553C3C1427BEF91A549D7832224711B2E031C90F7F1FE4A6B054BE9FC1C9C3531BF873ACA8B421F6FE9540122ACD64954A08A4E55A5A584330A06A58B18E780B524E840AF18C0A62558FC49003377976C47A919E545F8F181190A8218CC7023AD7CA363F1D2FA90F9B8FD6A190316324E93352D9F0310E95C02A7FA8E33BD902545DD4CBBEB09694B1D08802C58ADC06FB886400BCC26BA0DF44D26FCFA83D5123990BC2126CED0B638548424DE263F26B3F81734CAA3474B9FA4D807B82FF5B04F50131AAE714EAA01E17035265C7859CCD771F1698BF5ED000482051D1AF2346B20207311079E75920EA89EAC6FDF89F9984EDFE612A92F6CC052D6879474A3C86BCE54A96FA285069056180B005F28148FBBACE320E0A1A493C8053815091A4665907BA61F6672E3EDCEED0FC3D755DC68CA341773D73A156265E04397FA43FFA844545525C8009167D65A0C410CA91C486D725F7480A041A9E971CE30E9407821B998C18456631877CAC48A66254C167BC12F147FB234D245631D6205CF287FA8482708C11F98792817A1079802C304222EABF84E9EA791E02EDA9C9BB3640D35872CA5DCE5976A9A2E5253A01F9819F6E01AC445D424CE63000884E561CA9363E0EA3CE61A013E0DD022B21BF79470B1E611D81F14C305A8BB871E6AA7E60013150B530FEA636B0211D0995BF2AC3DA63FF5426A8D228A89550C73380DB78E703DAF7F0A4BE172921869CC13519310F66843327EB4D64288AFDA9B20C48FA5ECFA28222AC23CC0E701A7A9DB89F18B7C889EC74143AF34283A1E83171002A669B8C2437DB3942F220511DCFBEB85C721C3548E94D720016A42CA48ACE421E536753EB8258F109512894EDE2B5880CE157D26B74D50F8580104550A05E5EFEC8B7492A71175CF650237222E6C96C522A948B06836111B7A0E368D41A8204ED77ACB334F06393668901CF819EEBB5A86541AD1DA134555A19BC747BCC1BFE7CDDC3CDB8C4F3C553C928442C9B800FECCC37A47C474407B7EC71C56036260A39846024BB23527151D8EDA2814946E2592468B436E41FC607202179890CBC07392348490E94CE45675FAE74515405798D2721CE199B8303C31D64D0FD169614127BCB01AE3455F97C55AE9C137D51638851F57D486888C3587F941F921571BD8B50ACB21813DCA2BCE01A3C6F293223783B5008E21F192E207F6A438D0CD0721AB2D8826A15BD3081E1414E52BD03B10F75E369D42742B1E0D05FA42CCD136ADE923DC802546D69E80BE40A536425412B264160A76598955A859DAC75AA182B8397843478968BE01E01992202A6BAE035CC1A48EDA14C7403BF77F58881A2E8D7B4418152B89928A2F8C7A12C5395638858D909B02194C847E6EAF0B998D224B1211246E4E3F8421347611CFD113863FCE0070079AA4B8DCBE742D8B822D905FBF18773317E28CBD512786D8738E2C35948B279A72D4702CF0A28103B1DCB895641C35CC0528A157005DE06687DBCC3817FE0C12204E2A88AC3AE22B098DAC6708276B5EC3AC36A0102C3D060459087837A92D53803E38D628BCB337DF235CB6BC93F0774266548BDD8F4202B95B09889DA2CCCB493970F6F2AB69394C437E0E5C77619C97BC98CF9951AC29154B48C1FAF182CAA174B254C89EAEF01D9901419A07981F1A4352207117B96AB1BA5498230016A6E9D76958BEB8620AE41DCC0DC8D85C5F14ABF5683EAC0B02513C7535C6E12EBD2105AA45B49A0B15FD4E7930D6A0805556936568C2461FE44B069142D6169B164EDC04958896E87940FC5C1334BF6852C2A67AB4D1E10EB163701D91DD506484BABC2A1288603246565C1678DE0FE5F92CAFDD656F1CDEB758B1030000017BE983BB865C149780FF561912E334AB834C9A3230F3E315898E34FC5356E51ECB4C4B2C03BAD37F569092DBE02321CD8657428854DED49C8214CAA10580556AF72C3A17510ADE402CAD557D2007FCDB8CF4218136B6EB81A53E1DD9DA04232550A696E4430CB0E56E62D7C401E4BA83CE0496D53704BB14767450A42E5854207AE11E058C08EF09281C1B9A58C264525E19FB518C91C587E2FC1906521AB29C438035F8D2808B7A9C316C8398019F2CF8DA982461E7317E0611265E2625A3C0E165CE5A8B1E6DFB559EF0DC665F130CB4FA252822089920F057F857A093D1025AAD16E1E3449D5BC2BF01DA29409362A56D047CEA9AD23F98B8095963A0DADF7EC033AB2AAB3013B01ED0C6AABCB082E75C7C2E58ECB2070E81B5C45F1274B8CCF21F7F6D201F97975D5B6BDC475946A459B6E5D53FA0585749D61DCA5AB41971D09A922B0A04B3500991F4602DFC2EA544444C41DEDF1F6C360DB348030428E27E169E47151B1339EAF7DBEE18728BB4B8DA03B8E82493EA15C37EEA679B57ED534028252A65C313D6833EC7A54B770686310B225D956E30D2C00F69A6014A41AF0021C0AAE52E5FEEA63EC84EB39EA2202FC50DD28D531564670CAE7E9B10827F4900BE2557240F6FA4AF355EE5C7028F9929DC02F3E8364D3BE02EC94F04B402D500DF460FD4CDB01448E2C01E1CA107A438F108E3011F683B15A443942090976A2D276574BC4136A072A262C0B4BA9DD05EC6567E4E1308C1A37DEB39D29BF036D721D9FFBE9D2BBC841BD24019DF6EDCCBB4551C532B4498A95550B0EB22CBD45AE44AD1F8CAECD5525AAB887C9E35F3173E8809247A5A14646DAD3A1546EA4D07AA99D6853095052E7A7CF6A21782314EA542D1831C099403BA407E61ED945EA83BC1C3855772ED585F94F15CBE885B068B258B593009163A52E6003A896AE51A0EBA0264811C0C8ED6D759C0C09C48539F624B3C700CF894AC223DCC95A17D919F15407C3AA7A0E6AB8F3FF81E55D123B4C031E0A07137173BDEE7628E7E5FB941341453310B016A7032B93944C72F2229618FBA31A16E5624EE59311BD5D7D02A49D9BCC71A15E7B4B30E3A8B23AB0B2FA80EA006818090DA98C4238132B83B0B37C22D1959E65BDB54BEE1E0C203260851C81E5B4D51BC79F226F2AC364617046BA1DE59E2EF071B4F9D02D2426B710482C3AD5E78E6AC7866468177B050079C2E79ECCD22E0954A40D988A6F8E0216729B71DF0D638D20215BD7D76459A4BE09191513C93AF21FB92EB21AC0C5187B774ACDD499CCDA5162D288C53D120B116D5728032A8EF01A63882012908A236251FA2BFEADDD822263A426D7A1FC92767878F4CF976028C02F000EF35EC3090E7D9976B1BA49952DF14B91504D1401AB9DF426985C457A3193E070C6F0E4341B2E9E250C429EC04C8F839991C45D5B841514DB78DFF21AECA808C0441B3FA0266A8B0861F6B2B6D1D40945C1107BAE3C288329315A6A5BEA019C97658840721764E73FD87121F3B58140B83C6E2E81474842747D5AA4C2942FF0562702CC315CED5418142013B50FDC7ED0FA7E7506D5A48CB80B88A676265884E9DE32E1B6719317D8D334F2C21C43467097E1F64B90F69B8220CA47DB6564046E832A5A4A12AD31B28D1805D98C8A366270C454BADA05DC0949920221C64A25F40A3CA61A5FC066E02E88170A270277C8F04CDAB23069AB15BC504C598E80D7B8B63FCA050074E8A0A3C58C9225A3E3364A4EC988DB59BA3FC9D0265618296743AD13BEEF645578A76BB5A4AF95FA3D6EAF2E089E801088A4C033311ABA3CC07A68D6A86D644B08739537D9D1588AEADDABCF682A304A4137014EC55C80D41D19E199305060F55D07738E511A2910B5C2CDFCCEA85E689605A0442C7F5B7052E0EDB1C96905872BCB11C5A990B1958CD1D3BE6DBA27A97C26E621479F8973063DBCD3D6A2EC6944E6C40A867095A07DF031115A8C211217C616A5B9F36809A196D5FFC57DE5A5F6C37AF6DF11532019ADC144D7D323BE566D494CED72A819AE1D80DA5446DEE709248F816DAC0BC9877E6570442A3677B4595987B63F4E5FEB6DD5643596B1E89E020842012E27DF9E4335B0AB632461E206F769470D84EC08F6419C73278B308054BAB58236677183D81DFD2261D2413AFCC8652DE007085F8DAAA64D0BA49FF830B6E2FC1431F62CF75729C2D03CA143476376D479A2720B8A31A872595F541769A58EDD793B938B1C67B42139B4E785D8B29C3D4ABE442E08BD3DF1B49F14AD9284A8F420268AAF01708B668588BF51058626C6D4B4E27304EF99B9477982D26FE3F072DBFD64167A626BBB61635D5E17537D05B26336C901965DBB2EE62A35B583CE1E85F66A30427095886664535A9DAB4ADF0301BB012352F738FA5874BC4253F5AAB607FEDA093FDA9D2145302503C519B50F8E464B8857A4561750373C6E30342289A70D7CFC0EC001AD81A3136BE8D026EAC525030D2DB31C183B180A9A4352FB8956827F51FE54C65539D6556BD61906501221A703735B1D5A87A6B9E3E523051FB0160831901976F0AA779C361318422190982225597340686BEBB1AAEB4A25CC6DC74D320A788F705B5A9ACAEAE868A42AFA0B437A0611BC4AC98D22E7121D4E34A8C3EA78DE10998246C2D34E06A6CE8F694F28A861A4430336C7135A986C1D31636E03B1AD1EF659E4080B735467477BE586EB5C195E3398BD03D567639BD246188ACDD00E8177E3DE72430D1B998A705B5A456D707BE6A98D8FA2DE0355785DCDDAF0A4C6AA38813C8723A5729A36D75866EDDC0370532DFC20530C5B858844EBDF612E8283B38B8C487BF6E3A212AFCE4114AA1ADB10A6F67B28A8A43BE3A6BC5A7032D141FBE14097690B90056E3AE1D34E73D2D0E01F6E071606F962A23CA8EBAA2309730EF253148B93F36FC767E3DF19CDBE73F3EFBCADD89D5271A6032C353CA020F5188E3AF8CA1D4AA2EB7C8E56FB9D65010BB12857BE48A503BCA18855A0C0EF7032BB98DEF459DB18FC73A6645AE8133980C984E326628C018F09906A39B563F8B1FA32C434DE7538DC3BF2033387876F27227E814E2C17A5CC4F16C68BAF4949D28ACC2BEBF7A1C631BE2371427B9F9D76D6BA58ED6B09563CD6BCF935A7E26388BDE473608B346B4408B46FC86B810A281004D854C7D8693B108C470FA32DA4A6C281FAD1EB5F27213319D6015522C382EE4E186C53EB89E9048C31A90646E0B2F744D9835B6A66A217202018A568B7C464A40B158D9D9E9B52958FC2D5F7CA6A6C3420C80368F8A9BE24BEDFDF0DEB9AD6197E014FB1F9FD2A73881C489305C014EDF11DC82525C9B09A9934F66EBD16586669B6A31CA02F9D53F23A6EC440C02DA28F6A344A8F9BA1061326915C0DA01BCA2D6873A3A36FA42419A0B672B6434C5385B3B0721311653AB01B25D55E3F483D15EAFB9DE821C94BFB9A5650213CAC0303603812169C70856810A101D2C2F2E8F92DF90639951304BF28111925F027850B5A43FF6DB03CC88483DF0CCF3C2310DC7732045218E851E44C30D6529BDFA8AE054031ABA2E69D066A6FF3BD854AEC30B2881D6C17D7C41234671710C7761C6D836EA426C6473A19243B3A43857B649945010DF5E875DE8F8547ED2019A19AAFD1CAFCDD5B805FD3FF99BCD77909A40E4B37CA46229AF697C19229621B5B769F0C4202A958AA3621ABC3E9922FE0C2A6909B05AF1E980EF960EE6010AF21EAC090FCCCD7516959DB60E2B7B6BFDB5298C13D3DF41A24725D4D84037E6D253911D6A62C96AF6AEB1C5EC849DD45CB10E9A06E512F2C3AD881617637E18C9F1CD099D184F65E875C593A14D1DE26A6E91000BE9AFF561322A0065B9706575770A09E3A89E92E82BB65ACC7D2A1B56FE91048B268A45926721D040DA5D6E557113DAA338B992FBF96F95B65F737CBAC549152C34F5EF80EC35A10A05D5B745EF0CFE256CF02877D18215047DE646798983AB58D3744F24416D67BB7979C56975627A1360851477A27114BC219F304262B68B3FF6D489B23ACA8C725C78B872E2235281D96E16D58B54DA1166D18627C3C620F7F410891465CC01B803F8E99CAD1A1D395585187E26CDF96AF76681820F3012B1224027334F814ED40E1DA8C3A07B39B54DE419EAC0C7B9FE3883AE22AE3EA96AE37644A89316E9351AB4378E38A23A847409DA333A30E03CC81E66329CC0846685CC22DF056A78EAACEBAF10ACFFC181755C4A5910F9456BF35DD2DD5AC535C2A12E6DA61A8247498EAC7C322C2D9113091B22988D41624297D91D72D847B676DC6A01DDA3B677959EDA06E72280D6776C86DDC1204E1746A0BF8D5695DAC30FA0B09A95D4DF5D7F0889374457F06EDB802C438A8564F43A5E1756CE2B1412324F8D131464F2819BDCEA6E9585C5C8D95BE20498AB24318A475BF4F0E5CD1464797F4A9B309E82D547A214244CF55EDBFBEBD0F49FFC94BFB3B6AC57A53EA90695D52B46F03E01A37804CB4AD022B229A5087C88DB601FF0E986B6F3D36F055475859F92598BBA24B2C2D9A011440C76B5F126D210F98C06BF038619375C213AD101C826F80983A072B492B68E8C3EBBC29C5A75D3E32DF3FF2EE45F60539AD5623BC36DACACC6545A8A5984334659D5F6D5CC9ABD9004ABEE318EA67049D41215F74D808504164E8B8A7844DC158CBAAA293072566C9213D7590B20C194669EFD7A74683A0F835F8B5243E891A3C8D989322D4E5B41FE203FA5E6DD6AF37A2E312DFF10D1FC50B63766A1D971AEB2CD7C4362AD62E4E25658801A63A8917769545235B10B05808311D97ED3A9168B2AC56838E2158A6F8D026D42EAA19089FE0805713922C595E6739291A9FE250AF7C38520C1223714D2E48E71F811254824E9244D4AEBADA8811544FED6A10267094D720820C47C32081791598F34F9A31021DB1AA594D749D7546B3A1762A31CA865BD011171655FB9369DF40019DB75740E4D227739CFF2DD116A204CC251D760AD202DADC7DFE08D8D5AEA9BC6CC2C351BE3A9F55CC86EF5C5B390142E29664DE21CFE11155AF32F3D091AF73F8BEF3E774584B9693423A6F7D71CA37ECEFA8ACD6CB8DAB2A7DE79EB25AE70CF6F0DE21C9DD91B0AFCCCE91E8D22E2B5E94A2617A5EC7A05F0F9AABEC8E3B228DD128245FD111BD4C69466D8AEAA333A29C85CFA00624EBB119C3E4422464B5F1B775D00DA7481915275F5A5451ABA3C2A76CE5DB19DB5B33C9602DB893219CA553DCAC947A3297F59638BEF1ED27911CD751A8DADF3AF27B02B5A61F3A42244D46AA05C464566F4BDBF100A47AD4F1220385ECEAC29D9575F0DEA1EE75DC274CC9CA8B759EFBE5F9D12EC79355891B4C8083E2CB54A68C4056CE9F3CBFDE9B2FE87C07CCAB0100C56484A376F4B57D08B0C085321D4F0B92FC421E18E01DF7C27B9A4689E483B4CA6B533914953EDF6378221DAC0F14C1AE4C16F5763EEE9D3AE871B5A916B794461FF5B52D8B8EE8E83865D151271709077120DDBBF6FCDE2981A45395409707B171553F87CFD5E80B5EC792B8808E9629CFD53EF3D0DC70DF511021906A8225554303E1814C12433485700F9D471EC87C1D36C4794A159CF935AE401788A838C4D53BAD1DC585D21755E703126BAD83261377A8CD5B381D72C645A21AB4A7BF81672F3BAF1E89CDE907360B7402908F8E0562825FCF08C00685C6C336D41BE5A34DFD5A64F300A1E3D583E111A4E5EF5967ADDC12C5988EFA9051A3A4B79B9FD0505147D7E40580249C562B2080C9B910657CF8114DA195C81312C418117CCA02EAF09A302EE9B4E2550FB3EBB88F613DDE16688F35629DBD1A1D9E4048DC9F81BF9EF6958FD3DE6ED02727181EC69EEA296AF951985DE701B2DC0617C2F506F9177C9FE9702AFAB0BE53731DDD40B208FC8DB04C724FE32028C0C2DB49530B83DC1A4AEAB6D4EA86E760797C3F80885C8BE3B50A032406B33A1D05C22C839F848DAC24DEDA9F553319444110C9E8B603929BCE98879F1386FF76B4D5FDE50990118AD58EEE6B16D8655DB7309B38A37181BA18EADBD89BC96657F86A572BC9E95348DC5F9F4BB892DB833A4299600EB557D7213C4255CA7A1A0E840CD3EB44B576AD753841DBBD504A3307DA93198417FD52EDEA98ABB6BA894BA444FD525B6F4F1DF1D1F9664CEF507F7D14F1AC5723C9F4E9A09DDCFAB12580DEFBAD5F1D15F8E94756011A79881F4D3AE44ED9A224E0662411EE44FBE0701A79989B93BDCAEAC301137BA2A884F276B3DCB31F4110D7870E686140A38E54FAA8DABDFA68525BEA30010179A26AD5BA2ED8D27D888E503FE052712ED46FD1C1C9A30F056E9D09AB459AB122EEB45F0E4CC67550666F1BDD1C3644DD2755463A44FEEA7CEA945942CB40FF551E189BCF032E53C73702EAA1BD760A705ED512CEE825076169675B6D0AF43973D66A8589B7818AB8FE6EDA61BC476471B475F63EEA0166C7F46420D073F57100B7D5A7EF8202AAAAE8BC4FC9EA66A07F1093A7BDF327050FD561406470039DF0809490DA0884068E66D8D9311B50BD5D9DF726365BFB6BB5ABAF47E1298975F057D9AF537F548B8112388B5674965D86635FD6C00C7794B0AFDC51DD51D548FCCEC3EB834654F6A6C49019B7BEEDA6EF481EB9DADE31067D486B6DA204B9B864FA1007460657B8C7DBE045A34BFFE913120ABA077CF55980201F8D21512491384D51033FF4712F3C9B63FE3A508FB2A1B62BA438B5AD3144B36A0676194F1E3CABA8ED58B0002444A42020B6ACFF82D8B128D9BD9D248F942186B014993FB3DA9B1056D23939F5CF66D1497A9D9D319D20EF328ADA7CF73A4AA9A333584507BE0C9D390E08671D39052BA46561D0DE75CC985AF2E1697FB045C8C97890258473205D5005315FC8420E322220939C70D18160602E33C67B0D120258766E8C1532EA3A790FEBD6F5281DC001C3978E6D693F8F5ADB1B2377E2DB287B07B3C963A4EB04C0844A4D2BE3E378DDBB0C3EB52876BB32122F3931A04F1EDFD73749F9FB7818F000EE5263DA92D331491CDE1347D4307E19E5831F0C0D15DBB5898031673072F2CB796A4DB25C9327AA43360AE1BE50C1E7B189B6F4B7BC2E469D7FA5A86DDDE76BAD7969197D38BC74B74C5B3F83C0562AA8F50171BC76DAD5F9CEA85698CE73E834CB98A45607804F111AEB8333380982767568B0690BE4EA738B5727EABF16C2C03BE376985FFC341208D56AF1C8013CC051530DCDB1F6DB3643A7EB23556AF8636850C3E05F536BFE2E8477411F6EF5A70C3D34F5D1C6AE4F1F5F609387A202DEBC107FAD0F7B21CF9D3E4189CA963E4FE54A57F934DF4622BF42635947F430FB57248B6CD1C73CAEBA6DA03C4C15A93350225697C6C46479999CB16DEBF37472F98646F46877088DFB10D128A6CC99DC5CEB87DC4AF9C3B16EF7F7E7BC21D94E6EFC2F7D2C29C8F55F0EF900000185694343504943432070726F66696C650000789C7D913D48C3401886DFA68AA215113B883A64A84E1644451CB50A45A8106A85561D4C2EFD83260D498A8BA3E05A70F067B1EAE0E2ACAB83AB2008FE8038393A29BA4889DF25851631DE71DCC37BDFFB72F71D20D44A4CB3DAC6014DB7CD643C26A633AB62C72BBA31843E9A119959C69C2425E03BBEEE11E0FB5D9467F9D7FD397AD4ACC58080483CCB0CD326DE209EDEB40DCEFBC461569055E273E231932E48FCC875C5E337CE7997059E193653C979E230B1986F61A58559C1D488A78823AAA653BE90F658E5BCC5592B5558E39EFC85A1ACBEB2CC755AC38863114B9020424105459460234ABB4E8A85249DC77CFC83AE5F229742AE22183916508606D9F583FFC1EFDE5AB9C9092F291403DA5F1CE76304E8D805EA55C7F93E769CFA09107C06AEF4A6BF5C03663E49AF36B5C811D0BB0D5C5C3735650FB8DC01069E0CD9945D29484BC8E580F733FAA60CD07F0B74AD797D6B9CE3F4014851AF1237C0C121309AA7EC759F7777B6F6EDDF9A46FF7E00783B72A93156FCA40000105B69545874584D4C3A636F6D2E61646F62652E786D7000000000003C3F787061636B657420626567696E3D22EFBBBF222069643D2257354D304D7043656869487A7265537A4E54637A6B633964223F3E0A3C783A786D706D65746120786D6C6E733A783D2261646F62653A6E733A6D6574612F2220783A786D70746B3D22584D5020436F726520342E342E302D4578697632223E0A203C7264663A52444620786D6C6E733A7264663D22687474703A2F2F7777772E77332E6F72672F313939392F30322F32322D7264662D73796E7461782D6E7323223E0A20203C7264663A4465736372697074696F6E207264663A61626F75743D22220A20202020786D6C6E733A697074634578743D22687474703A2F2F697074632E6F72672F7374642F4970746334786D704578742F323030382D30322D32392F220A20202020786D6C6E733A786D704D4D3D22687474703A2F2F6E732E61646F62652E636F6D2F7861702F312E302F6D6D2F220A20202020786D6C6E733A73744576743D22687474703A2F2F6E732E61646F62652E636F6D2F7861702F312E302F73547970652F5265736F757263654576656E7423220A20202020786D6C6E733A706C75733D22687474703A2F2F6E732E757365706C75732E6F72672F6C64662F786D702F312E302F220A20202020786D6C6E733A47494D503D22687474703A2F2F7777772E67696D702E6F72672F786D702F220A20202020786D6C6E733A64633D22687474703A2F2F7075726C2E6F72672F64632F656C656D656E74732F312E312F220A20202020786D6C6E733A746966663D22687474703A2F2F6E732E61646F62652E636F6D2F746966662F312E302F220A20202020786D6C6E733A786D703D22687474703A2F2F6E732E61646F62652E636F6D2F7861702F312E302F220A202020786D704D4D3A446F63756D656E7449443D2267696D703A646F6369643A67696D703A31333139643039392D353437622D343538302D383139332D613631353630356535663435220A202020786D704D4D3A496E7374616E636549443D22786D702E6969643A31623565336337652D393037622D343134342D396538372D643466343631613964343330220A202020786D704D4D3A4F726967696E616C446F63756D656E7449443D22786D702E6469643A35613562666162332D613233662D343563302D613539392D373833396635343037393935220A20202047494D503A4150493D22322E30220A20202047494D503A506C6174666F726D3D224C696E7578220A20202047494D503A54696D655374616D703D2231363036343938353431383334323536220A20202047494D503A56657273696F6E3D22322E31302E3232220A20202064633A466F726D61743D22696D6167652F706E67220A202020746966663A4F7269656E746174696F6E3D2231220A202020786D703A43726561746F72546F6F6C3D2247494D5020322E3130223E0A2020203C697074634578743A4C6F636174696F6E437265617465643E0A202020203C7264663A4261672F3E0A2020203C2F697074634578743A4C6F636174696F6E437265617465643E0A2020203C697074634578743A4C6F636174696F6E53686F776E3E0A202020203C7264663A4261672F3E0A2020203C2F697074634578743A4C6F636174696F6E53686F776E3E0A2020203C697074634578743A417274776F726B4F724F626A6563743E0A202020203C7264663A4261672F3E0A2020203C2F697074634578743A417274776F726B4F724F626A6563743E0A2020203C697074634578743A526567697374727949643E0A202020203C7264663A4261672F3E0A2020203C2F697074634578743A526567697374727949643E0A2020203C786D704D4D3A486973746F72793E0A202020203C7264663A5365713E0A20202020203C7264663A6C690A20202020202073744576743A616374696F6E3D227361766564220A20202020202073744576743A6368616E6765643D222F220A20202020202073744576743A696E7374616E636549443D22786D702E6969643A33613366623034322D653762332D346636342D626431642D623566346233333530353330220A20202020202073744576743A736F6674776172654167656E743D2247696D7020322E313020284C696E757829220A20202020202073744576743A7768656E3D222B30313A3030222F3E0A20202020203C7264663A6C690A20202020202073744576743A616374696F6E3D227361766564220A20202020202073744576743A6368616E6765643D222F220A20202020202073744576743A696E7374616E636549443D22786D702E6969643A30313238313830312D386236622D343264342D393865322D323863666637376232363066220A20202020202073744576743A736F6674776172654167656E743D2247696D7020322E313020284C696E757829220A20202020202073744576743A7768656E3D222B30313A3030222F3E0A202020203C2F7264663A5365713E0A2020203C2F786D704D4D3A486973746F72793E0A2020203C706C75733A496D616765537570706C6965723E0A202020203C7264663A5365712F3E0A2020203C2F706C75733A496D616765537570706C6965723E0A2020203C706C75733A496D61676543726561746F723E0A202020203C7264663A5365712F3E0A2020203C2F706C75733A496D61676543726561746F723E0A2020203C706C75733A436F707972696768744F776E65723E0A202020203C7264663A5365712F3E0A2020203C2F706C75733A436F707972696768744F776E65723E0A2020203C706C75733A4C6963656E736F723E0A202020203C7264663A5365712F3E0A2020203C2F706C75733A4C6963656E736F723E0A20203C2F7264663A4465736372697074696F6E3E0A203C2F7264663A5244463E0A3C2F783A786D706D6574613E0A202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020200A202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020200A202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020200A202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020200A202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020200A202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020200A202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020200A202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020200A202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020200A202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020200A202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020200A202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020200A202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020200A202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020200A202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020200A202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020200A202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020200A202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020200A202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020200A202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020200A2020202020202020202020202020202020202020202020202020200A3C3F787061636B657420656E643D2277223F3ED6F9AF9F00000006624B474400FF00FF00FFA0BDA793000000097048597300000B1200000B1201D2DD7EFC0000000774494D4507E40B1B112329503634F1000020004944415478DAEDDD4972E3381A0650AAC2CBBA9CAF9307C8EBF872B9572F14A5666222C511C37BD1D151767A907E83E00710041FCFE77302008096FDA304000008B5000020D4020080500B0080500B0000422D00008C166ABF1F8FD7FF547F5E13450000D8EC71FD3EB5F300F76397DC594154430BD13C1404806DBE94A09E00077C74ECC8B522BEB2006FD6D4DE4C9F0B181E2B05D076A895E70000683ED4020040F3A1D6452200009A0FB5961F00E84E019A0FB5001CC2852F00A116A079666A01845A0000845AF671D1100040A8050000A1F66E56C2010008B5000020D4020020D4EEE11E2900009A0FB580811F00341F6ADD23050040F3A1160C7B540000845A40E20700A1160000A1F653DF8FC7FCC697D78783DF0A1314448BCC150700A0E0F13CF912DE47B96490EB896B6A32DAA5D5C59A0C5510D5585F96C11721CC6B623D869A80507BE231BF6DA6ADE36E684341BAEF943FAD49DF053108DC53130531EC510D106A6B89B31DF7417B0AD26B8FBCB9265D1644350C028D000D7B80EA42ED214B217BEA7DF61744CAEFBB20AAA120C63C979545B405A1F6D244DB53D7735441A47CCD43F3501019CE4C019073F0EE07C7DEAEDEC1CDEF07BE856EB60238EA8DD81B41F35090318F9443DE910E04845AA7EA3B5FBC94DF5941544341447C3305408DA1560781618FE30511DF5103B41D6ACFEB6B1AEDC54E7AD9A6AED13C3439D55013E0C4508B5E58410C0215C4616EA600106A75BE6A02380C752040D7A1567786608116828203CD875AE8E99C64834CCD0380AB43EDCA938173869334F5FCF9340F0006547AA2985323304DD3CFF339EF0D5E33CDDF8FC7FA29E7F2175FD0D5B4353B7E76415ABC56A02680500B4075C3A4F814F373F7C948AE05A116009095E1665F871C8A950CA3DF2FE375B5F47DCD34F8C6F997CD3F135C63DDFC0A0D0600002E569AA95DCF92B88B0B62495CD33571BCD45C90F9483858493C1F2A43C7DD3534EA4B09C0499464F5824ABE3EBCA0BC4680D70F7B8E2D4B7C3D106826D49ABD408C03F4217A24B8511B0F5FD041803CA10319B61AFE82403FA15617AC7FD73C00802B42ADF33477B5106D4F3500A081995A2769D5F0775490A14AAD1A8E47E0E6507B46BFD06E5FA397D442B43AD0B6812643AD7EE7EC6A74505E2D44F330E6510D9D12D040A83DB68390E1BAEC79D54429AE79179A87EE54A205A1B68A6E4286EBB8E75513E7D4B30BA2B0BA536034C73C263769F3E318BAECB6F63C9CA2D77E5C4D0E2945972D44418E2A85E6212283507B5BEFD3772FA31AFB4F4E22FE202DC4A85835647DA0AE50BBBE031AA78B518D6DE7A7116AB2FE543D480BF928BB18122B88B280507B4F4FA46789FB6535894F54C3D62479CE1EB31A8BF1C59058419405106A2BEA9115440BD13C340F23C033D2ADD60223F852827BFD3C9F47DDF4000CDB7B086DEF0A180AC2B0AE7E4CAE00A7200057C65C40A8050000A116006EE23A1808B500086DCDB3FC00845A0000106A010040A8050000A116E89355A40008B5005D71231480500BD03CF3D600426D8D4CBA000008B5000008B500D573410300A116689E55A40008B50018F600422DFA620000A116004E65D53508B5E88B0100845A00B89B755C20D4025533910F8E1440A8056008666A41A8455F8CE60100422DBBB96A86E6018E1440A8056074AE6980500B0000422D1CC4448BB20080500BC0B8ACA905A11670AA86E6B9A601422D000008B5000020D4020080500B30284BAE01845A0000845A0000106A010040A8050000A1160000A1160000845A0000106A0100106A95000000A1160000845A0000106A0100106A010040A8050000A1160000845A0000845A0000106A010040A8050000A1160000A116000084DA8FFD3C9FAA8F160200B41D6A018C7900106A11560000EE08B5DF8FC7FCBFE71F8E49050A35511C0060BDC7F3E489B1F5D1A4FB29BA95A51870AA72B132A3D5A45C903127B3933519795E3F28884B1C7159D40484DA1BE26CF75DF386520CD21D7F5A99BECBF25135B4100531EC595919E91684DA1B126D971D90521C5B16C31E2D4441A47CE340E08A507BC852C86E7A9FFDD590E1BA2FCBCE6AF4D74214C498C7B007B83FD41E78734FEB5D8F529C5D990ECAA21446C522BE5131709423773F38F6767537BF77590A7F5655BDE08D28C8FC277476D01DF276744420D43A55EB3115D9205041B4F01E6AA2BC20D4EA20EE29451FE53DFC5D18F6D06B91457C470D705BA8D58B29853FA50A6B1E2AAC2640DBA156D7A0140A5EC36B6EB4F929886EE4AE9A283508B5FA77FC1141C4D78100422D7A7600FD2A5055A8D523E09CE4785170009A0FB5000070AFAFDC3F5435BD61AEE5A352FC3C9F852F2BFFEBA7DFF2FAA7F717BC9ED3F3FEE2E0C30A8B397FB050F03AF73C73E8FD93835F71FD9BEAA349336CF3D04280F5B28FC9D58F00F447A8EDA32C80500B00C60F3052A84DE6DAF965E8CAAF2C03805C4BBB7EFFFBFBFDDFBFFEFC5290455F9F1E8DC127372CD0ECBB5F38BB1A8D7691CA7259292EA8C6867599F1F2E5F78706C6009C1E6AD79F419D96A01217E4FB0DBF221E0C5FD981B873AEE981F1956B6AE7BF6B7FCB344D0BED855AE83EC681836584B214465F40FD1AD8A756B7A214FE8828B8BF2040F3A1160000AE08B546D21794A2E9222B4BEB7506802142AD933468D5C63CAAA1F9013D84DA33FA8546FB1AA55016E766D0B6815643AD7E47877EF11BB11EA3A74662CCA31A7A57A0A2507B6C0721B2388528858248F9AA21E803F784DAA3BA095D70C7DDAE16A29128886A08FA4003A1766767F1F37CF6D4052B851672EA99B5BF46B2FFED681E1D5310E0EA50BBF95CDB6587B5ED4D75DF772BCBFE606ACC33424D8C00CF18F608C7D0A5C7F3FC637BF1F1D983F42F2B1F233E5A6FAB2C9F9642411C386B4AD477413E6A1BDA098DFAFDEFEFF77FFFFAF34B41AA08B5C99E48CF12F4CB0A923C51492AAAD1CDA8F8317B23CFE7F311BDAFE093DB3AE7EFC7639C7662D88350CBDC9712DCE8E7F9DC3CDFD07D41463E03BDDEBB314FFCDEEB6C1E8FC7E395475F3134F88FF7FFC7E175FEAFEF089BCCBBA25BF9CD963B527116845AEA9A66006E0CA98B1F4EFFCDC5CE53E9473F2A88B9F39FB0F98DC4317A9C742BCB82500BD06D542D24D7380E26E75393113698A32D64D6F9B7CCBFF82DF864F0933F7A9BC9881C7FCBD31DBA80500B382B37116793916E9E4D93512F08A9857C99FC6432B3167E63411CC737FC847822397E3DF1D208ED0768C53F4A00F49762E7921133373FFA3665A6308399DDC29CEBA7997BE5BFC633AFEFFFCFADDF8DE76E7335899746CCCBF86867C594C55D20D4EA6580E6836C1C55A7BF170304B3B0F1AC64612E734A5DE25F4CA5B935B2C9DF5BDE2721B7C020F74672F7A5ADFC307E6D719D2BCCBB2E748050AB9781EA529A52147A92E4446610F8E20FCB7B0E246FD52A04CDC20283C2AD6085DF9B4CBDEF4CB9E646B4F2BF966B924CC3D3DF93D95366C2B89E466B0E0506644D2D34906E2D6D4C0E8C0B138DD327939453F1FEAADCC65B85D799BBBE9FFC6BAEFCE27875EF545C3F50FEE26055C69A9F3CE5172AC471BFB0525933064E62F901507BA62F64C7C24A804FE3E014CD86266725D7BFBC42AA5BF95DE52F0E16D426BF60FEF9F9D2D8E45A8BC545178B213E98D94DDE66374573BA2E474099272FD4186A2D3F005606D995A16771E6EF595CAB3045138D5366D78277440B5EE1339A3C5EF3EED6AFDF4DBE85203BAEDC34775A71DFD8CA3518B9CD748359F0293FED1DBC80F86FBD33EF3ADD80500BD422B8137F9C201B84C8F28AD5A9780FD694BFE92AB8FEFED11604F17EB4B910997B91E505BB85D790DC696BCD2A8B29BF3821B78E7631FEE6D6FE065175E5BD68F3381EEFEAF069C0756110845A804B836C32772E3E612B484BF117C7D12A19BC7241734D0C5D73CF59F955E5D2E1945A3910BFFDE4A860F1B525874F85E227070CD3BAD5B7F1C8A4FC2BE217192C6C7844724DCB4C2D08B5E73274067291319E599C8A37EC17B6AF5ADCB4AB3C67590ED6E59416E7CEE06524936B6EA6B6B079566E7544E1F166F10F2904DC293F055EFEAEC5BF787987E0F9DB894B9DBC976E5EC99FE7539C05A116A82EFC75B3AB573C095AB8063D7DB821401C8F0AFF5ACE61C9FBC60A516F2ADEF9145C4F2FFF35574E40BEDF63618E60FE328282E73ECCE5DDC5270917C62A851FF2D10292F90F99A227BD25D763FC2CCD7C035DB2A517706E904D7E984C9F8B3382C96BEEEB1FE85A783041FCDA72F1B41CDD9209BBFCC0854FBDBFF7FBBFB9C9C5051B53663545612D447925C3471F4E4B0F2D5BFCB0BCC9DA9A05BEC1DFCBCE6220D402AC4A9CC9659171468CE36C90420A3BCEAE4C45B9F85B7EA442E1215E85249D8B4A2BBF6C9BEFE25EB685B7B9B8D863E5EA8EE9F3DBC892F97B3E72087E4572F947BC114450E1F9846E7936DAC10B422D70A238F9D51F64734F2B5879EF57E17BCB8F542847ABF2ACE49A9DA79221B5893094DB9E6CCAEC9955580F90FB83CE37F48D3F0C82E39A1523C90743E49628CCD75114F63E0B563327DBF0FA297FA04ED6D442D589A4AA536C610FD1DCB64DF35BF2A7FCD3B93E7DAE6CF946B1E48F5ABFF16A4399757FEBCA995735B9C156D030E6C972FD531B0A413CFE09B9151DE57D8573FBE9C6BF6BCF0E6280500B7FB13F46CD92371B05FBFF9777AD2A6C6295BC629EDB4AB630EDB76675691C95E66FC4445D2EF24EF9A9D079C1830740C41F16E2E39A5BD60ABBB9C52F6CC37C7CE1863640A885B5ECC513E7C87BCFA6F3FBF193F7754DA9BBD1A7BFF7698AA7C7E2FC34A576364DCED82D3EAE36D84020F8FA60032911F6A3981B942E39B0D9F644B16969EEBCF0D0B269DDA294C24583E03DC6315DAE05A15664815D813219CB2E4BB1C9F588F34C104CA096AFDE065377E5A89A9B759B96E6E4923F248EDA5AD78131772AEEDDFBD1AA8FC56C1AC4CDDC2A82C2CADD20884F7F4FD5C7EB1C92DB0677B3D71E74E6D21BC55C5C86DA7273794FABC5BBDD37DC195658565BD8CBA9FCAA16373495656FC9BB6B8A5FDEB976CAEFE336A5EEF14AEE745BD83CAE706758FCBDE59BCCFCD1E176961F5011C39ECBB26CFC9880791C296C41504E96E5C9B9F21727974BE6326BEEBA70EEE9ACD4197957AEDC9DFFE983E7B4E5C654F12067FAFBD91FD3D27E6753FEAEC4C5079B99C405A196D159A0129CF82F58F7B9E651B1EB772428DCC493DB3A3479E57AFAFB1EA37905BEFF5E5B99BB679F0EF2EEB4E271C4D3BA4DDF36DC37B67EF9EF945F1523E08250CBA0CCD45E1F9717CFE25371AFD3C52C928CCEC99F90144C807DCFFE9F31036EBC57579C4DA768278DC56B0853FE61C2C117E71276DCB0E3E71503426DFFCC50AAC3BDB9E1A3A059889EEBBF3877D68F372B78936559CCBBF1972517AB14B63EC8FDCCDC87C17E1DF32F48DE10E92633388F278A41A5AEBF0725777977F1C3C2A5E1F9878509B3F93BF55427369B8F7C7EF2EBAA0BFB662C3E283877E094EF74CCCD074F567EC371CCD452E9098938DD9EFAC30B175B830D3EA7CCAE498BDF9BFB09EBEF94878F12EDBC7D16D630949774E792EB949AF7DD76E36370EFE67987BC1962845A84B98B587E707D5C5E735B4C7247FD353F2A979827DB147087DCCD6785AD8E17A36AF0E1CA9D439207CE54DCDAECA80AC8B574CCF203618E36CEC467FFE4DC96F5B94050FE515366A72D7F4DEA8FB941AE9D8AF7A24DD18A8572548DEF639B32BB98257FD4FE71EC64850F422D5CC08CF535597643C0CD9D20CB133F4E9CF474DCADD9A52BB9947C5AB785C8E2EF3DF098926BE992E50754C48CF5BDE2ADE993FF3AA5561CCE4FBA768D75D4741976E32744C40B0C826D16E2850DE55D6C83353F718ADDB979426E1B32106A81D353E6D9279EC53D3BE37FCDDD333E999ABD83EB1BB704DC69696DEEE223A0A7E2DD99D3D244EFB69EA1B0BD2E08B5C01571F3ECD3732EB3C61B7C2657074AB43732535B49C02D3F173A0EB885BC9B7B486FF9AEB28F5EADA315A116CE65CEA9701EBAE6C43C8FB9B993657C1116470DC183FAA6D42345928755727EF7BDC2678A963704DFBB739F0493B5F4C48D6250BB336EE90816CECE4FA577056BE872205A089D855B2DE79F2FCCEC4ED123FAD61FADF3A0EC00A70F666AA1F6F3E219E79BDC0393E22F73A5120E39DC0A9B7C05775E163E2C3C962C9E0F2EDCEB29CBD22533B5D040AE3D567C22CCED0C0F1C9B680B7795151EB73B159F6F52B88933F75DC1525D073E7D30530BE3B27D4107DC28D641C08D0799F1731992FB8D4CF987FFCDFF75BECC20B7EBADC5B508B5C08989F3EC2DBDEC29DB01378AF5117073AB05CAA1B3B025C29479A24A7CB03BFC116A81EBD2ED4959566D3B60A6B69B8C1B1F928F99A037C8DD793665961F046B7073FBF4F94320D40200870D38E38C1B64D3E40ADA60F941BCBB6D7241ED94DA6D17845AE094F39C22C0E0C7FEE2ED65C19715026EF9875CF02043106A61B8F3994502A01F983FD361F1F9BA8BB797253F8CE768E55A5A644B2F006823E04E7F3FF32FC8A0C99BC6E2981BFFCCC9DA03845A00E0AE801B2BDC40360FAFC9C7AF4CA98738B85844432C3F804A5DB0A517D041BA8D972A95B7C28DEF369BA2C5B853664A18845AE0E344AB08C0A70177CA3FA56CCD73C87279576D116A815D2727806DB976CA3F602CF87CBCACD613B36BF0FBDFDF8A20D482740B90EE4372778CBD3F19C7E2C964ED1D7EFDF9A508422DF4732A92688103251F21965B6650D80B8C0B98A9156A018074A24D2E9C2DDF3736FF500DAF64A656A80500120A4F149B8AF78D4DB3C7F32AE365CCD46E609F5AA8D4FC79EEAA011C986BA7BF275FE36D1326CF65A041666A01608841F2FBFFE7D136F9C5B941B5748B501BFA31F38486017079A20D1EAC905C38FBDEF32BF75D4A7A016B6A9B09B5DF0E0958126C2109B02DD1261F3036BF512C17700BFFAAB054E8A235B5718A7D7F66CCC9B9A020AF0F079FA78C6B62E256A205F67723E53D0DE68F63986653B3F18D62B9AC0CB50CE14E6D94EB676447882F1FCD4F8F93E7D69445BA35DAD136CA35718C0465519079FA34F06E4B6EDF030B126E0BB5DB161874DC0D6D2848F79DF2A73519ED2C15EC7C2EB71915AB8651F1B69E64DE81ACFC30587EB0E6277352961570EF0CB5FBD7CB76D601ED2948AF7DB19A1422ECFB904C86DAF94D1BD29BE345CA5713468BB372ED75A1F6A83BC0BAE97D0E2988943FC2C9298EB08550DB71AEDDD93CFA6B1B46806A82442BDADE106A8FDDD3A083AEE7C08248F9DD9F99728B0DE617F8BA5F90A07918121B1523D1CAB59B1DB6A5D7E1BB74B5BEEDD7B1AFBF8F4DD00E7C177D1424BE81E3750F72F099BE836C677FD3DAAAD159550F793B5A1A3D25DAC90375CF08B5E8340D7B3624DAF972823599F5F99F4232D63C1C805D56C3A81889962B42ED491D847E47357A7554120D92B1B6DDC7F1E260372A46A215916F0BB5E82B0D7BEE4DC61EF0E36071A480A02CD456DD5DEA8B55A34BEF25047B96C9F6B1DCF6BC56ED78E9A61A46C5489F5C146AC199637F2ADD138EED7FEE60511305077159A8D5452AF8A5AC13D03C00106AA16DEFFBBACE88B6E23240E54CA6DE136ABF1F8F35931C174C84986B510D16E36CA3DB2068CFAA0D7094AF72DF574927A82F560D80937A54CF18AB4A3097E971599F566FE48AA51F932B36D1900D27A4F9B3672F3DDECEF9BDED3E3E57574355DDC8BB41FE3C9FC17FCFFB99C51C2C281F9568212917DCBF94864EC667A960377F5E57F09979BE2C7CD9CA9FB6FECBCEF07C3E57BEAF8BDF6CF99548B4543BBE9A7FF8FAEFC217C8B55089AFC29875434770EA18FAD4EEAC3C160FDEE67B101FBCB02B4FD2F38984A3BEB2E3987BCB4FBB6B3EB8F04A56BE8BDB4B07001F9F6EF69F74CF0E4C3F2EA7365B8D2B6BF2E9ACE45D9397F16F3F3C3B6E7EC1EF4FAEFCB23D35B96CA055C921F31E24BF87D0F78E8A19A7ED71AFD7828AD7E5F26B1657147ED7AF3FBFFA58E0915B7E20D40AB56A72D508F2EF3A5C33899B9C2D8E3FF97A6D71D05FF9658BDF9BFCB26B629C0E4407227D525BC6BD25F08DC03EB5B4ADA1B3D12D4B1192BF34FE64FC58B2E483CA725FB6F8BDB9279F0913E84340A23D8A1BC5A0F9809B9B0705E90D1847ED33B5CDF5C24E1B6A52CEB2C909CB43122DDA1E5039DBEED61E6A9D369CA11504346940626E3ED4EADFAF79D94D9FED9CAA03EF07DBEE77F8D46F376D43ABEBA31AA7BE728D0484DA2BFA057D0DBDB690F983128EFA99AD475B80419C349F6A9A763A70A656063DB51A1D94F7D8B7A0BD4D874EF7F6373E3131D9D3F1E2F2177069A83DB68390E1BAEC799D42027BE656CF98EE35E6510DBD075CE0F05955D3B4C787DAA3FA1D19AEE3AE5C4DA673F640D036643854983173AD44FB76CAB3E9373F00A6CB5E66CFE3707AED76D5E4AF8370D32EB3C9A7D10EDE36FA6B1EAA716C41245A6AB3FF016312EDE9A1765BEFD3772FA31AFB4F4EBDD664653C1DE7090B46C5AA61548C5C2BD1D6156A57F63E4375316BFA620519AD26715A2D7C661AE6B1611F05178340055116868AB6E2EC3DA136D70DE95C824E5941E2B3D438357965D642840DEE067B1AF918042AC827D156074B37D1569CAD2ED4EA5F14444116336E905FC7597EA07918121F956E55863E02AE20BBD29712406D9ECF67BC5197DD12986735113F0EAF2E06C2E0FE5102A8591FDBD0028050DBAD6F61050040A8050080176B6AA14656D052E03A0F40CC4C2D4063DC050520D4020020D40257793C1EB63E0000A116DA4EB4C17FC09B35B500422D0000422D007773A31840CC965E50235B7A5160F90140CC4C2D0000422D0000DCCDF203A8D17CD3034B112617DC015862A6160000A1160000845A2066C941C02656AA0150664D2DC8B534C60A638098995A408C03A8D4AF3FBF1441A885B63D1E8F87240700422D349D6883FF0000845A0000845A0000106A818F3C675463B289155A0B20D4021DB0FB0100422D00863D8050ABC781CB3DFEA314B0862507C075A1568F03DBD2AD22004045A116004EE2622020D442D5EC7E006BB818087C1946832C0B00ADB3A6160000A11600EEE6622020D4428D6CE9051F713110106AA1F674AB08005051A8756D0800A718A0F9504B8EAB6614D8060100D6F85202906501A075666A01689E4B5E80507B3F4BC1D421C92D62A00301845AE821D1DAD50B00AA0BB5AE0DA1850000CD875AD7866003778C6128085057A805C39E8FB2EC8B52E0A801106A017A66A61640A8755A029A67A616E0CDC317A046EF4D0FAC40008035CCD4421BE91600106AABE602E28B65180080502BCC09F77DB2FC006034BFFFFDAD08422DF493656DE90530A65F7F7E2982504BC3CC580300422D80A120D003CB0F6A0FB53A5F58EFFBF178FD4F2900A0AE50EBF40CC049CC9BD0136B6AB7B9E2E10B719C9D7F66A89E2899ECBF1F0FDD71509CD77F0F5B16A5001899E507DB3CCEBBBDFAA3A9D9BECFD9EB4B315A7659599911CAA2141BCA3260D6CF1564F0614F5C16E340BA09B5666D6F0EB59B571AF4D70D6D2B850C37545994627F4D1464C030A72608B59C1E6A77AE9DEDA9F7D9538A8E7B6165510D4341D530148495B956A8BD27D41E752B58075DCF21A5E8B20BDE5F19C39E8E1B898218F3A8094C666AB7AA719F5AFB24F45A8743DE513765510D0529BF919DEFA5CB8E544D802B42EDB19D45D35DCF812F5E64E9B52CAAA12006C6770D7BB410106A9D45EE2985C862D8E3A85110B5D548802B42ED497D4D8B5D986E975B1A898667CCD377F35013E0A2508B33B4610F9A8756ADD48050DB49A7A38BE4C646A2F9D16BF3D0B6818B42ADEE46B7AE2CF80BD2620BD1FC40A8059098BD6000A1562F0F0E16340F807A42AD5E128D0400A8C157FD41442A520765A9A11A3FCFE7A73F7FFE2DF1134A2FF8DB7D3F1E9E8C8A160243875A80FD1974FE2D770D3F0C7B94E2FAB208CA700B378A0180F10334EF2B37CA9C1F93B941A7E31600801A3C9EFBAE925C906B5BB98E7376291ABD9EA52C0E96260AF25E5B192FB2CC7D2618F9CFBFACFCD692B306E6083A63050208B5224B875DE4D9772F2945BB8D444154C35010388A35B5347F4EC2B9191C3580504BC3E70C272470B0001C136A4516272470D400D07CA8C51914CD0F7F44801E42ED491DB1FEBD9B5268215AF5F50551EA3EAAE162207069A8E5D42E52B7EB24DD7723D1C25503A0A2507B78472CB2385583F6A61A934B3DC0C5A1F6D80E425FD36529B490935E7F078D444154E3E277E12C0342ED15DD441F6768A5D042AE7917DD34120511B9D404D869EF13C5627B36DBEFACDBDA5C8ABEBB6F2D4429CE2888E6A1203A58106A4F39BC3FED7D7AED6536F4C22374B8CAA21A8682AA612808B4116AD7F73E83F4324AB1F9E4A485A8C6E03531477048AE956841A83DA51B1ABC73097A645D6DF22C356C5992276CD55093C524A7202A0342EDD5A156FFA2200AA21A46C546C546C5C0B13C7C016889B032AF806A24EBA02C20D442158EBAC71900106AE1366659C47A006820D43A612B020040F3A116247E00A0F950EBE2325A0800D07CA8853233B50080504BF3CCD40200422D000042EDF95C5C0600A0F950EBE2320000CD875A0000106AE99C052A0080500B0080507B3EF3700000341F6ADD2886160200341F6A010040A8051897155C00422D0000422D0077B3E81C40A805689EE50700422D40F3CCD40208B500CD33530B20D4020020D4020080500B0000422D000008B5000008B5000020D4020080500B8CC7CEAC0008B540F33C430B00A1160000A1160000845A0000106A01F83F2B8C01845AA049763F500D00A116689EB94900845AA079E62601A825D43A270100D07CA8050000A116009659810D422D0034CF6A37106A01A079666A41A80580E699A905A1160000845A00B883D95940A805A079D6D102D7855A3D0E002799CFD43ADD80500B0000422D0000F41D6AADE2870D5C480580BA42AD73B3CA0000341F6A01E024660700A11610595403A0075F17FC8E6041EDEBC331FBE5786DF1F7E3E1143559759D2F8BE6A179A806C01A8FE739A7CCF5DDEE08E7EC35D590F295A55C0D2D4435720531F209CAA22020D4DE3991D06B1FA4148794A5EF9AA88651F15105310894F841A8BD33C3F5DAFBEC29850C37485994E2A89A2888318FB2004786DA43567AF5D1F5EC2F45975DB0B2A886821818AB09507BA83DF0DE85D6BB9EA34AE10C6DD8334E23511011FF9A4622DA42C78ED9D2EBD8BB719BBEB7F7C017EF1EE75ECBE22FABB617BC8BCE9AD9516FC7D10742AD3EE29E5274535BC31EA5D08718187B2340EDA1561786BFA6F21A0AAA869A006D87DAF37A87E6FA9D935EB0FEB7A7B268240A820E04A834D4A2FF75F2500A447C470DD076A8D5DD28859A53E75F50F3400B01A116708646F3F0B201A1568F86BF2038580028BBF9080000027949444154845A003090003EF255F971AED399D7E1E7F9FC7E3C5E4FC4093E13146AFED49C640DDF3F24F869F34F6E7B8557FEEDB6BD542D799CA3C6E3A300C691784CAEB32F00FBC5E3EDB3BF71C32FF26702A116009095A116FF6C3B5C1DB10000D4233153BBDE0573BA564C363DEE5796A10E96F91AD6E42AEDF80BAEA989AB4F5CCCBC0F08B5228B50DB735954434154C35010388F2DBD0000106A21CF2C8852034003A1D679545E5116A8BF3D3B589405845ADD8DCE118D448CC321030C106A753ABAF55B5EBF86A71AE0A8018E0CB5BA1B5D241A89318F6A00F4106A0FEF31DBED829542590465340F411F6835D41EDB41E882BBEC7695E5A4D7DF412331E611B6B410A0A2507B5437A1AFE9B8145AC8E1EFA29B4662CCA31A4E0D4045A1767FBFD353FFAB145AC8D9EFA5B34662CCA31AF231B0D3AEC7E4E67CFA6CC35E7B990DCF781CA1C3DDF6E84B8D4435462BC89E87C46A21122D08B557F73E32DCB01DAEB26C3B4F3B6446AB896A982F00EE0FB5853E68CCFE25D7110FDEDB2ACB9A53B56A1804CA6DDBA2AD380B42ED89BD8F2E665E10D5D042340FCDC31CC1E1E956596040FF2801357006820D478D0327EE3D9405845AB8D3CEFB3F0000A1160000845A0000106A47E3523B0080500B000042EDDDDC990B0020D436CFF203340F00106AA16726F20140A8955A0000845AE06E961F0080500B008050CB254CC55160758AE20020D43A3183012100422D4ECC681E0020D4029CC7550E00845AA079A6B101106A0100106A010040A8050000A1160000EA08B56E5E460B01000EF725A9C86D6A525B295EF7F8AB897602C07A8FA7930400008DB3A6160000A1160000845A0000106A0100106A010040A8050000A116000076F91F6173EFA022CF3DB50000000049454E44AE426082>|-000.png>|0.4par|||>
+  </padded-center>
+
+  The big picture is the following : by tracing out neighbors degrees of
+  freedom of a given site, yielding an effective action for an isolated site
+  <math|<with|color|dark magenta|\<b-S\><rsub|<text|eff>>>>, and then
+  performing a mean-field approximation by removing many terms which disapear
+  in <math|d\<rightarrow\>\<infty\>>, we eventually get the action
+  (<reference|impurity-action>) with <math|<with|color|dark
+  blue|\<cal-G\><rsub|0><rsup|-1>>=\<mathi\>*\<omega\><rsub|n>+\<mu\>-<with|color|dark
+  blue|\<Delta\>>> with
+
+  <\eqnarray*>
+    <tformat|<table|<row|<cell|<with|color|dark
+    blue|\<Delta\>><around*|(|\<mathi\>*\<omega\><rsub|n>|)>>|<cell|<below|\<simeq\>|d\<rightarrow\>\<infty\>>>|<cell|<big|sum><rsub|i,j><with|color|dark
+    cyan|t<rsub|o i>*t<rsub|o j>>*<with|color|dark
+    brown|G<rsup|<around*|(|o|)>><rsub|i j>><around*|(|\<mathi\>*\<omega\><rsub|n>|)>>>|<row|<cell|>|<cell|=>|<cell|<big|sum><rsub|i,j><with|color|dark
+    cyan|t<rsub|o i>*t<rsub|o j>>*<with|color|#bf4040|G<rsub|i
+    j>>-<frac|1|<with|color|#bf4040|G<rsub|o
+    o>>>*<around*|<left|(|-1>|<big|sum><rsub|i><with|color|dark cyan|t<rsub|o
+    i>>*<with|color|#bf4040|G<rsub|i o>>|<right|)|-1>><rsup|2>>>>>
+  </eqnarray*>
+
+  where <math|<with|color|dark brown|G<rsup|<around*|(|o|)>><rsub|i
+  j>>=<with|color|#bf4040|G<rsub|i j>>-<frac|<with|color|#bf4040|G<rsub|i
+  o>>*<with|color|#bf4040|G<rsub|o j>>|<with|color|#bf4040|G<rsub|o o>>>> is
+  the Green's function for the <with|color|dark brown|Hubbard lattice without
+  site <math|o>>, and <math|<with|color|#bf4040|G<rsub|i j>>> the one for the
+  full Hubbard lattice.
+
+  <\indent>
+    For a Bethe lattice <math|d=\<infty\>> with <math|<with|color|dark
+    cyan|t<rsub|i j>>=<with|color|dark cyan|t>/<sqrt|z>>, removing a site
+    does not make any difference and <math|<with|color|dark
+    brown|G<rsup|<around*|(|o|)>><rsub|i j>>=<with|color|#bf4040|G<rsub|i
+    j>>>, and <math|<with|color|dark brown|G<rsup|<around*|(|o|)>><rsub|i
+    j>>=\<delta\><rsub|i j>*<with|color|dark
+    brown|G<rsup|<around*|(|o|)>><rsub|i i>>> (since neighbors of <math|o>
+    are completely disconnected on this lattice once the cavity has been
+    introduced), which yields
+
+    <\equation>
+      <with|color|dark blue|\<Delta\>><separating-space|0.2em><above|=|<text|
+      Bethe >><separating-space|0.2em><big|sum><rsub|i,j><wide*|t<rsub|o
+      i>*t<rsub|o j>|\<wide-underbrace\>><rsub|t<rsup|2>/z>*<wide*|G<rsub|i
+      i>|\<wide-underbrace\>><rsub|G<rsub|<text|loc>>>*\<delta\><rsub|i
+      j><separating-space|0.2em>=<separating-space|0.2em><with|color|dark
+      cyan|t><rsup|2>*<math|<with|color|#bf4040|G<rsub|<text|loc>>>>
+    </equation>
+  </indent>
+
+  Back to a general lattice, we want to replace the nasty hopping amplitudes
+  <math|<with|color|dark cyan|t<rsub|i j>>> by the band structure, that is
+  <math|<with|color|dark cyan|<smash|\<epsilon\><around*|(|<wide|k|\<vect\>>|)>>>=FT<around*|[|<with|color|dark
+  cyan|t<rsub|i j>>|]><around*|(|<wide|k|\<vect\>>|)>>
+  (<reference|hubbard-non-interacting-band>) and its density of states
+  <math|<with|color|dark cyan|\<eta\><rsup|<text|latt>>><around*|(|\<epsilon\>|)>=<big|sum><rsub|<wide|k|\<vect\>>>\<delta\><around*|(|\<epsilon\>-<with|color|dark
+  cyan|\<epsilon\>><around*|(|<wide|k|\<vect\>>|)>|)>>. For example, the term
+
+  <\small>
+    <\eqnarray*>
+      <tformat|<table|<row|<cell|<big|sum><rsub|i>t<rsub|o i>*G<rsub|i
+      o>>|<cell|=>|<cell|<big|sum><rsub|i><big|sum><rsub|<wide|k|\<vect\>>>\<mathe\><rsup|\<mathi\>*<wide|k|\<vect\>>\<cdot\><around*|(|-<wide|R|\<vect\>><rsub|i>|)>>*\<epsilon\><around*|(|<wide|k|\<vect\>>|)>*<big|sum><rsub|<wide|k|\<vect\>><rprime|'>>\<mathe\><rsup|\<mathi\>*<wide|k|\<vect\>><rprime|'>\<cdot\><wide|R|\<vect\>><rsub|i>>*G<around*|(|<wide|k|\<vect\>><rprime|'>|)>>>|<row|<cell|>|<cell|=>|<cell|<big|sum><rsub|<wide|k|\<vect\>>>\<epsilon\><around*|(|<wide|k|\<vect\>>|)>*G<around*|(|<wide|k|\<vect\>>|)><space|1em><text|because><space|1em><big|sum><rsub|i>\<mathe\><rsup|\<mathi\>*<around*|(|<wide|k|\<vect\>><rprime|'>-<wide|k|\<vect\>>|)>\<cdot\><wide|R|\<vect\>><rsub|i>>=\<delta\><around*|(|<wide|k|\<vect\>><rprime|'>-<wide|k|\<vect\>>|)>>>|<row|<cell|<text|and
+      similarly,<space|1em>><big|sum><rsub|i,j>t<rsub|o i>*t<rsub|o
+      j>*G<rsub|i j>>|<cell|=>|<cell|<big|sum><rsub|<wide|k|\<vect\>>>\<epsilon\><around*|(|<wide|k|\<vect\>>|)><rsup|2>*G<around*|(|<wide|k|\<vect\>>|)>>>|<row|<cell|<text|and<space|1em>>G<rsub|o
+      o>>|<cell|=>|<cell|<big|sum><rsub|<wide|k|\<vect\>>>G<around*|(|<wide|k|\<vect\>>|)>>>>>
+    </eqnarray*>
+  </small>
+
+  Now, using the DMFT expression of the Hubbard lattice Green's function
+  (<reference|DMFT-interacting-green-func-self-energy>)
+  <math|<with|color|#bf4040|G><around*|(|<wide|k|\<vect\>>,\<mathi\>*\<omega\><rsub|n>|)><rsup|-1>=<with|color|#bf4040|\<zeta\>>-<with|color|dark
+  cyan|\<epsilon\><around*|(|<wide|k|\<vect\>>|)>>> with
+  <math|<with|color|#bf4040|\<zeta\>>=<separating-space|0.2em>\<mathi\>*\<omega\><rsub|n>+\<mu\>-<with|color|#bf4040|\<Sigma\><rsub|<text|loc>>><around*|(|\<mathi\>
+  \<omega\><rsub|n>|)>>, these three terms reads (for <math|l=1,2,0> resp.)
 
   <\equation*>
-    <with|color|dark blue|\<cal-G\><rsub|0>><around*|(|\<mathi\>*\<omega\><rsub|n>|)>=<frac|1|\<mathi\>*\<omega\><rsub|n>+\<mu\>+G<around*|(|\<mathi\>*\<omega\><rsub|n>|)><rsup|-1>-<with|color|dark
-    cyan|R><around*|(|G<around*|(|\<mathi\>*\<omega\><rsub|n>|)>|)>>
+    <big|sum><rsub|<wide|k|\<vect\>>><frac|\<epsilon\><around*|(|<wide|k|\<vect\>>|)><rsup|l>|\<zeta\>-\<epsilon\><around*|(|<wide|k|\<vect\>>|)>><separating-space|0.2em>=<separating-space|0.2em><big|int>\<mathd\>\<epsilon\>
+    <frac|\<epsilon\><rsup|l>|\<zeta\>-\<epsilon\>>*<big|sum><rsub|<wide|k|\<vect\>>>\<delta\><around*|(|\<epsilon\>-\<epsilon\><around*|(|<wide|k|\<vect\>>|)>|)><separating-space|0.2em><above|=|<text|
+    def >><separating-space|0.2em><big|int>\<mathd\>\<epsilon\>*\<eta\><around*|(|\<epsilon\>|)>*<frac|\<epsilon\><rsup|l>|\<zeta\>-\<epsilon\>><separating-space|0.2em>\<backassign\><separating-space|0.2em><with|color|dark
+    cyan|h<rsub|l>><around*|(|\<zeta\>|)>
+  </equation*>
+
+  Then,
+
+  <\equation*>
+    <with|color|dark blue|\<Delta\>><separating-space|0.2em>=<separating-space|0.2em><with|color|dark
+    cyan|h<rsub|2>><around*|(|<with|color|#bf4040|\<zeta\>>|)>-<with|color|dark
+    cyan|h<rsub|1>><around*|(|<with|color|#bf4040|\<zeta\>>|)><rsup|2>/<with|color|dark
+    cyan|h<rsub|0>><around*|(|<with|color|#bf4040|\<zeta\>>|)>
+  </equation*>
+
+  Using the properties <math|h<rsub|1><around*|(|\<zeta\>|)>=\<zeta\>\<cdot\>h<rsub|0><around*|(|\<zeta\>|)>-1>
+  and <math|h<rsub|2><around*|(|\<zeta\>|)>=\<zeta\>\<cdot\>h<rsub|1><around*|(|\<zeta\>|)>>
+  (which are valid if <math|<big|int>\<mathd\>\<epsilon\>*\<eta\><around*|(|\<epsilon\>|)>*\<epsilon\>=t<rsub|o
+  o>=0>), we finally have <math|<with|color|dark
+  blue|\<Delta\>>=<with|color|#bf4040|\<zeta\>>-<frac|1|<with|color|dark
+  cyan|h<rsub|0>><around*|(|<with|color|#bf4040|\<zeta\>>|)>>>. In fact,
+  <math|<with|color|dark cyan|h<rsub|0>><around*|(|\<zeta\>|)>> is the
+  Hilbert transform <math|<with|color|dark cyan|<wide|\<eta\>|~>>> of the
+  density of states <math|\<eta\><around*|(|\<epsilon\>|)>=<with|color|dark
+  cyan|\<eta\><rsup|<text|latt>>><around*|(|\<epsilon\>|)>> of the lattice
+  <math|<around*|{|i|}>> :
+
+  <\equation>
+    <with|color|dark cyan|<wide|\<eta\>|~>><around*|(|\<zeta\>|)>=<big|int><rsub|-\<infty\>><rsup|+\<infty\>>\<mathd\>\<epsilon\>
+    <frac|<with|color|dark cyan|\<eta\><rsup|<text|latt>>><around*|(|\<epsilon\>|)>|\<zeta\>-\<epsilon\>>
+  </equation>
+
+  Now, we have to inject back in <math|<with|color|dark
+  blue|\<cal-G\><rsub|0>><rsup|-1>=\<mathi\>*\<omega\><rsub|n>+\<mu\>-<with|color|dark
+  blue|\<Delta\>>> (<reference|bath-G-with-Delta-func>, <with|color|red|with
+  <math|\<epsilon\><rsub|0>=0>>) to obtain the bath Green's function from the
+  Hubbard model : <math|<with|color|dark blue|\<cal-G\><rsub|0>><rsup|-1>=<neg|<with|color|#bf4040|\<zeta\>>>+<with|color|#bf4040|\<Sigma\><rsub|<text|loc>>>-<around*|(|<neg|<with|color|#bf4040|\<zeta\>>>-1/<with|color|dark
+  cyan|<wide|\<eta\>|~>><around*|(|<with|color|#bf4040|\<zeta\>>|)>|)>>, or
+
+  <\equation>
+    <block|<tformat|<cwith|1|1|1|1|cell-lsep|5pt>|<cwith|1|1|1|1|cell-rsep|5pt>|<cwith|1|1|1|1|cell-bsep|5pt>|<cwith|1|1|1|1|cell-tsep|5pt>|<table|<row|<cell|<with|color|dark
+    blue|\<cal-G\><rsub|0>><around*|(|\<mathi\>*\<omega\><rsub|n>|)><rsup|-1><separating-space|0.2em>=<separating-space|0.2em><math|<with|color|#bf4040|\<Sigma\><rsub|<text|loc>>>><around*|(|\<mathi\>*\<omega\><rsub|n>|)>+<frac|1|<with|color|dark
+    cyan|<wide|\<eta\>|~>><around*|<left|(|1>|<with|color|#bf4040|\<zeta\>><around*|(|\<mathi\>*\<omega\><rsub|n>|)>|<right|)|1>>><space|1em><text|with><space|1em><with|color|#bf4040|\<zeta\>><around*|(|\<mathi\>*\<omega\><rsub|n>|)><separating-space|0.2em><above|=|<text|
+    (<reference|DMFT-interacting-green-func-self-energy>)
+    >><separating-space|0.2em>\<mathi\>*\<omega\><rsub|n>+\<mu\>-<math|<with|color|#bf4040|\<Sigma\><rsub|<text|loc>>>><around*|(|\<mathi\>
+    \<omega\><rsub|n>|)>>>>>><label|self-consistent-eq-Hilbert-tr-zeta>
+  </equation>
+
+  We can express this Weiss field as a function of
+  <math|<math|<with|color|#bf4040|G<rsub|<text|loc>>>>>, hiding
+  <math|<with|color|dark cyan|<wide|\<eta\>|~>>>, by remarking that\ 
+
+  <\equation*>
+    <with|color|#bf4040|G<rsub|<text|loc>>><separating-space|0.2em><above|=|<text|
+    (<reference|DMFT-interacting-green-func-self-energy>)
+    >><separating-space|0.2em><with|math-display|false|<big|sum><rsub|<wide|k|\<vect\>>>G<around*|(|<wide|k|\<vect\>>|)>><separating-space|0.2em>=<separating-space|0.2em><with|color|dark
+    cyan|h<rsub|0>><around*|(|<with|color|#bf4040|\<zeta\>>|)><separating-space|0.2em>=<separating-space|0.2em><with|color|dark
+    cyan|<wide|\<eta\>|~>><around*|(|<with|color|#bf4040|\<zeta\>>|)>
+  </equation*>
+
+  so <math|>we obtain the nice expression
+
+  <\equation>
+    <block|<tformat|<cwith|1|1|1|1|cell-lsep|5pt>|<cwith|1|1|1|1|cell-rsep|5pt>|<cwith|1|1|1|1|cell-bsep|5pt>|<cwith|1|1|1|1|cell-tsep|5pt>|<table|<row|<cell|<with|color|#bf4040|\<Sigma\><rsub|<text|loc>>>=<frac|1|<with|color|dark
+    blue|\<cal-G\><rsub|0>>>-<frac|1|<with|color|#bf4040|G<rsub|<text|loc>>>>>>>>><label|self-consistent-eq-Gloc>
+  </equation>
+
+  A third expression can be obtained from the above ones :
+  <math|<with|color|dark blue|\<cal-G\><rsub|0>><rsup|-1>=<with|color|#bf4040|\<Sigma\><rsub|<text|loc>>>+<with|color|#bf4040|G<rsub|<text|loc>>><rsup|-1>=\<mathi\>*\<omega\><rsub|n>+\<mu\>-<with|color|#bf4040|\<zeta\>>+<with|color|#bf4040|G<rsub|<text|loc>>><rsup|-1>>
+  and
+
+  <\equation*>
+    <with|color|#bf4040|G<rsub|<text|loc>>>=<with|color|dark
+    cyan|<wide|\<eta\>|~>><around*|(|<with|color|#bf4040|\<zeta\>>|)><space|1em>\<Leftrightarrow\><space|1em><with|color|#bf4040|\<zeta\>>=<with|color|dark
+    cyan|R><around*|(|<with|color|#bf4040|G<rsub|<text|loc>>>|)>
   </equation*>
 
   where <math|<with|color|dark cyan|R>> is the reciprocal function of
+  <math|<with|color|dark cyan|<wide|\<eta\>|~>><around*|(|\<zeta\>|)>>, i.e.
+  <math|\<zeta\>=<with|color|dark cyan|R><around*|(|<with|color|dark
+  cyan|<wide|\<eta\>|~>><around*|(|\<zeta\>|)>|)>>, so that
 
-  <\equation*>
-    <with|color|dark cyan|<wide|\<eta\>|~>><around*|(|\<zeta\>|)>=<big|int><rsub|-\<infty\>><rsup|+\<infty\>>\<mathd\>\<epsilon\>
-    <frac|<with|color|dark cyan|\<eta\><rsup|<text|latt>>><around*|(|\<epsilon\>|)>|\<zeta\>-\<epsilon\>>
-  </equation*>
+  <\equation>
+    <block|<tformat|<cwith|1|1|1|1|cell-lsep|5pt>|<cwith|1|1|1|1|cell-rsep|5pt>|<cwith|1|1|1|1|cell-bsep|5pt>|<cwith|1|1|1|1|cell-tsep|5pt>|<table|<row|<cell|<with|color|dark
+    blue|\<cal-G\><rsub|0>><around*|(|\<mathi\>*\<omega\><rsub|n>|)>=<frac|1|\<mathi\>*\<omega\><rsub|n>+\<mu\>+<with|color|#bf4040|G<rsub|<text|loc>>><around*|(|\<mathi\>*\<omega\><rsub|n>|)><rsup|-1>-<with|color|dark
+    cyan|R><around*|(|<with|color|#bf4040|G<rsub|<text|loc>>><around*|(|\<mathi\>*\<omega\><rsub|n>|)>|)>>>>>>><label|self-consistent-eq-reciproc-Hilbert>
+  </equation>
 
-  the Hilbert transform of the density of states <math|<with|color|dark
-  cyan|\<eta\><rsup|<text|latt>>><around*|(|\<epsilon\>|)>> of the lattice
-  <math|<around*|{|i|}>>, i.e. <math|\<zeta\>=<with|color|dark
-  cyan|R><around*|(|<with|color|dark cyan|<wide|\<eta\>|~>><around*|(|\<zeta\>|)>|)>>.
+  <em|Pfffew>. Let's recap : we encoded the properties of the Hubbard lattice
+  (lattice <strong|hybridization> and <strong|translational
+  invariance><\footnote>
+    In the mean-field treatement of the Ising model, the self-consistent
+    equation <math|m=m<rsub|<math-up|<name|mf>>>=f<around*|(|m|)>> actually
+    comes from <em|translational invariance> : a site and its neighbors
+    actual really see the same Weiss field (up to spatial fluctuations we
+    ignore).
+  </footnote>) in an expression for the Weiss / effective \Pfield\Q
+  <math|<with|color|dark blue|\<cal-G\><rsub|0>>=<with|color|dark
+  cyan|W><around*|[|<with|color|#bf4040|G<rsub|<text|loc>>>|]>>, as a
+  function of the wanted result itself, the Green's function of the site.
+
+  Parallel with the Ising model :
+
+  <\padded-center>
+    <block|<tformat|<cwith|1|-1|1|-1|cell-bsep|4pt>|<cwith|1|-1|1|-1|cell-tsep|4pt>|<cwith|1|-1|1|1|cell-halign|r>|<cwith|6|6|1|1|cell-bborder|1ln>|<cwith|1|-1|1|1|cell-lborder|0ln>|<cwith|1|-1|1|1|cell-rborder|1ln>|<cwith|1|-1|2|2|cell-lborder|1ln>|<cwith|1|1|1|1|cell-tborder|0ln>|<cwith|1|1|1|1|cell-bborder|1ln>|<cwith|2|2|1|1|cell-tborder|1ln>|<cwith|1|1|1|1|cell-lborder|0ln>|<cwith|1|1|2|2|cell-tborder|0ln>|<cwith|1|1|2|2|cell-bborder|1ln>|<cwith|2|2|2|2|cell-tborder|1ln>|<cwith|1|1|2|2|cell-lborder|1ln>|<cwith|1|1|1|1|cell-rborder|1ln>|<cwith|1|1|3|3|cell-tborder|0ln>|<cwith|1|1|3|3|cell-bborder|1ln>|<cwith|2|2|3|3|cell-tborder|1ln>|<cwith|1|1|3|3|cell-lborder|1ln>|<cwith|1|1|2|2|cell-rborder|1ln>|<cwith|1|1|3|3|cell-rborder|1ln>|<cwith|1|-1|1|-1|cell-lsep|5pt>|<cwith|1|-1|1|-1|cell-rsep|5pt>|<table|<row|<cell|>|<cell|Ising
+    model>|<cell|Hubbard model>>|<row|<cell|Hamiltonian>|<cell|<math|H=-<big|sum><rsub|i
+    j>J<rsub|i j>*s<rsub|i>*s<rsub|j>>>|<cell|<math|\<b-H\>=-<big|sum><rsub|i
+    j>t<rsub|i j>*\<b-c\><rsub|i><rsup|\<dag\>>*\<b-c\><rsub|j>+U*<big|sum><rsub|i>\<b-n\><rsub|i
+    \<uparrow\>>*\<b-n\><rsub|i \<downarrow\>>>>>|<row|<cell|Local
+    observable>|<cell|<math|<with|color|#bf4040|m>=<around*|\<langle\>|s<rsub|i>|\<rangle\>>>>|<cell|<math|<with|color|#bf4040|G<rsub|<text|loc>>><around*|(|\<tau\>|)>=-<around*|\<langle\>|\<b-c\><rsub|i><rsup|\<dag\>><around*|(|\<tau\>|)>*\<b-c\><rsub|i><around*|(|0|)>|\<rangle\>>>>>|<row|<cell|Spatial
+    correlations>|<cell|<math|<around*|\<langle\>|s<rsub|i>*s<rsub|j>|\<rangle\>>>>|<cell|<math|<with|color|#bf4040|G<rsub|i
+    j>><around*|(|\<tau\>|)>=-<around*|\<langle\>|\<b-c\><rsub|i><rsup|\<dag\>><around*|(|\<tau\>|)>*\<b-c\><rsub|j><around*|(|0|)>|\<rangle\>>>>>|<row|<cell|Single-site
+    model>|<cell|<math|H<rsub|<text|<name|mf>>><rsup|<around*|(|1|)>>=-<with|color|dark
+    blue|B<rsub|<text|Weiss>>>\<cdot\><with|color|dark
+    magenta|s>>>|<cell|<math|\<b-H\><rsub|<text|imp>>> \|
+    <math|<math|<with|color|dark magenta|\<b-S\><rsup|<text|imp>>>>=-<big|int><big|int>*<frac|<with|color|dark
+    magenta|\<b-c\>><rsup|\<dag\>><around*|(|\<tau\>|)>*<with|color|dark
+    magenta|\<b-c\>><around*|(|\<tau\>|)>|<with|color|dark
+    blue|\<cal-G\><rsub|0>><around*|(|\<tau\>-\<tau\><rprime|'>|)>>+U*<big|int><with|color|dark
+    magenta|\<b-n\>><rsub|\<uparrow\>>*<with|color|dark
+    magenta|\<b-n\>><rsub|\<downarrow\>>>>>|<row|<cell|Weiss
+    field>|<cell|<math|<with|color|dark blue|B<rsub|<text|Weiss>>>=J*z*<with|color|#bf4040|m>>>|<cell|<math|<with|color|dark
+    blue|\<cal-G\><rsub|0>>=W<around*|[|<with|color|#bf4040|G<rsub|<text|loc>>>|]>>>>|<row|<cell|Self-consistency>|<cell|<math|<with|color|#bf4040|m><separating-space|0.2em><above|=|!><separating-space|0.2em><with|color|#bf4040|m><rsub|<text|<name|<with|color|dark
+    magenta|mf>>>><around*|(|<with|color|dark
+    blue|B<rsub|<text|Weiss>>>|)>>>|<cell|<math|<with|color|#bf4040|G<rsub|<text|loc>>><separating-space|0.2em><above|=|!><separating-space|0.2em><with|color|#bf4040|G><rsup|<text|<with|color|dark
+    magenta|imp>>><around*|(|<with|color|dark
+    blue|\<cal-G\><rsub|0>>|)>>>>|<row|<cell|Solving>|<cell|<math|<with|color|#bf4040|m><rsub|<text|<name|<with|color|dark
+    magenta|mf>>>>=tanh<around*|(|\<beta\>*<with|color|dark
+    blue|B<rsub|<text|Weiss>>>|)>>>|<cell|Let the computer work !>>>>>
+  </padded-center>
+
+  <subsubsection|The DMFT self-consistent loop>
+
+  <\big-figure|<with|gr-mode|<tuple|group-edit|edit-props>|gr-frame|<tuple|scale|1cm|<tuple|0.5gw|0.5gh>>|gr-geometry|<tuple|geometry|1par|0.6par>|gr-auto-crop|true|<graphics||<text-at|determine
+  the Weiss field|<point|-0.936499186947055|3.17242234655348>>|<text-at|solve
+  the impurity problem|<point|0.655982140396329|0.939971887660888>>|<math-at|<with|color|#bf4040|G><rsup|<text|<with|color|dark
+  magenta|imp>>><around*|(|<with|color|dark
+  blue|\<cal-G\><rsub|0>>|)>|<point|1.86150538819833|0.359534768348813>>|<math-at|<with|color|dark
+  blue|\<cal-G\><rsub|0>>=<with|color|dark
+  cyan|W><around*|[|<with|color|#bf4040|G<rsub|<text|loc>>>|]>|<point|-0.0435190033900174|2.63663423641926>>|<with|arrow-end|\<gtr\>|<arc|<point|2.62054|2.6664>|<point|3.27539067883031|2.3240911721743>|<point|3.48375272166028|1.56505801615081>>>|<with|arrow-end|\<gtr\>|<arc|<point|0.477386|0.404184>|<point|-1.15974423283631|0.210704737755974>|<point|-2.0080754072155|0.865556872364468>>>|<math-at|<with|color|#bf4040|G<rsub|<text|loc>>><separating-space|0.2em><above|=|!><separating-space|0.2em><with|color|#bf4040|G><rsup|<text|<with|color|dark
+  magenta|imp>>>|<point|-3.61543973761817|1.25251495190585>>|<text-at|self-consistency|<point|-3.88333379268528|1.86271807733649>>|<with|arrow-end|\<gtr\>|<arc|<point|-2.54386351734972|2.38362318441143>|<point|-2.17178844086762|2.88964528842709>|<point|-1.36810627566629|3.20218835267205>>>>>>
+    The LISA DMFT self-consistent loop
+  </big-figure>
 
   \;
 
-  \;
-
-  Self-consistency : In the mean-field treatement of the Ising model, the
-  self-consistent equation <math|m=m<rsub|<math-up|<name|mf>>>=f<around*|(|m|)>>
-  actually comes from <em|translational invariance> : a site and its
-  neighbors actual really see the same Weiss field (up to spatial
-  fluctuations we ignore).
-
-  <subsection|The infinite dimensional limit>
-
-  <subsection|Solving the impurity problem. The DMFT loop.>
+  <subsection|Solving the impurity problem.>
 
   <subsection|Iterated perturabtion theory approximation>
 </body>
@@ -689,15 +997,21 @@
 
 <\references>
   <\collection>
+    <associate|DMFT-interacting-green-func-self-energy|<tuple|27|?>>
+    <associate|DMFT-local-approx|<tuple|26|?>>
     <associate|auto-1|<tuple|1|1>>
     <associate|auto-10|<tuple|2.2|5>>
     <associate|auto-11|<tuple|3|6>>
     <associate|auto-12|<tuple|4|6>>
     <associate|auto-13|<tuple|2.3|6>>
     <associate|auto-14|<tuple|2.4|8>>
-    <associate|auto-15|<tuple|2.5|8>>
-    <associate|auto-16|<tuple|2.6|8>>
+    <associate|auto-15|<tuple|2.4.1|8>>
+    <associate|auto-16|<tuple|2.4.2|8>>
+    <associate|auto-17|<tuple|2.4.3|?>>
+    <associate|auto-18|<tuple|5|?>>
+    <associate|auto-19|<tuple|2.5|?>>
     <associate|auto-2|<tuple|1.1|1>>
+    <associate|auto-20|<tuple|2.6|?>>
     <associate|auto-3|<tuple|1|1>>
     <associate|auto-4|<tuple|1.2|2>>
     <associate|auto-5|<tuple|1.3|2>>
@@ -705,27 +1019,42 @@
     <associate|auto-7|<tuple|2|4>>
     <associate|auto-8|<tuple|2|5>>
     <associate|auto-9|<tuple|2.1|5>>
+    <associate|bath-G-with-Delta-func|<tuple|30|?>>
     <associate|footnote-1|<tuple|1|2>>
+    <associate|footnote-10|<tuple|10|?>>
+    <associate|footnote-11|<tuple|11|?>>
     <associate|footnote-2|<tuple|2|2>>
     <associate|footnote-3|<tuple|3|3>>
     <associate|footnote-4|<tuple|4|4>>
     <associate|footnote-5|<tuple|5|5>>
     <associate|footnote-6|<tuple|6|7>>
     <associate|footnote-7|<tuple|7|8>>
+    <associate|footnote-8|<tuple|8|?>>
+    <associate|footnote-9|<tuple|9|?>>
     <associate|footnr-1|<tuple|1|2>>
+    <associate|footnr-10|<tuple|10|?>>
+    <associate|footnr-11|<tuple|11|?>>
     <associate|footnr-2|<tuple|2|2>>
     <associate|footnr-3|<tuple|3|3>>
     <associate|footnr-4|<tuple|4|4>>
     <associate|footnr-5|<tuple|5|5>>
     <associate|footnr-6|<tuple|6|7>>
     <associate|footnr-7|<tuple|7|8>>
-    <associate|green-atomic-limit|<tuple|22|5>>
+    <associate|footnr-8|<tuple|8|?>>
+    <associate|footnr-9|<tuple|9|?>>
+    <associate|green-atomic-limit|<tuple|23|5>>
     <associate|green-func-from-spectral-func|<tuple|8|2>>
     <associate|green-func-matsubara-IFT|<tuple|16|3>>
     <associate|green-func-matsubara-freq-from-spectral-func|<tuple|19|4>>
     <associate|green-func-matsubara-from-spectral-func|<tuple|21|4>>
     <associate|green-func-matsubara-non-interacting|<tuple|20|4>>
     <associate|green-func-non-interacting|<tuple|10|2>>
+    <associate|hubbard-non-interacting-band|<tuple|22|?>>
+    <associate|impurity-action|<tuple|29|?>>
+    <associate|interacting-green-func-self-energy|<tuple|25|?>>
+    <associate|self-consistent-eq-Gloc|<tuple|34|?>>
+    <associate|self-consistent-eq-Hilbert-tr-zeta|<tuple|33|?>>
+    <associate|self-consistent-eq-reciproc-Hilbert|<tuple|35|?>>
     <associate|spectral-func-NIEG|<tuple|4|1>>
     <associate|spectral-func-def|<tuple|1|1>>
   </collection>
