@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 
 
 BETA = 1     # Temperature
-MU = 1       # ???
+MU = 1       # Chemical potential
 K_MAX = 100  # Spatial frequency cutoff
 z = 10000    # Coordination (should be infinite)
 t = sqrt(z)  # Nearest-neighbor hopping: t_ij = t / sqrt(z) in Bethe lattice case
