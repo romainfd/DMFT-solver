@@ -652,10 +652,10 @@
     solve it (at least numerically). But there is actually no specific
     conditions on it, in particular it does not need to be non-interacting.
   </footnote> We can't reduce to non-interacting problem if we want to
-  describe the on-site repeulsion. This is really still a <math|N>-body
-  problem, the site being described by creation operators
-  <math|<with|color|dark magenta|\<b-c\>><rsup|\<dag\>><rsub|\<sigma\>>>, but
-  a much simpler one where spatial fluctuations have been eliminated.
+  describe the on-site repeulsion. This is really still a many-body problem,
+  the site being described by creation operators
+  <math|<smash|<with|color|dark magenta|\<b-c\>><rsup|\<dag\>><rsub|\<sigma\>>>>,
+  but a much simpler one where spatial fluctuations have been eliminated.
 
   The natural framework for relating the initial Hubbard model and the
   impurity model is the one of Green's functions. In the initial probem, the
@@ -991,8 +991,8 @@
   magenta|imp>>>>) as a function of the bath <math|<with|color|dark
   blue|\<cal-G\><rsub|0>>> and the interaction <math|<with|color|#bf4040|U>>,
   we now have a closed system together with the mean field equation, but it
-  is still an implicit system. As usual, the only way is to <strong|solve
-  self-consistently> with a loop :
+  is an implicit system. As usual, the only way is to <strong|solve in an
+  iterative manner self-consistently> :
 
   <\big-figure|<block|<tformat|<cwith|1|1|1|1|cell-lsep|8pt>|<cwith|1|1|1|1|cell-rsep|8pt>|<cwith|1|1|1|1|cell-bsep|8pt>|<cwith|1|1|1|1|cell-tsep|8pt>|<table|<row|<cell|<with|gr-mode|<tuple|edit|arc>|gr-frame|<tuple|scale|1cm|<tuple|0.5gw|0.5gh>>|gr-geometry|<tuple|geometry|1par|0.6par>|gr-auto-crop|true|<graphics||<text-at|solve
   the impurity problem|<point|1.1518133687953|1.01420338031585>>|<math-at|<with|color|#bf4040|G><rsup|<text|<with|color|dark
@@ -1013,9 +1013,11 @@
   <math|\<cal-G\><rsub|0><rsup|<around*|(|0|)>>>, and then we repeat
 
   <\eqnarray*>
-    <tformat|<table|<row|<cell|G<rsup|<around*|(|m|)>>>|<cell|=>|<cell|ImpuritySolver<around*|[|\<cal-G\><rsub|0><rsup|<around*|(|m|)>>,<with|color|#bf4040|U>|]><space|2em><very-small|\<leftarrow\><stack|<tformat|<table|<row|<cell|<text|needs
+    <tformat|<table|<row|<cell|G<rsup|<around*|(|m|)>>>|<cell|=>|<cell|<with|color|dark
+    magenta|ImpuritySolver><around*|[|\<cal-G\><rsub|0><rsup|<around*|(|m|)>>,<with|color|#bf4040|U>|]><space|2em><very-small|\<leftarrow\><stack|<tformat|<table|<row|<cell|<text|needs
     <math|\<mathi\>*\<omega\><rsub|n>> or <math|\<tau\>>>>>|<row|<cell|<text|
-    dep<rsup|ing> on the solver>>>>>>>>>|<row|<cell|<space|6em>\<cal-G\><rsub|0><rsup|<around*|(|m+1|)>>>|<cell|=>|<cell|DMF<around*|<left|[|1>|G<rsup|<around*|(|m|)>>|<right|]|1>><space|1em><text|(<reference|self-consistent-eq-reciproc-Hilbert>)><space|4.6em><very-small|\<leftarrow\><text|
+    dep<rsup|ing> on the solver>>>>>>>>>|<row|<cell|<space|6em>\<cal-G\><rsub|0><rsup|<around*|(|m+1|)>>>|<cell|=>|<cell|<with|color|dark
+    cyan|DMF><around*|<left|[|1>|G<rsup|<around*|(|m|)>>|<right|]|1>><space|1em><text|(<reference|self-consistent-eq-reciproc-Hilbert>)><space|4.6em><very-small|\<leftarrow\><text|
     needs <math|\<mathi\>*\<omega\><rsub|n>>>>>>>>
   </eqnarray*>
 
@@ -1042,8 +1044,8 @@
   (<reference|self-consistent-eq-Gloc>) if self-consistent convergence is
   achieved. Note that we write bare <math|\<Sigma\>>'s and <math|G>'s here,
   without precising \Pimp\Q or \Platt\Q because until convergence, these do
-  not have physical meaning, and at convergence they \Pimp\Q and \Platt\Q are
-  identical
+  not have physical meaning, and at convergence \Pimp\Q and \Platt\Q are
+  identical (<reference|LISA-self-consistency>).
 
   Physically, we could say that we are relaxing from a non-equilibrium
   <math|<with|color|dark blue|\<cal-G\><rsub|0>><rsup|<around*|(|0|)>>>
@@ -1066,11 +1068,16 @@
     GKKR eq (18)
   </itemize-dot>
 
-  <subsubsection|The Bethe lattice with infinite coordinance>
+  <subsubsection|The Bethe lattice>
 
-  <\big-figure|>
-    <with|color|red|The Bethe lattice for <math|z=4> and its density of
-    states.>
+  Also called the Cayley tree. Represents a lattice in hyperbolic geometry.
+  Mostly used because the mean field equation takes a simple analytical form
+  in the limit of infinite coordinance <math|z>.
+
+  <\big-figure|<with|gr-auto-crop|true|gr-mode|<tuple|edit|math-at>|<graphics||<with|arrow-end|o|arrow-begin|o|<line|<point|-4.03216|3.21274>|<point|-2.70757655100185|2.91508419921175>>>|<with|arrow-end|o|arrow-begin|o|<line|<point|-4.03216|3.21274>|<point|-3.42196069784748|2.21558305542541>>>|<with|arrow-end|o|arrow-begin|o|<line|<point|-4.03216|3.21274>|<point|-4.38935589670093|2.15605104318827>>>|<with|arrow-end|o|arrow-begin|o|<line|<point|-4.03216|3.21274>|<point|-5.2525700741394|2.61742413802607>>>|<with|arrow-end|o|arrow-begin|o|<line|<point|-5.25257|2.61742>|<point|-6.47297632500069|2.9597332083896>>>|<with|arrow-end|o|arrow-begin|o|<line|<point|-5.25257|2.61742>|<point|-6.4580933219414|2.45371110437395>>>|<with|arrow-end|o|arrow-begin|o|<line|<point|-5.25257|2.61742>|<point|-6.27949728523|1.93280599729901>>>|<with|arrow-end|o|arrow-begin|o|<line|<point|-5.25257|2.61742>|<point|-5.84789019651076|1.62026293305405>>>|<with|arrow-end|o|arrow-begin|o|<line|<point|-4.38936|2.15605>|<point|-5.26745307719869|1.44166689634264>>>|<with|arrow-end|o|arrow-begin|o|<line|<point|-4.38936|2.15605>|<point|-4.77631397624232|1.23330485351266>>>|<with|arrow-end|o|arrow-begin|o|<line|<point|-4.38936|2.15605>|<point|-4.27029187222666|1.12912383209768>>>|<with|arrow-end|o|arrow-begin|o|<line|<point|-4.38936|2.15605>|<point|-3.68985475291459|1.2035388473941>>>|<with|arrow-end|o|arrow-begin|o|<line|<point|-3.42196|2.21558>|<point|-3.28801367031392|1.21842185045338>>>|<with|arrow-end|o|arrow-begin|o|<line|<point|-3.42196|2.21558>|<point|-2.87128958465397|1.3821348841055>>>|<with|arrow-end|o|arrow-begin|o|<line|<point|-3.42196|2.21558>|<point|-2.52898051429044|1.62026293305405>>>|<with|arrow-end|o|arrow-begin|o|<line|<point|-3.42196|2.21558>|<point|-2.36526748063832|2.11140203401042>>>|<with|arrow-end|o|arrow-begin|o|<line|<point|-2.70758|2.91508>|<point|-1.93366039191908|2.31976407684039>>>|<with|arrow-end|o|arrow-begin|o|<line|<point|-2.70758|2.91508>|<point|-1.72529834908911|2.75137116555963>>>|<with|arrow-end|\<less\>|arrow-begin|o|<line|<point|-4.03216|3.21274>|<point|-4.13634484469311|3.82294738582807>>>|<with|arrow-end|o|arrow-begin|o|<line|<point|-1.93366|2.31976>|<point|-1.35322327260701|1.63514593611333>>>|<with|arrow-end|o|arrow-begin|o|<line|<point|-1.93366|2.31976>|<point|-1.18951023895488|1.85839098200259>>>|<with|arrow-end|o|arrow-begin|o|<line|<point|-1.93366|2.31976>|<point|-1.07044621448061|2.09651903095113>>>|<with|arrow-end|o|arrow-begin|o|<line|<point|-1.93366|2.31976>|<point|-1.02579720530276|2.34953008295896>>>|<with|arrow-end|o|arrow-begin|o|<line|<point|-1.7253|2.75137>|<point|-0.936499186947055|2.54300912272965>>>|<with|arrow-end|o|arrow-begin|o|<line|<point|-1.7253|2.75137>|<point|-0.891850177769203|2.75137116555963>>>|<with|arrow-end|o|arrow-begin|o|<line|<point|-1.7253|2.75137>|<point|-0.862084171650635|2.98949921450817>>>|<with|arrow-end|o|arrow-begin|o|<line|<point|-1.7253|2.75137>|<point|-0.936499186947055|3.18297825427886>>>|<with|arrow-end|o|arrow-begin|o|<line|<point|-2.70758|2.91508>|<point|-2.05272441639335|3.76341537359094>>>|<with|arrow-end|o|arrow-begin|o|<line|<point|-2.70758|2.91508>|<point|-1.76994735826696|3.34669128793099>>>|<with|arrow-end|o|arrow-begin|o|<line|<point|-1.76995|3.34669>|<point|-0.951382190006339|3.45087230934597>>>|<with|arrow-end|o|arrow-begin|o|<line|<point|-1.76995|3.34669>|<point|-0.966265193065623|3.68900035829452>>>|<with|arrow-end|o|arrow-begin|o|<line|<point|-1.76995|3.34669>|<point|-1.08532921753989|3.89736240112449>>>|<with|arrow-end|o|arrow-begin|o|<line|<point|-1.76995|3.34669>|<point|-1.33834026954772|4.06107543477662>>>|<text-at|<text-dots>|<point|-2.49921|1.12912>>|<text-at|<text-dots>|<point|-5.08886|0.7124>>|<text-at|<text-dots>|<point|-4.44889|4.09084>>|<text-at|<text-dots>|<point|-6.99388|1.48632>>|<text-at|<text-dots>|<point|-0.906733|1.72444>>|<text-at|<text-dots>|<point|-2.08249|4.15037>>|<with|arrow-end|\<gtr\>|<line|<point|3|1>|<point|3.0|3.3>>>|<with|arrow-end|\<gtr\>|<line|<point|0.5|1>|<point|5.5|1.0>>>|<math-at|<with|color|dark
+  cyan|\<eta\>><around*|(|\<epsilon\>|)>|<point|3.3|3.3>>|<math-at|\<epsilon\>|<point|5.7|1.0>>|<with|fill-color|#0ff|opacity|10%|<arc|<point|1|1>|<point|3.0|3.0>|<point|5.0|1.0>>>|<arc|<point|1|1>|<point|3.0|3.0>|<point|5.0|1.0>>|<math-at|-2*t|<point|0.7|0.6>>|<math-at|+2*t|<point|4.7|0.6>>|<math-at|<small|t/2>|<point|-3.47639|2.61392>>|<math-at|<small|t/2>|<point|-5.08376|3.06041>>|<math-at|<small|t/2>|<point|-4.8605|2.4037>>|<math-at|<small|t/2>|<point|-3.53593|3.28183>>>>>
+    The Bethe lattice <math|z=4>. Density of states of the <math|z=\<infty\>>
+    Bethe lattice.
   </big-figure>
 
   Two ways to obtain the bath for the impurity model :
@@ -1101,7 +1108,7 @@
     and injecting in <math|<with|color|dark
     blue|\<cal-G\><rsub|0>><rsup|-1>=\<mathi\>*\<omega\><rsub|n>+\<mu\>-<with|color|dark
     blue|\<Delta\>>> (<reference|bath-G-with-Delta-func>), we get the simple
-    Dyson equation
+    mean field
 
     <\equation>
       <block|<tformat|<cwith|1|1|1|1|cell-lsep|5pt>|<cwith|1|1|1|1|cell-rsep|5pt>|<cwith|1|1|1|1|cell-bsep|5pt>|<cwith|1|1|1|1|cell-tsep|5pt>|<table|<row|<cell|<with|color|dark
@@ -1113,7 +1120,7 @@
     semi-circular :
 
     <\equation>
-      <with|color|dark cyan|\<eta\><rsub|<text|Bethe>>><around*|(|\<epsilon\>|)>=<tfrac|1|2*\<pi\>*t<rsup|2>>*<sqrt|4*t<rsup|2>-\<epsilon\><rsup|2>><space|1em><text|for><space|1em><around*|\||\<epsilon\>|\|>\<less\>2*t
+      <with|color|dark cyan|\<eta\><rsub|<text|Bethe>>><around*|(|\<epsilon\>|)><separating-space|0.2em>=<separating-space|0.2em><tfrac|1|2*\<pi\>*t<rsup|2>>*<sqrt|4*t<rsup|2>-\<epsilon\><rsup|2>><space|1em><text|for><space|1em><around*|\||\<epsilon\>|\|>\<less\>2*t
     </equation>
 
     and compute its Hilbert transform, which is quite simple and admits a
@@ -1135,13 +1142,67 @@
     </equation*>
   </itemize-dot>
 
-  <subsection|Solving the impurity problem><label|impurity-solving>
+  <subsubsection|The cubic lattice in infinite dimensions>
+
+  Nearest neighbors hopping <math|t<rsub|i
+  j>=\<delta\><rsub|<around*|\<langle\>|i,j|\<rangle\>>>*t/<sqrt|z>> with
+  coordinance <math|z=2*d\<rightarrow\>\<infty\>>. Density of states :
+
+  <\equation*>
+    <with|color|dark cyan|\<eta\><rsub|<text|cubic>>><around*|(|\<epsilon\>|)><separating-space|0.2em>=<separating-space|0.2em><tfrac|1|t*<sqrt|2\<pi\>>>*\<mathe\><rsup|-\<epsilon\><rsup|2>/2*t<rsup|2>><separating-space|0.2em>=<separating-space|0.2em><tfrac|1|<sqrt|\<pi\>>>*\<mathe\><rsup|-\<epsilon\><rsup|2>><small|<text|
+    with <math|t=<frac*|1|<sqrt|2>>>>>
+  </equation*>
+
+  of Hilbert transform (which can't be inverted explicitely)
+
+  <\equation*>
+    <with|color|dark cyan|<wide|\<eta\>|~><rsub|<text|cubic>>><around*|(|\<zeta\>|)>=-\<mathi\>*s*<sqrt|\<pi\>>*exp<around*|(|-\<zeta\><rsup|2>|)>*erfc<around*|(|-\<mathi\>*s*\<zeta\>|)><space|1em><text|with><space|1em>s=sgn<around*|(|\<frak-I\>\<frak-m\>
+    \<zeta\>|)>
+  </equation*>
+
+  \ <math|>\ 
+
+  <subsection|Solving the impurity problem
+  <math|<with|color|#bf4040|G><rsup|<text|<with|color|dark
+  magenta|imp>>>=<with|color|dark magenta|ImpuritySolver><around*|[|<with|color|dark
+  blue|\<cal-G\><rsub|0>>,<with|color|#bf4040|U>|]>>><label|impurity-solving>
+
+  There are many techniques to solve the impurity problem
+  (<reference|impurity-action>). This is still a quantum many-body problem
+  (with a single site, but with an arbitrary bath), so it is not trivial, and
+  is actually the most difficult part.
+
+  Whether we work with Matsubara time <math|\<tau\>> or frequencies
+  <math|\<mathi\>*\<omega\><rsub|n>>, we have to discretize <math|\<tau\>> or
+  set an upper frequency <math|n<rsub|<text|max>>> for <math|<with|color|dark
+  blue|\<cal-G\><rsub|0>>> to be numerically represented. Then the problem
+  reduces to a finite number of coupled equations, which we hope is enough to
+  obtain an accurate result. This is usually not an issue.
 
   <subsubsection|Quantum Monte Carlo techniques>
 
-  <subsubsection|Iterated perturabtion theory approximation>
+  <subsubsection|Iterated Perturabtion Theory approximation>
 
-  <subsection|Practical considerations. Random things>
+  Applicable <em|only at half-filling>. It is a second order perturbation
+  theory in <math|U>, where the self-energy reads
+
+  <\equation>
+    \<Sigma\><rsup|<text|imp>><around*|(|\<mathi\>*\<omega\><rsub|n>|)><separating-space|0.2em>\<simeq\><separating-space|0.2em><frac|U|2>+U<rsup|2>*<big|int><rsub|0><rsup|\<beta\>>\<mathd\>\<tau\>
+    \<mathe\><rsup|\<mathi\>*\<omega\><rsub|n>*\<tau\>>*\<cal-G\><rsub|0><rprime|'><around*|(|\<tau\>|)><rsup|3><space|1em><text|where><space|1em><tfrac|1|\<cal-G\><rsub|0><rprime|'><around*|(|\<mathi\>*\<omega\><rsub|n>|)>>=<tfrac|1|\<cal-G\><rsub|0><around*|(|\<mathi\>*\<omega\><rsub|n>|)>>-<tfrac|U|2>
+  </equation>
+
+  Together with the usual DMFT loop, this is called the <em|Iterated
+  Perturabtion Theory> (IPT) approximation.
+
+  It turns out that this approximation is not only exact in the
+  non-interacting limit (<math|\<Sigma\><rsup|<text|imp>>=0>) and very good
+  up to <math|U/\<Delta\><around*|(|0|)>\<approx\>6>, but it is also exact in
+  the atomic limit (which is a fortunate coïncidence) !
+  <with|color|red|[todo]>
+
+  GKKR p.<nbsp>50
+
+  <subsection|Practical considerations. Random things to do.>
 
   <\itemize-dot>
     <item>Half-filling symmetry considerations for the IPT to be numerically
@@ -1150,6 +1211,10 @@
     <item>Practical representation considerations for
     <math|G<around*|(|\<mathi\>*\<omega\><rsub|n>|)>> and <math|n>-cutoff
     [27/11 @31:00]
+
+    <item>Todo : links to equations or paragraphs in gkkr
+
+    <item>Ferromagnetic order : gkkr p31
   </itemize-dot>
 </body>
 
@@ -1163,8 +1228,8 @@
   <\collection>
     <associate|DMFT-interacting-green-func-self-energy|<tuple|28|7>>
     <associate|DMFT-local-approx|<tuple|27|7>>
-    <associate|Hubbard-model|<tuple|22|?>>
-    <associate|LISA-self-consistency|<tuple|29|?>>
+    <associate|Hubbard-model|<tuple|22|5>>
+    <associate|LISA-self-consistency|<tuple|29|8>>
     <associate|auto-1|<tuple|1|1>>
     <associate|auto-10|<tuple|2.2|5>>
     <associate|auto-11|<tuple|3|6>>
@@ -1177,12 +1242,13 @@
     <associate|auto-18|<tuple|5|11>>
     <associate|auto-19|<tuple|2.6|11>>
     <associate|auto-2|<tuple|1.1|1>>
-    <associate|auto-20|<tuple|2.6.1|11>>
-    <associate|auto-21|<tuple|6|?>>
-    <associate|auto-22|<tuple|2.7|?>>
-    <associate|auto-23|<tuple|2.7.1|?>>
-    <associate|auto-24|<tuple|2.7.2|?>>
-    <associate|auto-25|<tuple|2.8|?>>
+    <associate|auto-20|<tuple|2.6.1|12>>
+    <associate|auto-21|<tuple|6|12>>
+    <associate|auto-22|<tuple|2.6.2|12>>
+    <associate|auto-23|<tuple|2.7|12>>
+    <associate|auto-24|<tuple|2.7.1|12>>
+    <associate|auto-25|<tuple|2.7.2|12>>
+    <associate|auto-26|<tuple|2.8|?>>
     <associate|auto-3|<tuple|1|1>>
     <associate|auto-4|<tuple|1.2|2>>
     <associate|auto-5|<tuple|1.3|2>>
@@ -1193,9 +1259,9 @@
     <associate|bath-G-with-Delta-func|<tuple|31|8>>
     <associate|footnote-1|<tuple|1|2>>
     <associate|footnote-10|<tuple|10|8>>
-    <associate|footnote-11|<tuple|11|10>>
-    <associate|footnote-12|<tuple|12|?>>
-    <associate|footnote-13|<tuple|13|?>>
+    <associate|footnote-11|<tuple|11|8>>
+    <associate|footnote-12|<tuple|12|8>>
+    <associate|footnote-13|<tuple|13|10>>
     <associate|footnote-2|<tuple|2|2>>
     <associate|footnote-3|<tuple|3|3>>
     <associate|footnote-4|<tuple|4|4>>
@@ -1206,9 +1272,9 @@
     <associate|footnote-9|<tuple|9|8>>
     <associate|footnr-1|<tuple|1|2>>
     <associate|footnr-10|<tuple|10|8>>
-    <associate|footnr-11|<tuple|11|10>>
-    <associate|footnr-12|<tuple|12|?>>
-    <associate|footnr-13|<tuple|13|?>>
+    <associate|footnr-11|<tuple|11|8>>
+    <associate|footnr-12|<tuple|12|8>>
+    <associate|footnr-13|<tuple|13|10>>
     <associate|footnr-2|<tuple|2|2>>
     <associate|footnr-3|<tuple|3|3>>
     <associate|footnr-4|<tuple|4|4>>
@@ -1226,8 +1292,8 @@
     <associate|green-func-non-interacting|<tuple|10|2>>
     <associate|hubbard-non-interacting-band|<tuple|23|5>>
     <associate|impurity-action|<tuple|30|8>>
-    <associate|impurity-bath-Delta-from-tij|<tuple|32|?>>
-    <associate|impurity-solving|<tuple|2.7|?>>
+    <associate|impurity-bath-Delta-from-tij|<tuple|32|9>>
+    <associate|impurity-solving|<tuple|2.7|12>>
     <associate|interacting-green-func-self-energy|<tuple|26|6>>
     <associate|self-consistent-eq-Gloc|<tuple|35|10>>
     <associate|self-consistent-eq-Hilbert-tr-zeta|<tuple|34|10>>
@@ -1271,8 +1337,14 @@
       </surround>|<pageref|auto-12>>
 
       <tuple|normal|<\surround|<hidden-binding|<tuple>|5>|>
-        The LISA DMFT self-consistent loop
+        The LISA DMFT self-consistent loop.
       </surround>|<pageref|auto-18>>
+
+      <tuple|normal|<\surround|<hidden-binding|<tuple>|6>|>
+        The Bethe lattice <with|font-family|<quote|rm>|<with|mode|<quote|math>|z=4>>.
+        Density of states of the <with|font-family|<quote|rm>|<with|mode|<quote|math>|z=\<infty\>>>
+        Bethe lattice.
+      </surround>|<pageref|auto-21>>
     </associate>
     <\associate|toc>
       <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|1.<space|2spc>Green's
@@ -1313,7 +1385,7 @@
       <no-break><pageref|auto-13>>
 
       <with|par-left|<quote|1tab>|2.4.<space|2spc>The
-      <with|font-shape|<quote|small-caps>|lisa> approximation
+      <with|font-shape|<quote|small-caps>|lisa> framework
       <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-14>>
 
@@ -1321,23 +1393,39 @@
       which the Hubbard model is reduced <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-15>>
 
-      <with|par-left|<quote|2tab>|2.4.2.<space|2spc>Computing the Weiss field
+      <with|par-left|<quote|2tab>|2.4.2.<space|2spc>Computing the mean field
       <with|font-family|<quote|rm>|<with|mode|<quote|math>|<with|color|<quote|dark
       blue>|\<cal-G\><rsub|0>>>> describing the bath : Self-consistency
       <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-16>>
 
-      <with|par-left|<quote|2tab>|2.4.3.<space|2spc>The DMFT self-consistent
+      <with|par-left|<quote|1tab>|2.5.<space|2spc>The DMFT self-consistent
       loop <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-17>>
 
-      <with|par-left|<quote|1tab>|2.5.<space|2spc>Solving the impurity
-      problem. <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <with|par-left|<quote|1tab>|2.6.<space|2spc>Lattices
+      <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-19>>
 
-      <with|par-left|<quote|1tab>|2.6.<space|2spc>Iterated perturabtion
-      theory approximation <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <with|par-left|<quote|2tab>|2.6.1.<space|2spc>The Bethe lattice with
+      infinite coordinance <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-20>>
+
+      <with|par-left|<quote|1tab>|2.7.<space|2spc>Solving the impurity
+      problem <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-22>>
+
+      <with|par-left|<quote|2tab>|2.7.1.<space|2spc>Quantum Monte Carlo
+      techniques <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-23>>
+
+      <with|par-left|<quote|2tab>|2.7.2.<space|2spc>Iterated perturabtion
+      theory approximation <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-24>>
+
+      <with|par-left|<quote|1tab>|2.8.<space|2spc>Practical considerations.
+      Random things <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-25>>
     </associate>
   </collection>
 </auxiliary>
