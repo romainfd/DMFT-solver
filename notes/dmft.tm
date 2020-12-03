@@ -1061,12 +1061,25 @@
 
   <subsection|Lattices>
 
-  <with|color|red|Todo> :
+  The density of states <math|<with|color|dark
+  cyan|\<eta\><rsup|<text|latt>>><around*|(|\<epsilon\>|)>>, or
+  <math|<with|color|dark cyan|DMF>> (<reference|self-consistent-eq-reciproc-Hilbert>),
+  contains all the properties we need for the LISA DMFT. For DMFT to be
+  valid, we should look at infinite dimensional lattices, i.e. each site has
+  an infinite number of neighbors, a number which we call <math|z>, the
+  coordinance (<math|z=2*d> for a cublic lattice).
 
-  <\itemize-dot>
-    <item>Scaling of <math|t> with <math|z> : <math|t<rsub|i j>=t/<sqrt|z>>,
-    GKKR eq (18)
-  </itemize-dot>
+  But for the kinetic/hopping energy <math|<with|color|dark
+  cyan|\<epsilon\>><around*|(|<wide|k|\<vect\>>|)>> to stay finite in the
+  limit <math|d\<rightarrow\>\<infty\>>, the hopping amplitudes must
+  scale<\footnote>
+    Indeed, <math|\<epsilon\><around*|(|<wide|k|\<vect\>>|)>> is a Fourier
+    transform of the <math|t<rsub|i j>>'s, so is basically a sum
+    <math|<big|sum><rsub|n=1><rsup|d>t*cos<around*|(|k|)>> of randomly
+    alternating sum, for which <math|t> must be of the order of
+    <math|d<rsup|-<frac*|1|2>>> in order to stay constant with <math|d>.
+    [<name|gkkr> p.<nbsp>20]
+  </footnote> as <math|t<rsub|i j>\<propto\>1/<sqrt|z>>.
 
   <subsubsection|The Bethe lattice>
 
@@ -1196,11 +1209,11 @@
 
   It turns out that this approximation is not only exact in the
   non-interacting limit (<math|\<Sigma\><rsup|<text|imp>>=0>) and very good
-  up to <math|U/\<Delta\><around*|(|0|)>\<approx\>6>, but it is also exact in
-  the atomic limit (which is a fortunate coïncidence) !
-  <with|color|red|[todo]>
+  up to <math|U/<around*|(|V<rsub|\<ell\><rsub|0>>*\<eta\><rsub|<text|bath>><around*|(|0|)>|)>\<approx\>6>
+  where, but it is also exact in the atomic limit (which is a fortunate
+  coïncidence) !\ 
 
-  GKKR p.<nbsp>50
+  <with|color|red|[todo]> GKKR p.<nbsp>50
 
   <subsection|Practical considerations. Random things to do.>
 
@@ -1242,13 +1255,13 @@
     <associate|auto-18|<tuple|5|11>>
     <associate|auto-19|<tuple|2.6|11>>
     <associate|auto-2|<tuple|1.1|1>>
-    <associate|auto-20|<tuple|2.6.1|12>>
+    <associate|auto-20|<tuple|2.6.1|11>>
     <associate|auto-21|<tuple|6|12>>
     <associate|auto-22|<tuple|2.6.2|12>>
     <associate|auto-23|<tuple|2.7|12>>
-    <associate|auto-24|<tuple|2.7.1|12>>
-    <associate|auto-25|<tuple|2.7.2|12>>
-    <associate|auto-26|<tuple|2.8|?>>
+    <associate|auto-24|<tuple|2.7.1|13>>
+    <associate|auto-25|<tuple|2.7.2|13>>
+    <associate|auto-26|<tuple|2.8|13>>
     <associate|auto-3|<tuple|1|1>>
     <associate|auto-4|<tuple|1.2|2>>
     <associate|auto-5|<tuple|1.3|2>>
@@ -1262,6 +1275,7 @@
     <associate|footnote-11|<tuple|11|8>>
     <associate|footnote-12|<tuple|12|8>>
     <associate|footnote-13|<tuple|13|10>>
+    <associate|footnote-14|<tuple|14|?>>
     <associate|footnote-2|<tuple|2|2>>
     <associate|footnote-3|<tuple|3|3>>
     <associate|footnote-4|<tuple|4|4>>
@@ -1275,6 +1289,7 @@
     <associate|footnr-11|<tuple|11|8>>
     <associate|footnr-12|<tuple|12|8>>
     <associate|footnr-13|<tuple|13|10>>
+    <associate|footnr-14|<tuple|14|?>>
     <associate|footnr-2|<tuple|2|2>>
     <associate|footnr-3|<tuple|3|3>>
     <associate|footnr-4|<tuple|4|4>>
@@ -1407,25 +1422,33 @@
       <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-19>>
 
-      <with|par-left|<quote|2tab>|2.6.1.<space|2spc>The Bethe lattice with
-      infinite coordinance <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <with|par-left|<quote|2tab>|2.6.1.<space|2spc>The Bethe lattice
+      <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-20>>
 
-      <with|par-left|<quote|1tab>|2.7.<space|2spc>Solving the impurity
-      problem <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <with|par-left|<quote|2tab>|2.6.2.<space|2spc>The cubic lattice in
+      infinite dimensions <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-22>>
+
+      <with|par-left|<quote|1tab>|2.7.<space|2spc>Solving the impurity
+      problem <with|font-family|<quote|rm>|<with|mode|<quote|math>|<with|color|<quote|#bf4040>|G><rsup|<with|font-family|<quote|ss>|<with|mode|<quote|text>|<with|color|<quote|dark
+      magenta>|imp>>>>=<with|color|<quote|dark
+      magenta>|ImpuritySolver><around*|[|<with|color|<quote|dark
+      blue>|\<cal-G\><rsub|0>>,<with|color|<quote|#bf4040>|U>|]>>>
+      <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-23>>
 
       <with|par-left|<quote|2tab>|2.7.1.<space|2spc>Quantum Monte Carlo
       techniques <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
-      <no-break><pageref|auto-23>>
-
-      <with|par-left|<quote|2tab>|2.7.2.<space|2spc>Iterated perturabtion
-      theory approximation <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-24>>
 
-      <with|par-left|<quote|1tab>|2.8.<space|2spc>Practical considerations.
-      Random things <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <with|par-left|<quote|2tab>|2.7.2.<space|2spc>Iterated Perturabtion
+      Theory approximation <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-25>>
+
+      <with|par-left|<quote|1tab>|2.8.<space|2spc>Practical considerations.
+      Random things to do. <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-26>>
     </associate>
   </collection>
 </auxiliary>
