@@ -1,7 +1,7 @@
 # DMFT solver
 
 ## Resources
-- [Initial paper](https://arxiv.org/pdf/1303.1438.pdf)
+- [Initial paper](https://www.physics.rutgers.edu/~gkguest/papers/rmp63_1996_p13_Kotliar.pdf)
 - [Lecture notes](https://raw.githubusercontent.com/romainfd/DMFT-solver/main/notes/dmft.pdf)
 - [Quantum toolbox in python/C++](https://triqs.github.io/triqs/latest/)
 - Analytic continuation
