@@ -83,10 +83,11 @@
   </equation>
 
   The <math|k>-summed spectral function <math|<with|color|dark
-  cyan|A<rsub|0>><around*|(|\<omega\>|)>=<big|int>\<mathd\><wide|k|\<vect\>>*<with|color|dark
-  cyan|A<rsub|0>><around*|(|<wide|k|\<vect\>>,\<omega\>|)>=<big|int>\<mathd\><wide|k|\<vect\>><separating-space|0.2em>\<delta\><around*|<left|(|1>|\<omega\>-<around*|(|<with|color|dark
-  cyan|\<epsilon\>><around*|(|<wide|k|\<vect\>>|)>-\<mu\>|)>|<right|)|1>>> is
-  the <em|density of states> relative to the Fermi energy <math|\<mu\>>.
+  cyan|A<rsub|0>><around*|(|\<omega\>|)>=<big|sum><rsub|<wide|k|\<vect\>>><with|color|dark
+  cyan|A<rsub|0>><around*|(|<wide|k|\<vect\>>,\<omega\>|)>=<big|sum><rsub|<wide|k|\<vect\>>>\<delta\><around*|<left|(|1>|\<omega\>-<around*|(|<with|color|dark
+  cyan|\<epsilon\>><around*|(|<wide|k|\<vect\>>|)>-\<mu\>|)>|<right|)|1>>=<with|color|dark
+  cyan|\<eta\>><around*|(|\<mu\>+\<omega\>|)>> is the <em|density of states>
+  relative to the Fermi energy <math|\<mu\>>.
 
   <page-break*><subsection|Green's function>
 
@@ -675,6 +676,11 @@
     cyan|G><rsub|<with|color|dark cyan|0>,<text|loc>><around*|(|\<mathi\>*\<omega\><rsub|n>|)>=<with|color|dark
     cyan|<wide|\<eta\>|~>><around*|<left|(|1>|\<zeta\>=\<mathi\>*\<omega\><rsub|n>+\<mu\>|<right|)|1>>>>>>><label|G0loc-with-Hilbert-tr-DOS>
   </equation>
+
+  It is also a direct consequence of (<reference|green-func-matsubara-freq-from-spectral-func>)
+  together with the fact that <math|<big|sum><rsub|<wide|k|\<vect\>>><with|color|dark
+  cyan|A<rsub|0>><around*|(|<wide|k|\<vect\>>,\<omega\>|)>=<with|color|dark
+  cyan|\<eta\>><around*|(|\<mu\>+\<omega\>|)>>.
 
   <page-break*><section|The Hubbard model and the DMFT LISA approximation>
 
@@ -1558,8 +1564,26 @@
   the lattice effectively disapear and we can forget about the dispersion
   <smash|<math|\<epsilon\><around*|(|<wide|k|\<vect\>>|)>>> in
   (<reference|DMFT-interacting-green-func-self-energy>) :
+  <with|color|red|[todo]>\ 
 
-  \;
+  Thus, if it captures the insulating and the metalic phases at the limits,
+  the IPT must show a phase transition somewhere. And actually, <em|at
+  half-filling>, it reproduces quite well more refined results, so it
+  interpolates quite well between the two limits.
+
+  However, using equation (<reference|IPT>) leads to numerical instability,
+  and we should enforce the particule-hole symmetry, due to half-filling, in
+  the equation itself. <with|color|red|[todo]>
+
+  <\equation>
+    <math|<with|color|#bf4040|\<Sigma\>><rsup|<text|<with|color|dark
+    magenta|imp>>>><around*|(|\<mathi\>*\<omega\><rsub|n>|)><separating-space|0.2em>\<simeq\><separating-space|0.2em><frac|<with|color|#bf4040|U>|2>+<with|color|#bf4040|U><rsup|2>*<big|int><rsub|0><rsup|\<beta\>>\<mathd\>\<tau\>
+    \<mathe\><rsup|\<mathi\>*\<omega\><rsub|n>*\<tau\>>*<with|color|dark
+    blue|\<cal-G\><rsub|0><rprime|'>><around*|(|\<tau\>|)><rsup|3><space|1em><text|where><space|1em><frac|1|<with|color|dark
+    blue|\<cal-G\><rsub|0><rprime|'>><around*|(|\<mathi\>*\<omega\><rsub|n>|)>>=<frac|1|<with|color|dark
+    blue|\<cal-G\><rsub|0>><around*|(|\<mathi\>*\<omega\><rsub|n>|)>>-<frac|U|2><flag|GKKR
+    (157) p50|green>
+  </equation>
 
   Together with the usual DMFT loop, this is called the <em|Iterated
   Perturabtion Theory> (IPT) approximation.
@@ -1737,22 +1761,22 @@
 
 <\references>
   <\collection>
-    <associate|DMFT-interacting-green-func-self-energy|<tuple|37|11>>
-    <associate|DMFT-local-approx|<tuple|36|11>>
-    <associate|G0loc-with-Hilbert-tr-DOS|<tuple|27|8>>
+    <associate|DMFT-interacting-green-func-self-energy|<tuple|37|10>>
+    <associate|DMFT-local-approx|<tuple|36|10>>
+    <associate|G0loc-with-Hilbert-tr-DOS|<tuple|27|7>>
     <associate|Gloc-with-Hilbert-tr-DOS|<tuple|35|10>>
     <associate|Hilbert-tr-DOS|<tuple|26|7>>
     <associate|Hubbard-model|<tuple|28|8>>
     <associate|IPT|<tuple|46|15>>
-    <associate|LISA-self-consistency|<tuple|38|12>>
+    <associate|LISA-self-consistency|<tuple|38|11>>
     <associate|atomic-limit-self-energy|<tuple|33|9>>
     <associate|auto-1|<tuple|1|1>>
     <associate|auto-10|<tuple|2|8>>
     <associate|auto-11|<tuple|2.1|8>>
     <associate|auto-12|<tuple|2.1.1|8>>
     <associate|auto-13|<tuple|2.1.2|8>>
-    <associate|auto-14|<tuple|2.2|9>>
-    <associate|auto-15|<tuple|5|10>>
+    <associate|auto-14|<tuple|2.2|8>>
+    <associate|auto-15|<tuple|5|9>>
     <associate|auto-16|<tuple|6|10>>
     <associate|auto-17|<tuple|2.3|10>>
     <associate|auto-18|<tuple|2.4|11>>
@@ -1771,7 +1795,6 @@
     <associate|auto-3|<tuple|1|1>>
     <associate|auto-30|<tuple|2.8|16>>
     <associate|auto-31|<tuple|2.9|16>>
-    <associate|auto-32|<tuple|1.9|?>>
     <associate|auto-4|<tuple|1.2|2>>
     <associate|auto-5|<tuple|1.3|3>>
     <associate|auto-6|<tuple|2|4>>
@@ -1779,9 +1802,8 @@
     <associate|auto-8|<tuple|1.4|6>>
     <associate|auto-9|<tuple|4|7>>
     <associate|bath-G-with-Delta-func|<tuple|40|12>>
-    <associate|def-self-energy|<tuple|31|9>>
-    <associate|dyson-impurity|<tuple|41|?>>
-    <associate|firstHeading|<tuple|2|?>>
+    <associate|def-self-energy|<tuple|31|8>>
+    <associate|dyson-impurity|<tuple|41|12>>
     <associate|footnote-1|<tuple|1|2>>
     <associate|footnote-10|<tuple|10|11>>
     <associate|footnote-11|<tuple|11|11>>
@@ -1827,17 +1849,17 @@
     <associate|green-func-time-FT|<tuple|7|2>>
     <associate|hubbard-non-interacting-band|<tuple|29|8>>
     <associate|impurity-action|<tuple|39|12>>
-    <associate|impurity-bath-Delta-from-tij|<tuple|47|16>>
+    <associate|impurity-bath-Delta-from-tij|<tuple|48|16>>
     <associate|impurity-solving|<tuple|2.7|15>>
     <associate|interacting-green-func-self-energy|<tuple|34|9>>
     <associate|matsubara-green-func-def|<tuple|14|3>>
     <associate|section-cavity-method|<tuple|2.9|16>>
     <associate|section-lisa-self-consistency|<tuple|2.4.2|12>>
     <associate|self-consistent-eq-Gloc|<tuple|42|12>>
-    <associate|self-consistent-eq-Gloc-fromcavity|<tuple|49|17>>
-    <associate|self-consistent-eq-Hilbert-tr-zeta-fromcavity|<tuple|48|17>>
-    <associate|self-consistent-eq-reciproc-Hilbert|<tuple|43|13>>
-    <associate|self-consistent-eq-reciproc-Hilbert-fromcavity|<tuple|50|17>>
+    <associate|self-consistent-eq-Gloc-fromcavity|<tuple|50|17>>
+    <associate|self-consistent-eq-Hilbert-tr-zeta-fromcavity|<tuple|49|17>>
+    <associate|self-consistent-eq-reciproc-Hilbert|<tuple|43|12>>
+    <associate|self-consistent-eq-reciproc-Hilbert-fromcavity|<tuple|51|17>>
     <associate|spectral-func-NIEG|<tuple|4|1>>
     <associate|spectral-func-beta|<tuple|17|5>>
     <associate|spectral-func-def|<tuple|1|1>>
