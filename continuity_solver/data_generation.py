@@ -27,10 +27,10 @@ class Generator:
             peaks.append(Peak(
                 0,
                 uniform(0.4, 1),
-                uniform(0, min(2, 4 / U**2)),
+                uniform(0, min(2., 4 / U)),
                 shape
             ))
-        other_peaks = random() < U / U_max
+        other_peaks = random()**2 < U / U_max
         if not metallic or other_peaks:
             # Generating first peak
             peaks.append(Peak(
