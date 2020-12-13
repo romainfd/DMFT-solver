@@ -2,7 +2,7 @@ import numpy as np
 from numpy.random import uniform, random
 from tqdm.auto import trange
 import matplotlib.pyplot as plt
-from helpers import Peak
+from .helpers import Peak
 import pickle
 
 
