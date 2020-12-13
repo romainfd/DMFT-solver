@@ -42,8 +42,8 @@ class Peak:
     @staticmethod
     def aggregate(peaks, ws):
         values = Peak.evaluate_all(peaks, ws)
-        # Normalize (ToDo: investigate as it can make us go below 1/2)
-        return values / Peak.integral(values, ws) / 2 # since we only focus on w >= 0)
+        # Normalize (ToDo: investigate how to avoid this making go our main peak go below 1/2)
+        return values / Peak.integral(values, ws)
 
 
 class Evaluator:
