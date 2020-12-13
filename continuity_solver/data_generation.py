@@ -103,6 +103,7 @@ if __name__ == '__main__':
     ws = Generator.w_sampling(U_max, dw)
     data = Generator.data(ws, U_max, N_samples, shape='gaussian')
     Generator.store(data, filename='data.pkl')
-    # investigating one example
-    Generator.display(data[0], ws)
-    print(data[0])
+    # Investigating one example
+    datum_index = 5
+    Generator.display(data[datum_index], ws)
+    print(data[datum_index])

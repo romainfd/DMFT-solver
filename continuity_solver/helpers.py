@@ -20,7 +20,7 @@ class Peak:
             return np.where(values < 0, 0, values)
         if self.shape == 'gaussian':
             width = self.width / 3  # to have similar width than quadratic function (ie function ~ 0 after width)
-            return np.exp(- ((ws - self.center) / width)**2 / 2)
+            return self.height * np.exp(- ((ws - self.center) / width)**2 / 2)
             # No  '/ (np.sqrt(2 * np.pi) * width)' as it will be renormalized later
         else:
             raise ValueError(f'Unexpected shape {self.shape} for Peak {self}')
