@@ -2,6 +2,7 @@ from dataclasses import dataclass
 import matplotlib.pyplot as plt
 import numpy as np
 
+
 @dataclass
 class Peak:
     center: float
@@ -13,9 +14,16 @@ class Peak:
         return f"Peak in {self.center}, height {self.height} & width {self.width} of {self.shape} shape"
 
     def evaluate(self, ws):
-        values = self.height - (ws / self.width - self.center) ** 2
-        # We forbid < 0 values
-        return np.where(values < 0, 0, values)
+        if self.shape == 'quadratic':
+            values = self.height - (ws / self.width - self.center) ** 2
+            # We forbid < 0 values
+            return np.where(values < 0, 0, values)
+        if self.shape == 'gaussian':
+            width = self.width / 3  # to have similar width than quadratic function (ie function ~ 0 after width)
+            return np.exp(- ((ws - self.center) / width)**2 / 2)
+            # No  '/ (np.sqrt(2 * np.pi) * width)' as it will be renormalized later
+        else:
+            raise ValueError(f'Unexpected shape {self.shape} for Peak {self}')
 
     def plot(self, ws):
         values = self.evaluate(ws)

@@ -14,7 +14,7 @@ class Generator:
         return ws
 
     @staticmethod
-    def spectral_density(ws, U_max, seed=None):
+    def spectral_density(ws, U_max, seed=None, shape='quadratic'):
         """ Returns an array of A[i] containing the values of A at ws[i] """
         if seed is not None:
             np.random.seed(seed)
@@ -28,21 +28,21 @@ class Generator:
                 0,
                 0.5,
                 min(2, 4 / U**2),
-                'quadratic'
+                shape
             ))
         # Generating first peak
         peaks.append(Peak(
             U / 2,
             uniform(0.1, 0.4),
             uniform(0.5, 2),
-            'quadratic'
+            shape
         ))
         # And its symmetric
         peaks.append(Peak(
             -1 * U / 2,
             peaks[-1].height,
             peaks[-1].width,
-            'quadratic'
+            shape
         ))
 
         # Aggregate all the peaks
@@ -52,11 +52,11 @@ class Generator:
         }
 
     @staticmethod
-    def data(ws, U_max, N_samples, seed=42):
+    def data(ws, U_max, N_samples, seed=42, shape='quadratic'):
         np.random.seed(seed)  # for reproductibility
         data = []
         for _ in trange(N_samples, desc='Generating input (A and G)'):
-            A, params = Generator.spectral_density(ws, U_max)
+            A, params = Generator.spectral_density(ws, U_max, shape=shape)
             # print(np.sum(A) * dw)
             data.append({
                 'params': params,
@@ -101,5 +101,8 @@ if __name__ == '__main__':
     dw = 0.1
     N_samples = 100000
     ws = Generator.w_sampling(U_max, dw)
-    data = Generator.data(ws, U_max, N_samples)
+    data = Generator.data(ws, U_max, N_samples, shape='gaussian')
     Generator.store(data, filename='data.pkl')
+    # investigating one example
+    Generator.display(data[0], ws)
+    print(data[0])
