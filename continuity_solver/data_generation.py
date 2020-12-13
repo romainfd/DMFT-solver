@@ -2,7 +2,7 @@ import numpy as np
 from numpy.random import uniform, random
 from tqdm.auto import trange
 import matplotlib.pyplot as plt
-from .helpers import Peak
+from helpers import Peak
 import pickle
 
 
@@ -26,24 +26,26 @@ class Generator:
         if metallic:
             peaks.append(Peak(
                 0,
-                0.5,
-                min(2, 4 / U**2),
+                uniform(0.4, 1),
+                uniform(0, min(2, 4 / U**2)),
                 shape
             ))
-        # Generating first peak
-        peaks.append(Peak(
-            U / 2,
-            uniform(0.1, 0.4),
-            uniform(0.5, 2),
-            shape
-        ))
-        # And its symmetric
-        peaks.append(Peak(
-            -1 * U / 2,
-            peaks[-1].height,
-            peaks[-1].width,
-            shape
-        ))
+        other_peaks = random() < U / U_max
+        if not metallic or other_peaks:
+            # Generating first peak
+            peaks.append(Peak(
+                U / 2,
+                uniform(0.1, 0.4),
+                uniform(0.5, 2),
+                shape
+            ))
+            # And its symmetric
+            peaks.append(Peak(
+                -1 * U / 2,
+                peaks[-1].height,
+                peaks[-1].width,
+                shape
+            ))
 
         # Aggregate all the peaks
         return Peak.aggregate(peaks, ws), {
