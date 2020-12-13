@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 import matplotlib.pyplot as plt
 import numpy as np
+from sklearn import metrics
 
 
 @dataclass
@@ -48,8 +49,21 @@ class Peak:
 
 class Evaluator:
     @staticmethod
-    def show(model, X, y, ws):
+    def show(model, X, y, ws, test_train):
         y_pred = model.predict(np.array([X, ]))[0]
-        plt.plot(ws, y)
-        plt.plot(ws, y_pred)
+        mae = metrics.mean_absolute_error(y, y_pred)
+        loss = model.score(y, y_pred)
+        plt.title(
+            f"Model prediction on a {test_train} sample\n"
+            f"Loss = {loss:.5f} and MAE = {mae:.5f}"
+        )
+        plt.plot(ws, y, label='Target density function', color='yellowgreen')
+        plt.plot(ws, y_pred, label='Predicted density function', color='orange')
+        plt.ylabel('A($\omega$)')
+        plt.xlabel('$\omega$')
         plt.show()
+
+    @staticmethod
+    def eval(model, X, y, indices, ws, test_train='train'):
+        for i in indices:
+            Evaluator.show(model, X[i], y[i], ws, test_train=test_train)
