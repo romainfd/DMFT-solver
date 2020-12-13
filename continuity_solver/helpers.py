@@ -52,7 +52,7 @@ class Evaluator:
     def show(model, X, y, ws, test_train):
         y_pred = model.predict(np.array([X, ]))[0]
         mae = metrics.mean_absolute_error(y, y_pred)
-        loss = model.loss(y, y_pred)
+        loss = model.evaluate(np.array([X, ]), np.array([y, ]))[0]  # returns list of all metrics
         plt.title(
             f"Model prediction on a {test_train} sample\n"
             f"Loss = {loss:.5f} and MAE = {mae:.5f}"
