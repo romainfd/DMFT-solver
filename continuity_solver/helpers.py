@@ -66,4 +66,4 @@ class Evaluator:
     @staticmethod
     def eval(model, X, y, indices, ws, test_train='train'):
         for i in indices:
-            Evaluator.show(model, X[i], y[i], ws, test_train=test_train)
+            Evaluator.show(model, X[i], y[i], ws, test_train)
