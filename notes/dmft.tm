@@ -336,7 +336,7 @@
       singularize it :
 
       <\equation*>
-        G<around*|(|\<tau\>|)><separating-space|0.2em>=<separating-space|0.2em><frac|1|\<beta\>>*<big|sum><rsub|n=-\<infty\>><rsup|+\<infty\>>\<mathe\><rsup|-\<mathi\>*\<omega\><rsub|n>*\<tau\>>*G<around*|(|\<mathi\>*\<omega\><rsub|n>|)><separating-space|0.2em>=<separating-space|0.2em><frac|1|\<beta\>>*<big|sum><rsub|n=-\<infty\>><rsup|+\<infty\>>\<mathe\><rsup|-\<mathi\>*\<omega\><rsub|n>*\<tau\>>*<wide*|<around*|(|G<around*|(|\<mathi\>*\<omega\><rsub|n>|)>-<frac|1|\<mathi\>*\<omega\><rsub|n>>|)>|\<wide-underbrace\>><rsub|<normal-size|\<backassign\><separating-space|0.2em>G<rsup|\<flat\>><around*|(|\<mathi\>*\<omega\><rsub|n>|)>>>+<smash|<wide|<frac|1|\<beta\>>*<big|sum><rsub|n=-\<infty\>><rsup|+\<infty\>><frac|\<mathe\><rsup|-\<mathi\>*\<omega\><rsub|n>*\<tau\>>|\<mathi\>*\<omega\><rsub|n>>|\<wide-overbrace\>><rsup|=<separating-space|0.2em>-<dfrac|1|2>>>
+        G<around*|(|\<tau\>|)><separating-space|0.2em>=<separating-space|0.2em><frac|1|\<beta\>>*<big|sum><rsub|n=-\<infty\>><rsup|+\<infty\>>\<mathe\><rsup|-\<mathi\>*\<omega\><rsub|n>*\<tau\>>*G<around*|(|\<mathi\>*\<omega\><rsub|n>|)><separating-space|0.2em>=<separating-space|0.2em><frac|1|\<beta\>>*<big|sum><rsub|n=-\<infty\>><rsup|+\<infty\>>\<mathe\><rsup|-\<mathi\>*\<omega\><rsub|n>*\<tau\>>*<wide*|<around*|(|G<around*|(|\<mathi\>*\<omega\><rsub|n>|)>-<frac|1|\<mathi\>*\<omega\><rsub|n>>|)>|\<wide-underbrace\>><rsub|<normal-size|\<backassign\><separating-space|0.2em>G<rsup|\<flat\>><around*|(|\<mathi\>*\<omega\><rsub|n>|)>>>+<smash|<wide|<frac|1|\<beta\>>*<big|sum><rsub|n=-\<infty\>><rsup|+\<infty\>><frac|\<mathe\><rsup|-\<mathi\>*\<omega\><rsub|n>*\<tau\>>|\<mathi\>*\<omega\><rsub|n>>|\<wide-overbrace\>><rsup|=<separating-space|0.2em>-<dfrac|1|2><separating-space|0.2em>sgn<around*|(|\<tau\>|)>>>
       </equation*>
 
       where we defined a jump-free auxiliary function
@@ -734,7 +734,7 @@
     \<sigma\>><space|1em><text|with><space|1em><with|color|dark
     cyan|\<epsilon\><around*|(|<wide|k|\<vect\>>|)>>
     <below|=|<separating-space|0.2em>\<forall\>i<separating-space|0.2em>>
-    <big|sum><rsub|j><with|color|dark cyan|t<rsub|i
+    <big|sum><rsub|j>-<with|color|dark cyan|t<rsub|i
     j>>*\<mathe\><rsup|\<mathi\>*<wide|k|\<vect\>>\<cdot\><around*|(|<wide|R|\<vect\>><rsub|i>-<wide|R|\<vect\>><rsub|j>|)>><label|hubbard-non-interacting-band>
   </equation>
 
@@ -1762,7 +1762,7 @@
 
   We want to replace the nasty hopping amplitudes <math|<with|color|dark
   cyan|t<rsub|i j>>> by the band structure, that is <math|<with|color|dark
-  cyan|<smash|\<epsilon\><around*|(|<wide|k|\<vect\>>|)>>>=FT<around*|[|<with|color|dark
+  cyan|<smash|\<epsilon\><around*|(|<wide|k|\<vect\>>|)>>>=FT<around*|[|-<with|color|dark
   cyan|t<rsub|i j>>|]><around*|(|<wide|k|\<vect\>>|)>>
   (<reference|hubbard-non-interacting-band>) and its density of states
   <math|<with|color|dark cyan|\<eta\><rsup|<text|latt>>><around*|(|\<epsilon\>|)>=<big|int><frac|\<mathd\><wide|k|\<vect\>>|\<cal-V\><rsub|<text|<name|bz>>>>
@@ -1772,9 +1772,9 @@
   <\small>
     <\eqnarray*>
       <tformat|<table|<row|<cell|<big|sum><rsub|i>t<rsub|o i>*G<rsub|i
-      o>>|<cell|=>|<cell|<big|sum><rsub|i><big|int><frac|\<mathd\><wide|k|\<vect\>>|\<cal-V\><rsub|<text|<name|bz>>>>
+      o>>|<cell|=>|<cell|-<big|sum><rsub|i><big|int><frac|\<mathd\><wide|k|\<vect\>>|\<cal-V\><rsub|<text|<name|bz>>>>
       \<mathe\><rsup|\<mathi\>*<wide|k|\<vect\>>\<cdot\><around*|(|-<wide|R|\<vect\>><rsub|i>|)>>*\<epsilon\><around*|(|<wide|k|\<vect\>>|)>*<big|int><frac|\<mathd\><wide|k|\<vect\>><rprime|'>|\<cal-V\><rsub|<text|<name|bz>>>>
-      \<mathe\><rsup|\<mathi\>*<wide|k|\<vect\>><rprime|'>\<cdot\><wide|R|\<vect\>><rsub|i>>*G<around*|(|<wide|k|\<vect\>><rprime|'>|)>>>|<row|<cell|>|<cell|=>|<cell|<big|int><frac|\<mathd\><wide|k|\<vect\>>|\<cal-V\><rsub|<text|<name|bz>>>>
+      \<mathe\><rsup|\<mathi\>*<wide|k|\<vect\>><rprime|'>\<cdot\><wide|R|\<vect\>><rsub|i>>*G<around*|(|<wide|k|\<vect\>><rprime|'>|)>>>|<row|<cell|>|<cell|=>|<cell|-<big|int><frac|\<mathd\><wide|k|\<vect\>>|\<cal-V\><rsub|<text|<name|bz>>>>
       \<epsilon\><around*|(|<wide|k|\<vect\>>|)>*G<around*|(|<wide|k|\<vect\>>|)><space|1em><text|because><space|1em><big|sum><rsub|i>\<mathe\><rsup|\<mathi\>*<around*|(|<wide|k|\<vect\>><rprime|'>-<wide|k|\<vect\>>|)>\<cdot\><wide|R|\<vect\>><rsub|i>>=\<delta\><around*|(|<wide|k|\<vect\>><rprime|'>-<wide|k|\<vect\>>|)>>>|<row|<cell|<text|and
       similarly,<space|1em>><big|sum><rsub|i,j>t<rsub|o i>*t<rsub|o
       j>*G<rsub|i j>>|<cell|=>|<cell|<big|int><frac|\<mathd\><wide|k|\<vect\>>|\<cal-V\><rsub|<text|<name|bz>>>>
@@ -1793,11 +1793,11 @@
 
   <\equation*>
     <big|int><frac|\<mathd\><wide|k|\<vect\>>|\<cal-V\><rsub|<text|<name|bz>>>>
-    <frac|\<epsilon\><around*|(|<wide|k|\<vect\>>|)><rsup|l>|\<zeta\>-\<epsilon\><around*|(|<wide|k|\<vect\>>|)>><separating-space|0.2em>=<separating-space|0.2em><big|int>\<mathd\>\<epsilon\>
-    <frac|\<epsilon\><rsup|l>|\<zeta\>-\<epsilon\>>*<big|int><frac|\<mathd\><wide|k|\<vect\>>|\<cal-V\><rsub|<text|<name|bz>>>>
+    <frac|<around*|(|-\<epsilon\><around*|(|<wide|k|\<vect\>>|)>|)><rsup|l>|\<zeta\>-\<epsilon\><around*|(|<wide|k|\<vect\>>|)>><separating-space|0.2em>=<separating-space|0.2em><big|int>\<mathd\>\<epsilon\>
+    <frac|<around*|(|-\<epsilon\>|)><rsup|l>|\<zeta\>-\<epsilon\>>*<big|int><frac|\<mathd\><wide|k|\<vect\>>|\<cal-V\><rsub|<text|<name|bz>>>>
     \<delta\><around*|(|\<epsilon\>-\<epsilon\><around*|(|<wide|k|\<vect\>>|)>|)><separating-space|0.2em><above|=|<text|
-    def >><separating-space|0.2em><big|int>\<mathd\>\<epsilon\>*\<eta\><around*|(|\<epsilon\>|)>*<frac|\<epsilon\><rsup|l>|\<zeta\>-\<epsilon\>><separating-space|0.2em>\<backassign\><separating-space|0.2em><with|color|dark
-    cyan|h<rsub|l>><around*|(|\<zeta\>|)>
+    def >><separating-space|0.2em><small|<around*|(|-1|)><rsup|l>><smash|<wide*|<big|int>\<mathd\>\<epsilon\>*\<eta\><around*|(|\<epsilon\>|)>*<frac|\<epsilon\><rsup|l>|\<zeta\>-\<epsilon\>>|\<wide-underbrace\>><rsub|<very-large|\<backassign\><separating-space|0.2em><with|color|dark
+    cyan|h<rsub|l>><around*|(|\<zeta\>|)>>>>
   </equation*>
 
   Then,
@@ -1907,9 +1907,9 @@
     direction <math|-<wide|e|\<vect\>><rsub|1>>, then
 
     <\eqnarray*>
-      <tformat|<table|<row|<cell|\<epsilon\><rprime|'><around*|(|<wide|k|\<vect\>>|)><separating-space|0.2em>=<separating-space|0.2em><big|sum><rsub|j>t<rsub|i
+      <tformat|<table|<row|<cell|\<epsilon\><rprime|'><around*|(|<wide|k|\<vect\>>|)><separating-space|0.2em>=<separating-space|0.2em><big|sum><rsub|j>-t<rsub|i
       j>*\<mathe\><rsup|\<mathi\>*<wide|k|\<vect\>>*<wide|R|\<vect\>><rsub|i
-      j>>>|<cell|=>|<cell|<big|sum><rsub|m=1><rsup|d><around*|(|t<rsub|m,\<rightarrow\>>*\<mathe\><rsup|\<mathi\>*k<rsub|m>*a<rsub|m>>+t<rsub|m,\<leftarrow\>>*\<mathe\><rsup|-\<mathi\>*k<rsub|m>*a<rsub|m>>|)>>>|<row|<cell|>|<cell|=>|<cell|<around*|(|t<rsub|1>+\<varepsilon\>|)>*\<mathe\><rsup|\<mathi\>*k<rsub|1>*a<rsub|1>>+<around*|(|t<rsub|1>-\<varepsilon\>|)>*\<mathe\><rsup|-\<mathi\>*k<rsub|1>*a<rsub|1>>+<big|sum><rsub|m=2><rsup|d>t<rsub|m>*<around*|(|\<mathe\><rsup|\<mathi\>*k<rsub|m>*a<rsub|m>>+\<mathe\><rsup|-\<mathi\>*k<rsub|m>*a<rsub|m>>|)>>>|<row|<cell|>|<cell|=>|<cell|2*\<varepsilon\>*\<mathi\>*sin<around*|(|k<rsub|1>*a<rsub|1>|)>+<big|sum><rsub|m=1><rsup|d>2*t<rsub|m>*cos<around*|(|k<rsub|m>*a<rsub|m>|)>>>>>
+      j>>>|<cell|=>|<cell|-<big|sum><rsub|m=1><rsup|d><around*|(|t<rsub|m,\<rightarrow\>>*\<mathe\><rsup|\<mathi\>*k<rsub|m>*a<rsub|m>>+t<rsub|m,\<leftarrow\>>*\<mathe\><rsup|-\<mathi\>*k<rsub|m>*a<rsub|m>>|)>>>|<row|<cell|>|<cell|=>|<cell|-<around*|(|t<rsub|1>+\<varepsilon\>|)>*\<mathe\><rsup|\<mathi\>*k<rsub|1>*a<rsub|1>>-<around*|(|t<rsub|1>-\<varepsilon\>|)>*\<mathe\><rsup|-\<mathi\>*k<rsub|1>*a<rsub|1>>-<big|sum><rsub|m=2><rsup|d>t<rsub|m>*<around*|(|\<mathe\><rsup|\<mathi\>*k<rsub|m>*a<rsub|m>>+\<mathe\><rsup|-\<mathi\>*k<rsub|m>*a<rsub|m>>|)>>>|<row|<cell|>|<cell|=>|<cell|-2*\<varepsilon\>*\<mathi\>*sin<around*|(|k<rsub|1>*a<rsub|1>|)>-<big|sum><rsub|m=1><rsup|d>2*t<rsub|m>*cos<around*|(|k<rsub|m>*a<rsub|m>|)>>>>>
     </eqnarray*>
   </itemize-dot>
 </body>
