@@ -83,8 +83,9 @@
   </equation>
 
   The <math|k>-summed spectral function <math|<with|color|dark
-  cyan|A<rsub|0>><around*|(|\<omega\>|)>=<big|sum><rsub|<wide|k|\<vect\>>><with|color|dark
-  cyan|A<rsub|0>><around*|(|<wide|k|\<vect\>>,\<omega\>|)>=<big|sum><rsub|<wide|k|\<vect\>>>\<delta\><around*|<left|(|1>|\<omega\>-<around*|(|<with|color|dark
+  cyan|A<rsub|0>><around*|(|\<omega\>|)>=<big|int><frac|\<mathd\><wide|k|\<vect\>>|\<cal-V\><rsub|<text|<name|bz>>>>
+  <with|color|dark cyan|A<rsub|0>><around*|(|<wide|k|\<vect\>>,\<omega\>|)>=<big|int><frac|\<mathd\><wide|k|\<vect\>>|\<cal-V\><rsub|<text|<name|bz>>>>
+  \<delta\><around*|<left|(|1>|\<omega\>-<around*|(|<with|color|dark
   cyan|\<epsilon\>><around*|(|<wide|k|\<vect\>>|)>-\<mu\>|)>|<right|)|1>>=<with|color|dark
   cyan|\<eta\>><around*|(|\<mu\>+\<omega\>|)>> is the <em|density of states>
   relative to the Fermi energy <math|\<mu\>>.
@@ -140,15 +141,14 @@
   time-independant system (<math|<wide|r|\<vect\>>=<wide|x|\<vect\>>-<wide|x|\<vect\>><rprime|'>>,
   <math|t<rprime|'>=0>), its spatial Fourier transform is
 
-  <\equation*>
+  <\equation>
     G<around*|(|<wide|k|\<vect\>>,t|)><separating-space|0.2em>=<separating-space|0.2em><big|int><rsub|\<bbb-R\><rsup|d>>\<mathd\><wide|r|\<vect\>><separating-space|0.2em>G<around*|(|<wide|r|\<vect\>>,t|)>*\<mathe\><rsup|\<mathi\>*<wide|k|\<vect\>>\<cdot\><wide|r|\<vect\>>><separating-space|0.2em>=<separating-space|0.2em><rigid|-\<mathi\>>*<rigid|<around*|\<langle\>|<math|<math-up|<name|gs>>>|\|>
     \<b-T\>*\<b-c\><rsub|<wide|k|\<vect\>>><around*|(|t|)>*\<b-c\><rsub|<wide|k|\<vect\>>><rsup|\<dag\>><around*|(|0|)>
     <around*|\||<math|<math-up|<name|gs>>>|\<rangle\>>><separating-space|0.2em>=<separating-space|0.2em><around*|\<langle\>|<wide|k|\<vect\>>|\|>
-    \<b-G\><rsub|\<beta\>><around*|(|\<tau\>,\<tau\><rprime|'>|)>
-    <around*|\||<wide|k|\<vect\>>|\<rangle\>>
-  </equation*>
+    \<b-G\><around*|(|t|)> <around*|\||<wide|k|\<vect\>>|\<rangle\>><label|green-func-spatial-FT>
+  </equation>
 
-  i.e. <math|\<b-G\><around*|(|t|)>> is diagonal in the
+  i.e.<nbsp><math|\<b-G\><around*|(|t|)>> is diagonal in the
   <math|<around*|\||<wide|k|\<vect\>>|\<rangle\>>> basis. Let's define its
   time Fourier transform :
 
@@ -563,25 +563,34 @@
   </equation*>
 
   then the Wannier function for band <math|\<nu\>> and atomic site
-  <math|<wide|R|\<vect\>>> is defined by
+  <math|<wide|X|\<vect\>>> is defined by
 
   <\equation>
-    \<cal-W\><rsub|<wide|R|\<vect\>>,\<nu\>><around*|(|<wide|r|\<vect\>>|)><separating-space|0.2em>=<separating-space|0.2em><big|int><frac|\<mathd\><wide|k|\<vect\>>|\<cal-V\><rsub|0>>*\<varphi\><rsub|\<nu\>
-    <wide|k|\<vect\>>><around*|(|<wide|r|\<vect\>>|)>*\<mathe\><rsup|-\<mathi\>*<wide|k|\<vect\>>\<cdot\><wide|R|\<vect\>>>
+    \<cal-W\><rsub|<wide|X|\<vect\>>,\<nu\>><around*|(|<wide|x|\<vect\>>|)><separating-space|0.2em>=<separating-space|0.2em><big|int><rsub|<text|<name|bz>>><frac|\<mathd\><wide|k|\<vect\>>|\<cal-V\><rsub|<text|<name|bz>>>>*\<varphi\><rsub|\<nu\>
+    <wide|k|\<vect\>>><around*|(|<wide|x|\<vect\>>|)>*\<mathe\><rsup|-\<mathi\>*<wide|k|\<vect\>>\<cdot\><wide|X|\<vect\>>><label|def-wannier>
   </equation>
 
-  which verifies <math|\<cal-W\><rsub|<wide|0|\<vect\>>,\<nu\>><around*|(|<wide|r|\<vect\>>-<wide|R|\<vect\>>|)>=\<cal-W\><rsub|<wide|R|\<vect\>>,\<nu\>><around*|(|<wide|r|\<vect\>>|)>>
-  and form a basis. We then write
+  which verifies <math|\<cal-W\><rsub|<wide|0|\<vect\>>,\<nu\>><around*|(|<wide|x|\<vect\>>-<wide|X|\<vect\>>|)>=\<cal-W\><rsub|<wide|X|\<vect\>>,\<nu\>><around*|(|<wide|x|\<vect\>>|)>>,
+  i.e.<nbsp>the Wannier function at site <math|<wide|X|\<vect\>>> is simply
+  the translation of the Wannier function at site <math|<wide|0|\<vect\>>>.
+  Note that this definition is not unique because
+  <math|\<varphi\><rsub|\<nu\> <wide|k|\<vect\>>>> is defined up to a global
+  phase <math|<smash|\<mathe\><rsup|\<mathi\>*\<alpha\><around*|(|\<nu\>,<wide|k|\<vect\>>|)>>>>.
+  This phase can be chosen such that <math|\<cal-W\><around*|(|<wide|x|\<vect\>>|)>>'s
+  are well localized around site <math|<wide|X|\<vect\>>>, as in the figure
+  bellow. Wannier functions form a discrete basis
+  (<math|<big|int>\<mathd\><wide|x|\<vect\>>*\<cal-W\><rsub|<wide|X|\<vect\>>><around*|(|<wide|x|\<vect\>>|)>*\<cal-W\><rsub|<wide|X|\<vect\>><rprime|'>><around*|(|<wide|x|\<vect\>>|)><rsup|\<ast\>>=\<delta\><rsub|<wide|X|\<vect\>>*<wide|X|\<vect\>><rprime|'>>>),
+  and we write
 
   <\compact>
     <\equation>
-      \<b-Psi\><rsup|\<dag\>><rsub|\<sigma\>><around*|(|<wide|r|\<vect\>>,t|)><separating-space|0.2em>=<separating-space|0.2em><smash|<big|sum><rsub|<wide|R|\<vect\>>,\<nu\>>>\<cal-W\><rsub|<wide|R|\<vect\>>
-      \<nu\> \<sigma\>><around*|(|<wide|r|\<vect\>>|)><rsup|\<ast\>>*\<b-c\><rsup|\<dag\>><rsub|<wide|R|\<vect\>>
+      \<b-Psi\><rsup|\<dag\>><rsub|\<sigma\>><around*|(|<wide|x|\<vect\>>|)><separating-space|0.2em>=<separating-space|0.2em><smash|<big|sum><rsub|<wide|X|\<vect\>>,\<nu\>>>\<cal-W\><rsub|<wide|X|\<vect\>>
+      \<nu\> \<sigma\>><around*|(|<wide|x|\<vect\>>|)><rsup|\<ast\>>*\<b-c\><rsup|\<dag\>><rsub|<wide|X|\<vect\>>
       \<nu\> \<sigma\>>
     </equation>
 
-    <space|26em>\<uparrow\><space|1em>creates a Wannier state at site
-    <math|<wide|R|\<vect\>>>
+    <space|25em>\<uparrow\><space|1em>creates a Wannier state at site
+    <math|<wide|X|\<vect\>>>
   </compact>
 
   <\big-figure>
@@ -603,36 +612,42 @@
   <|big-figure>
     Wannier function (site <math|x=0>) of the lowest band from a
     <math|V<around*|(|x|)>=V<rsub|0>*sin<rsup|2><around*|(|\<pi\>x/a|)>>
-    potential of period <math|a>. <math|q<rsub|R>=\<pi\>/a>,
-    <math|\<epsilon\><rsub|R>=\<hbar\><rsup|2>q<rsub|R><rsup|2>/2m>. Here
-    <math|V<rsub|0>=3*\<epsilon\><rsub|R>>.
+    potential of period <math|a>. <math|q<rsub|<text|R>>=\<pi\>/a>,
+    <math|\<epsilon\><rsub|<text|R>>=\<hbar\><rsup|2>q<rsub|<text|R>><rsup|2>/2m>.
+    Here <math|V<rsub|0>=3*\<epsilon\><rsub|<text|R>>>.
   </big-figure>
 
   Now
 
   <\equation*>
-    G<around*|(|<wide|r|\<vect\>>,t,<wide|r|\<vect\>><rprime|'>,t<rprime|'>|)><separating-space|0.2em>=<separating-space|0.2em><big|sum><rsub|<wide|R|\<vect\>>,\<nu\>><big|sum><rsub|<wide|R|\<vect\>><rprime|'>,\<nu\><rprime|'>>\<cal-W\><rsub|<wide|R|\<vect\>>
-    \<nu\>><around*|(|<wide|r|\<vect\>>|)>*\<cal-W\><rsub|<wide|R|\<vect\>>
-    \<nu\>><around*|(|<wide|r|\<vect\>>|)>*G<rsup|\<cal-W\>><rsub|\<nu\>
-    \<nu\><rprime|'>><around*|(|<wide|R|\<vect\>>,<wide|R|\<vect\>><rprime|'>,t|)>
+    G<around*|(|<wide|x|\<vect\>>,<wide|x|\<vect\>><rprime|'>,t|)><separating-space|0.2em>=<separating-space|0.2em><big|sum><rsub|<wide|X|\<vect\>>,\<nu\>><big|sum><rsub|<wide|X|\<vect\>><rprime|'>,\<nu\><rprime|'>>\<cal-W\><rsub|<wide|X|\<vect\>>
+    \<nu\>><around*|(|<wide|x|\<vect\>>|)>*\<cal-W\><rsub|<wide|X|\<vect\>><rprime|'>
+    \<nu\><rprime|'>><around*|(|<wide|x|\<vect\>><rprime|'>|)><rsup|\<ast\>>*G<rsup|\<cal-W\>><rsub|\<nu\>
+    \<nu\><rprime|'>><around*|(|<wide|X|\<vect\>>,<wide|X|\<vect\>><rprime|'>,t|)>
   </equation*>
 
   with <math|G<rsup|\<cal-W\>><rsub|\<nu\>
-  \<nu\><rprime|'>><around*|(|<wide|R|\<vect\>>,<wide|R|\<vect\>><rprime|'>,t|)>=-\<mathi\>*<rigid|<around*|\<langle\>|<math-up|<name|gs>>|\|>*\<b-T\>*\<b-c\><rsub|<wide|R|\<vect\>>
-  \<nu\>><around*|(|t|)>*\<b-c\><rsup|\<dag\>><rsub|<wide|R|\<vect\>><rprime|'>
+  \<nu\><rprime|'>><around*|(|<wide|X|\<vect\>>,<wide|X|\<vect\>><rprime|'>,t|)>=-\<mathi\>*<rigid|<around*|\<langle\>|<math-up|<name|gs>>|\|>*\<b-T\>*\<b-c\><rsub|<wide|X|\<vect\>>
+  \<nu\>><around*|(|t|)>*\<b-c\><rsup|\<dag\>><rsub|<wide|X|\<vect\>><rprime|'>
   \<nu\><rprime|'>><around*|(|0|)>*><around*|\||<math-up|<name|gs>>|\<rangle\>>>
   the Green's function in Wannier basis, which is more usefull because it
   depends only on <em|lattice sites> <math|\<rightarrow\>> allows to map to
   the Hubbard model. It is often denoted simply <math|G<rsub|i
-  j><around*|(|\<cdot\>|)>\<assign\>G<rsup|\<cal-W\>><around*|(|<wide|R|\<vect\>><rsub|i>,<wide|R|\<vect\>><rsub|j>,\<cdot\>|)>>,
+  j><around*|(|\<cdot\>|)>\<assign\>G<rsup|\<cal-W\>><around*|(|<wide|X|\<vect\>><rsub|i>,<wide|X|\<vect\>><rsub|j>,\<cdot\>|)>>,
   where <math|<around*|{|i|}>> indexes the lattice sites.
 
-  The spatial Fourier transform of the Green's function is much simpler (here
-  for an homogeneous sys.) :
+  The spatial Fourier transform (<reference|green-func-spatial-FT>) of the
+  Green's function <math|G<around*|(|<wide|r|\<vect\>>,t|)>> has now a much
+  more convenient form (here for an homogeneous system and forgetting
+  <math|\<nu\>>'s) :
 
   <\equation>
-    G<around*|(|<wide|k|\<vect\>>,t|)>=<big|sum><rsub|<wide|R|\<vect\>>>G<rsup|\<cal-W\>><around*|(|<wide|R|\<vect\>>,t|)>*\<mathe\><rsup|\<mathi\>*<wide|k|\<vect\>>\<cdot\><wide|R|\<vect\>>><space|1em>\<longleftrightarrow\><space|1em>G<rsup|\<cal-W\>><around*|(|<wide|R|\<vect\>>,t|)>=<big|int><frac|\<mathd\><wide|k|\<vect\>>|\<cal-V\><rsub|0>>*G<around*|(|<wide|k|\<vect\>>,t|)>*\<mathe\><rsup|-\<mathi\>*<wide|k|\<vect\>>\<cdot\><wide|R|\<vect\>>>
+    G<around*|(|<wide|k|\<vect\>>,t|)>=<big|sum><rsub|<wide|R|\<vect\>>>G<rsup|\<cal-W\>><around*|(|<wide|R|\<vect\>>,t|)>*\<mathe\><rsup|\<mathi\>*<wide|k|\<vect\>>\<cdot\><wide|R|\<vect\>>><space|1em>\<longleftrightarrow\><space|1em>G<rsup|\<cal-W\>><around*|(|<wide|R|\<vect\>>,t|)>=<big|int><frac|\<mathd\><wide|k|\<vect\>>|\<cal-V\><rsub|<text|<name|bz>>>>*G<around*|(|<wide|k|\<vect\>>,t|)>*\<mathe\><rsup|-\<mathi\>*<wide|k|\<vect\>>\<cdot\><wide|R|\<vect\>>>
   </equation>
+
+  Note that for a finite system with <math|N> sites, we use
+  <math|<tfrac|1|N>*<big|sum><rsub|<wide|k|\<vect\>>>\<backassign\><separating-space|0.2em><big|sum><rsub|<wide|k|\<vect\>>><rprime|'>>
+  rather than <math|<big|int><frac|\<mathd\><wide|k|\<vect\>>|\<cal-V\><rsub|<text|<name|bz>>>>>.
 
   An important quantity in DMFT is the <strong|local Green's function>
   <math|G<rsub|<text|loc>>\<assign\>G<rsub|i i>>
@@ -643,8 +658,7 @@
   it with the <strong|density of states>
 
   <\equation>
-    <with|color|dark cyan|\<eta\><rsup|<text|latt>>><around*|(|\<epsilon\>|)><separating-space|0.2em>=<separating-space|0.2em><big|sum><rsub|<wide|k|\<vect\>>>\<delta\><around*|(|\<epsilon\>-<with|color|dark
-    cyan|\<epsilon\>><around*|(|<wide|k|\<vect\>>|)>|)><separating-space|0.2em>=<separating-space|0.2em><big|int><frac|\<mathd\><wide|k|\<vect\>>|\<cal-V\><rsub|0>>*\<delta\><around*|(|\<epsilon\>-<with|color|dark
+    <with|color|dark cyan|\<eta\><rsup|<text|latt>>><around*|(|\<epsilon\>|)>=<big|int><rsub|<text|<name|bz>>><frac|\<mathd\><wide|k|\<vect\>>|\<cal-V\><rsub|<text|<name|bz>>>>*\<delta\><around*|(|\<epsilon\>-<with|color|dark
     cyan|\<epsilon\>><around*|(|<wide|k|\<vect\>>|)>|)>
   </equation>
 
@@ -653,8 +667,8 @@
   <\equation*>
     <with|color|dark cyan|G><rsub|<with|color|dark
     cyan|0>,<text|loc>><around*|(|\<mathi\>*\<omega\><rsub|n>|)><separating-space|0.2em>=<separating-space|0.2em><with|color|dark
-    cyan|G<rsub|0>><rsup|\<cal-W\>><around*|(|<wide|0|\<vect\>>,\<mathi\>*\<omega\><rsub|n>|)><separating-space|0.2em>=<separating-space|0.2em><big|int><frac|\<mathd\><wide|k|\<vect\>>|\<cal-V\><rsub|0>>*<frac|<neg|\<mathe\><rsup|\<mathi\>*<wide|k|\<vect\>>\<cdot\><wide|0|\<vect\>>>>|\<mathi\>*\<omega\><rsub|n>-<with|color|dark
-    cyan|\<epsilon\>><around*|(|<wide|k|\<vect\>>|)>+\<mu\>><separating-space|0.2em>=<separating-space|0.2em><big|int><frac|\<mathd\><wide|k|\<vect\>>|\<cal-V\><rsub|0>>
+    cyan|G<rsub|0>><rsup|\<cal-W\>><around*|(|<wide|0|\<vect\>>,\<mathi\>*\<omega\><rsub|n>|)><separating-space|0.2em>=<separating-space|0.2em><big|int><frac|\<mathd\><wide|k|\<vect\>>|\<cal-V\><rsub|<text|<name|bz>>>>*<frac|<neg|\<mathe\><rsup|-\<mathi\>*<wide|k|\<vect\>>\<cdot\><wide|0|\<vect\>>>>|\<mathi\>*\<omega\><rsub|n>-<with|color|dark
+    cyan|\<epsilon\>><around*|(|<wide|k|\<vect\>>|)>+\<mu\>><separating-space|0.2em>=<separating-space|0.2em><big|int><frac|\<mathd\><wide|k|\<vect\>>|\<cal-V\><rsub|<text|<name|bz>>>>
     <big|int>\<mathd\>\<epsilon\> <frac|\<delta\><around*|(|\<epsilon\>-<with|color|dark
     cyan|\<epsilon\>><around*|(|<wide|k|\<vect\>>|)>|)>|\<mathi\>*\<omega\><rsub|n>-\<epsilon\>+\<mu\>><separating-space|0.2em>=<separating-space|0.2em><big|int>\<mathd\>\<epsilon\>
     <frac|<with|color|dark cyan|\<eta\><rsup|<text|latt>>><around*|(|\<epsilon\>|)>|\<mathi\>*\<omega\><rsub|n>-\<epsilon\>+\<mu\>>
@@ -925,7 +939,7 @@
 
   From (<reference|interacting-green-func-self-energy>), the <strong|local
   Green's function> <math|<with|color|#bf4040|G><rsub|<text|loc>><around*|(|\<mathi\>\<omega\><rsub|n>|)>=<with|color|#bf4040|G><rsub|i
-  i><around*|(|\<mathi\>\<omega\><rsub|n>|)>=<smash|<big|sum><rsub|<wide|k|\<vect\>>><with|color|#bf4040|G><around*|(|<wide|k|\<vect\>>,\<mathi\>\<omega\><rsub|n>|)>>>,
+  i><around*|(|\<mathi\>\<omega\><rsub|n>|)>=<smash|<big|sum><rsub|<wide|k|\<vect\>>><rprime|'><with|color|#bf4040|G><around*|(|<wide|k|\<vect\>>,\<mathi\>\<omega\><rsub|n>|)>>>,
   useful in DMFT, can be expressed as a function of the density of states of
   the non-interacting problem : exactly as for
   (<reference|G0loc-with-Hilbert-tr-DOS>), we have
@@ -1254,7 +1268,7 @@
   and <math|<with|color|#bf4040|G><rsub|<text|loc>>> are not independant : on
   the lattice site, recall that (<reference|def-self-energy>) also implies
   the relation (<reference|Gloc-with-Hilbert-tr-DOS>) which stems from the
-  evaluation of <math|<with|color|#bf4040|G><rsub|<text|loc>><around*|(|\<mathi\>*\<omega\><rsub|n>|)>=<big|sum><rsub|<wide|k|\<vect\>>><frac|1|<with|math-condensed|true|\<mathi\>*\<omega\><rsub|n>-<with|color|dark
+  evaluation of <math|<with|color|#bf4040|G><rsub|<text|loc>><around*|(|\<mathi\>*\<omega\><rsub|n>|)>=<big|sum><rsub|<wide|k|\<vect\>>><rprime|'><frac|1|<with|math-condensed|true|\<mathi\>*\<omega\><rsub|n>-<with|color|dark
   cyan|\<epsilon\><rsub|<wide|k|\<vect\>>>>+\<mu\>-<with|color|#bf4040|\<Sigma\>><rsub|<text|loc>><around*|(|\<mathi\>
   \<omega\><rsub|n>|)>>>>, connecting <math|<with|color|#bf4040|\<Sigma\>><rsub|<text|loc>>>
   and <math|<with|color|#bf4040|G><rsub|<text|loc>>> through the density of
@@ -1349,7 +1363,7 @@
   blue|\<cal-G\><rsub|0>>,<with|color|#bf4040|U>|]>|<point|0.860457704048728|0.418887511865061>>|<with|arrow-end|\<gtr\>|<arc|<point|0.477386|0.404184>|<point|-1.15974423283631|0.210704737755974>|<point|-2.0080754072155|0.865556872364468>>>|<math-at|<with|color|#bf4040|G><rsub|<text|loc>><separating-space|0.2em><above|=|!><separating-space|0.2em><with|color|#bf4040|G><rsup|<text|<with|color|dark
   magenta|imp>>>|<point|-3.61543973761817|1.25251495190585>>|<text-at|self-consistency|<point|-3.86789689606703|1.96829263208664>>|<with|arrow-end|\<gtr\>|<arc|<point|-2.54386351734972|2.38362318441143>|<point|-2.17178844086762|2.88964528842709>|<point|-1.36810627566629|3.20218835267205>>>|<math-at|<very-small|<around*|(|<with|color|dark
   blue|\<cal-G\><rsub|0>><rsup|-1>=<with|color|#bf4040|\<Sigma\>><rsub|<text|loc>>+<with|color|#bf4040|G><rsub|<text|loc>><rsup|-1><text|
-  with ><with|color|#bf4040|G><rsub|<text|loc>><around*|(|\<mathi\>*\<omega\><rsub|n>|)>=<big|sum><rsub|k><frac|1|<with|math-condensed|true|\<mathi\>*\<omega\><rsub|n>-<with|color|dark
+  with ><with|color|#bf4040|G><rsub|<text|loc>><around*|(|\<mathi\>*\<omega\><rsub|n>|)>=<big|sum><rsub|k><rprime|'><frac|1|<with|math-condensed|true|\<mathi\>*\<omega\><rsub|n>-<with|color|dark
   cyan|\<epsilon\><rsub|k>>+\<mu\>-<with|color|#bf4040|\<Sigma\>><around*|(|\<mathi\>
   \<omega\><rsub|n>|)>>>|)>>|<point|-1.06085494584241|2.98521346084943>>|<text-at|determine
   the dynamical mean field|<point|-0.143635|4.07047378055839>>|<math-at|<with|color|dark
@@ -1471,7 +1485,7 @@
     introduced), which yields
 
     <\equation*>
-      <with|color|dark blue|\<Delta\>><separating-space|0.2em>=<separating-space|0.2em><big|sum><rsub|i,j><wide*|t<rsub|o
+      <with|color|dark blue|\<Delta\>><separating-space|0.2em>=<separating-space|0.2em><big|sum><rsub|<around*|\<langle\>|o,i|\<rangle\>>><big|sum><rsub|<around*|\<langle\>|o,j|\<rangle\>>><wide*|t<rsub|o
       i>*t<rsub|o j>|\<wide-underbrace\>><rsub|t<rsup|2>/z>*<wide*|G<rsub|i
       i>|\<wide-underbrace\>><rsub|G<rsub|<text|loc>>>*\<delta\><rsub|i
       j><separating-space|0.2em>=<separating-space|0.2em><with|color|dark
@@ -1751,16 +1765,22 @@
   cyan|<smash|\<epsilon\><around*|(|<wide|k|\<vect\>>|)>>>=FT<around*|[|<with|color|dark
   cyan|t<rsub|i j>>|]><around*|(|<wide|k|\<vect\>>|)>>
   (<reference|hubbard-non-interacting-band>) and its density of states
-  <math|<with|color|dark cyan|\<eta\><rsup|<text|latt>>><around*|(|\<epsilon\>|)>=<big|sum><rsub|<wide|k|\<vect\>>>\<delta\><around*|(|\<epsilon\>-<with|color|dark
+  <math|<with|color|dark cyan|\<eta\><rsup|<text|latt>>><around*|(|\<epsilon\>|)>=<big|int><frac|\<mathd\><wide|k|\<vect\>>|\<cal-V\><rsub|<text|<name|bz>>>>
+  \<delta\><around*|(|\<epsilon\>-<with|color|dark
   cyan|\<epsilon\>><around*|(|<wide|k|\<vect\>>|)>|)>>. For example, the term
 
   <\small>
     <\eqnarray*>
       <tformat|<table|<row|<cell|<big|sum><rsub|i>t<rsub|o i>*G<rsub|i
-      o>>|<cell|=>|<cell|<big|sum><rsub|i><big|sum><rsub|<wide|k|\<vect\>>>\<mathe\><rsup|\<mathi\>*<wide|k|\<vect\>>\<cdot\><around*|(|-<wide|R|\<vect\>><rsub|i>|)>>*\<epsilon\><around*|(|<wide|k|\<vect\>>|)>*<big|sum><rsub|<wide|k|\<vect\>><rprime|'>>\<mathe\><rsup|\<mathi\>*<wide|k|\<vect\>><rprime|'>\<cdot\><wide|R|\<vect\>><rsub|i>>*G<around*|(|<wide|k|\<vect\>><rprime|'>|)>>>|<row|<cell|>|<cell|=>|<cell|<big|sum><rsub|<wide|k|\<vect\>>>\<epsilon\><around*|(|<wide|k|\<vect\>>|)>*G<around*|(|<wide|k|\<vect\>>|)><space|1em><text|because><space|1em><big|sum><rsub|i>\<mathe\><rsup|\<mathi\>*<around*|(|<wide|k|\<vect\>><rprime|'>-<wide|k|\<vect\>>|)>\<cdot\><wide|R|\<vect\>><rsub|i>>=\<delta\><around*|(|<wide|k|\<vect\>><rprime|'>-<wide|k|\<vect\>>|)>>>|<row|<cell|<text|and
+      o>>|<cell|=>|<cell|<big|sum><rsub|i><big|int><frac|\<mathd\><wide|k|\<vect\>>|\<cal-V\><rsub|<text|<name|bz>>>>
+      \<mathe\><rsup|\<mathi\>*<wide|k|\<vect\>>\<cdot\><around*|(|-<wide|R|\<vect\>><rsub|i>|)>>*\<epsilon\><around*|(|<wide|k|\<vect\>>|)>*<big|int><frac|\<mathd\><wide|k|\<vect\>><rprime|'>|\<cal-V\><rsub|<text|<name|bz>>>>
+      \<mathe\><rsup|\<mathi\>*<wide|k|\<vect\>><rprime|'>\<cdot\><wide|R|\<vect\>><rsub|i>>*G<around*|(|<wide|k|\<vect\>><rprime|'>|)>>>|<row|<cell|>|<cell|=>|<cell|<big|int><frac|\<mathd\><wide|k|\<vect\>>|\<cal-V\><rsub|<text|<name|bz>>>>
+      \<epsilon\><around*|(|<wide|k|\<vect\>>|)>*G<around*|(|<wide|k|\<vect\>>|)><space|1em><text|because><space|1em><big|sum><rsub|i>\<mathe\><rsup|\<mathi\>*<around*|(|<wide|k|\<vect\>><rprime|'>-<wide|k|\<vect\>>|)>\<cdot\><wide|R|\<vect\>><rsub|i>>=\<delta\><around*|(|<wide|k|\<vect\>><rprime|'>-<wide|k|\<vect\>>|)>>>|<row|<cell|<text|and
       similarly,<space|1em>><big|sum><rsub|i,j>t<rsub|o i>*t<rsub|o
-      j>*G<rsub|i j>>|<cell|=>|<cell|<big|sum><rsub|<wide|k|\<vect\>>>\<epsilon\><around*|(|<wide|k|\<vect\>>|)><rsup|2>*G<around*|(|<wide|k|\<vect\>>|)>>>|<row|<cell|<text|and<space|1em>>G<rsub|o
-      o>>|<cell|=>|<cell|<big|sum><rsub|<wide|k|\<vect\>>>G<around*|(|<wide|k|\<vect\>>|)>>>>>
+      j>*G<rsub|i j>>|<cell|=>|<cell|<big|int><frac|\<mathd\><wide|k|\<vect\>>|\<cal-V\><rsub|<text|<name|bz>>>>
+      \<epsilon\><around*|(|<wide|k|\<vect\>>|)><rsup|2>*G<around*|(|<wide|k|\<vect\>>|)>>>|<row|<cell|<text|and<space|1em>>G<rsub|o
+      o>>|<cell|=>|<cell|<big|int><frac|\<mathd\><wide|k|\<vect\>>|\<cal-V\><rsub|<text|<name|bz>>>>
+      G<around*|(|<wide|k|\<vect\>>|)>>>>>
     </eqnarray*>
   </small>
 
@@ -1772,20 +1792,22 @@
   \<omega\><rsub|n>|)>>, these three terms reads (for <math|l=1,2,0> resp.)
 
   <\equation*>
-    <big|sum><rsub|<wide|k|\<vect\>>><frac|\<epsilon\><around*|(|<wide|k|\<vect\>>|)><rsup|l>|\<zeta\>-\<epsilon\><around*|(|<wide|k|\<vect\>>|)>><separating-space|0.2em>=<separating-space|0.2em><big|int>\<mathd\>\<epsilon\>
-    <frac|\<epsilon\><rsup|l>|\<zeta\>-\<epsilon\>>*<big|sum><rsub|<wide|k|\<vect\>>>\<delta\><around*|(|\<epsilon\>-\<epsilon\><around*|(|<wide|k|\<vect\>>|)>|)><separating-space|0.2em><above|=|<text|
+    <big|int><frac|\<mathd\><wide|k|\<vect\>>|\<cal-V\><rsub|<text|<name|bz>>>>
+    <frac|\<epsilon\><around*|(|<wide|k|\<vect\>>|)><rsup|l>|\<zeta\>-\<epsilon\><around*|(|<wide|k|\<vect\>>|)>><separating-space|0.2em>=<separating-space|0.2em><big|int>\<mathd\>\<epsilon\>
+    <frac|\<epsilon\><rsup|l>|\<zeta\>-\<epsilon\>>*<big|int><frac|\<mathd\><wide|k|\<vect\>>|\<cal-V\><rsub|<text|<name|bz>>>>
+    \<delta\><around*|(|\<epsilon\>-\<epsilon\><around*|(|<wide|k|\<vect\>>|)>|)><separating-space|0.2em><above|=|<text|
     def >><separating-space|0.2em><big|int>\<mathd\>\<epsilon\>*\<eta\><around*|(|\<epsilon\>|)>*<frac|\<epsilon\><rsup|l>|\<zeta\>-\<epsilon\>><separating-space|0.2em>\<backassign\><separating-space|0.2em><with|color|dark
     cyan|h<rsub|l>><around*|(|\<zeta\>|)>
   </equation*>
 
   Then,
 
-  <\equation*>
+  <\equation>
     <with|color|dark blue|\<Delta\>><separating-space|0.2em>=<separating-space|0.2em><with|color|dark
     cyan|h<rsub|2>><around*|(|<with|color|#bf4040|\<zeta\>>|)>-<with|color|dark
     cyan|h<rsub|1>><around*|(|<with|color|#bf4040|\<zeta\>>|)><rsup|2>/<with|color|dark
     cyan|h<rsub|0>><around*|(|<with|color|#bf4040|\<zeta\>>|)>
-  </equation*>
+  </equation>
 
   Using the properties<math|<flag|GKKR (37) p23|green>>
   <math|h<rsub|1><around*|(|\<zeta\>|)>=\<zeta\>\<cdot\>h<rsub|0><around*|(|\<zeta\>|)>-1>
@@ -1876,6 +1898,19 @@
     qui est 1-body, calculable directement depuis
     <math|G<around*|(|\<mathi\>\<omega\><rsub|n>|)>> (mais nécessite la
     continuation analytique ?)
+
+    For a rectangular lattice of dimension <math|d> of hoppings
+    <math|t<rsub|m>> and lattice constants <math|a<rsub|m>> in directions
+    <math|<wide|e|\<vect\>><rsub|m>>, if we add to the hopping
+    <math|t<rsub|1>> an asymmetry <math|+\<varepsilon\>> in the direction
+    <math|+<wide|e|\<vect\>><rsub|1>> and <math|-\<varepsilon\>> in the
+    direction <math|-<wide|e|\<vect\>><rsub|1>>, then
+
+    <\eqnarray*>
+      <tformat|<table|<row|<cell|\<epsilon\><rprime|'><around*|(|<wide|k|\<vect\>>|)><separating-space|0.2em>=<separating-space|0.2em><big|sum><rsub|j>t<rsub|i
+      j>*\<mathe\><rsup|\<mathi\>*<wide|k|\<vect\>>*<wide|R|\<vect\>><rsub|i
+      j>>>|<cell|=>|<cell|<big|sum><rsub|m=1><rsup|d><around*|(|t<rsub|m,\<rightarrow\>>*\<mathe\><rsup|\<mathi\>*k<rsub|m>*a<rsub|m>>+t<rsub|m,\<leftarrow\>>*\<mathe\><rsup|-\<mathi\>*k<rsub|m>*a<rsub|m>>|)>>>|<row|<cell|>|<cell|=>|<cell|<around*|(|t<rsub|1>+\<varepsilon\>|)>*\<mathe\><rsup|\<mathi\>*k<rsub|1>*a<rsub|1>>+<around*|(|t<rsub|1>-\<varepsilon\>|)>*\<mathe\><rsup|-\<mathi\>*k<rsub|1>*a<rsub|1>>+<big|sum><rsub|m=2><rsup|d>t<rsub|m>*<around*|(|\<mathe\><rsup|\<mathi\>*k<rsub|m>*a<rsub|m>>+\<mathe\><rsup|-\<mathi\>*k<rsub|m>*a<rsub|m>>|)>>>|<row|<cell|>|<cell|=>|<cell|2*\<varepsilon\>*\<mathi\>*sin<around*|(|k<rsub|1>*a<rsub|1>|)>+<big|sum><rsub|m=1><rsup|d>2*t<rsub|m>*cos<around*|(|k<rsub|m>*a<rsub|m>|)>>>>>
+    </eqnarray*>
   </itemize-dot>
 </body>
 
@@ -1888,16 +1923,16 @@
 
 <\references>
   <\collection>
-    <associate|DMFT-interacting-green-func-self-energy|<tuple|37|10>>
-    <associate|DMFT-local-approx|<tuple|36|10>>
-    <associate|G0loc-with-Hilbert-tr-DOS|<tuple|27|7>>
-    <associate|Gimp-def|<tuple|39|?>>
-    <associate|Gloc-with-Hilbert-tr-DOS|<tuple|35|10>>
-    <associate|Hilbert-tr-DOS|<tuple|26|7>>
-    <associate|Hubbard-model|<tuple|28|8>>
-    <associate|IPT|<tuple|48|15>>
-    <associate|LISA-self-consistency|<tuple|40|11>>
-    <associate|atomic-limit-self-energy|<tuple|33|9>>
+    <associate|DMFT-interacting-green-func-self-energy|<tuple|38|10>>
+    <associate|DMFT-local-approx|<tuple|37|10>>
+    <associate|G0loc-with-Hilbert-tr-DOS|<tuple|28|7>>
+    <associate|Gimp-def|<tuple|40|?>>
+    <associate|Gloc-with-Hilbert-tr-DOS|<tuple|36|10>>
+    <associate|Hilbert-tr-DOS|<tuple|27|7>>
+    <associate|Hubbard-model|<tuple|29|8>>
+    <associate|IPT|<tuple|49|15>>
+    <associate|LISA-self-consistency|<tuple|41|11>>
+    <associate|atomic-limit-self-energy|<tuple|34|9>>
     <associate|auto-1|<tuple|1|1>>
     <associate|auto-10|<tuple|2|8>>
     <associate|auto-11|<tuple|2.1|8>>
@@ -1930,9 +1965,10 @@
     <associate|auto-7|<tuple|3|6>>
     <associate|auto-8|<tuple|1.4|6>>
     <associate|auto-9|<tuple|4|7>>
-    <associate|bath-G-with-Delta-func|<tuple|42|12>>
-    <associate|def-self-energy|<tuple|31|8>>
-    <associate|dyson-impurity|<tuple|43|12>>
+    <associate|bath-G-with-Delta-func|<tuple|43|12>>
+    <associate|def-self-energy|<tuple|32|8>>
+    <associate|def-wannier|<tuple|23|?>>
+    <associate|dyson-impurity|<tuple|44|12>>
     <associate|footnote-1|<tuple|1|2>>
     <associate|footnote-10|<tuple|10|11>>
     <associate|footnote-11|<tuple|11|11>>
@@ -1967,31 +2003,32 @@
     <associate|footnr-7|<tuple|7|9>>
     <associate|footnr-8|<tuple|8|9>>
     <associate|footnr-9|<tuple|9|9>>
-    <associate|green-atomic-limit|<tuple|30|8>>
-    <associate|green-func-from-spectral-func|<tuple|9|2>>
-    <associate|green-func-matsubara-IFT|<tuple|15|3>>
-    <associate|green-func-matsubara-freq-from-spectral-func|<tuple|18|5>>
-    <associate|green-func-matsubara-from-spectral-func|<tuple|19|5>>
-    <associate|green-func-matsubara-non-interacting|<tuple|20|6>>
-    <associate|green-func-non-interacting|<tuple|11|3>>
-    <associate|green-func-thermal|<tuple|12|3>>
-    <associate|green-func-time-FT|<tuple|7|2>>
-    <associate|hubbard-non-interacting-band|<tuple|29|8>>
-    <associate|impurity-action|<tuple|41|12>>
-    <associate|impurity-bath-Delta-from-tij|<tuple|49|16>>
-    <associate|impurity-hamiltonian|<tuple|38|?>>
+    <associate|green-atomic-limit|<tuple|31|8>>
+    <associate|green-func-from-spectral-func|<tuple|10|2>>
+    <associate|green-func-matsubara-IFT|<tuple|16|3>>
+    <associate|green-func-matsubara-freq-from-spectral-func|<tuple|19|5>>
+    <associate|green-func-matsubara-from-spectral-func|<tuple|20|5>>
+    <associate|green-func-matsubara-non-interacting|<tuple|21|6>>
+    <associate|green-func-non-interacting|<tuple|12|3>>
+    <associate|green-func-spatial-FT|<tuple|7|?>>
+    <associate|green-func-thermal|<tuple|13|3>>
+    <associate|green-func-time-FT|<tuple|8|2>>
+    <associate|hubbard-non-interacting-band|<tuple|30|8>>
+    <associate|impurity-action|<tuple|42|12>>
+    <associate|impurity-bath-Delta-from-tij|<tuple|50|16>>
+    <associate|impurity-hamiltonian|<tuple|39|?>>
     <associate|impurity-solving|<tuple|2.7|15>>
-    <associate|interacting-green-func-self-energy|<tuple|34|9>>
-    <associate|matsubara-green-func-def|<tuple|14|3>>
+    <associate|interacting-green-func-self-energy|<tuple|35|9>>
+    <associate|matsubara-green-func-def|<tuple|15|3>>
     <associate|section-cavity-method|<tuple|2.8|16>>
     <associate|section-lisa-self-consistency|<tuple|2.4.2|12>>
-    <associate|self-consistent-eq-Gloc|<tuple|44|12>>
-    <associate|self-consistent-eq-Gloc-fromcavity|<tuple|51|17>>
-    <associate|self-consistent-eq-Hilbert-tr-zeta-fromcavity|<tuple|50|17>>
-    <associate|self-consistent-eq-reciproc-Hilbert|<tuple|45|13>>
-    <associate|self-consistent-eq-reciproc-Hilbert-fromcavity|<tuple|52|17>>
+    <associate|self-consistent-eq-Gloc|<tuple|45|12>>
+    <associate|self-consistent-eq-Gloc-fromcavity|<tuple|53|17>>
+    <associate|self-consistent-eq-Hilbert-tr-zeta-fromcavity|<tuple|52|17>>
+    <associate|self-consistent-eq-reciproc-Hilbert|<tuple|46|13>>
+    <associate|self-consistent-eq-reciproc-Hilbert-fromcavity|<tuple|54|17>>
     <associate|spectral-func-NIEG|<tuple|4|1>>
-    <associate|spectral-func-beta|<tuple|17|5>>
+    <associate|spectral-func-beta|<tuple|18|5>>
     <associate|spectral-func-def|<tuple|1|1>>
   </collection>
 </references>
