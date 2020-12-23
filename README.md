@@ -1,5 +1,7 @@
 # DMFT solver
 
+[Paper](https://www.overleaf.com/project/5fe23a628b46e055ac9a5f4d)
+
 ## Resources
 - [Initial paper](https://www.physics.rutgers.edu/~gkguest/papers/rmp63_1996_p13_Kotliar.pdf)
 - [Lecture notes](https://raw.githubusercontent.com/romainfd/DMFT-solver/main/notes/dmft.pdf)
