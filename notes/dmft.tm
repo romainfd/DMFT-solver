@@ -1,4 +1,4 @@
-<TeXmacs|1.99.14>
+<TeXmacs|1.99.16>
 
 <style|<tuple|base|british>>
 
@@ -11,6 +11,9 @@
   Very interesting ressource : <slink|http://perso.neel.cnrs.fr/xavier.blase/OLDER/GF1_Blase.pdf>.
 
   <subsection|Spectral function>
+
+  Let a mechanical system described by the grand canonical ensemble such that
+  its particle number is not fixed.
 
   The <em|one-particule spectral function>
   <math|A<around*|(|<wide|k|\<vect\>>,\<omega\>|)>>, or spectral density, is
@@ -228,10 +231,12 @@
 
   But from time evolution <math|\<b-c\><around*|(|t|)>=\<mathe\><rsup|-\<mathi\>*\<b-H\><rsub|<math-up|<name|gc>>><separating-space|0.2em>t>*\<b-c\>*\<mathe\><rsup|\<mathi\>*\<b-H\><rsub|<math-up|<name|gc>>><separating-space|0.2em>t>>,
   we would then get a nasty <math|\<mathe\><rsup|-<around*|(|\<beta\>+\<mathi\>*t|)>*\<b-H\><rsub|<math-up|<name|gc>>>>>
-  which destoys the nice analytical properties of the Green's function and
-  generates numerical instability because of large oscillation. So let's go
-  fully on the imaginary axis and \Ptake <math|t> imaginary\Q
-  <math|\<rightarrow\>> for any operator <math|\<b-O\>>, define<\footnote>
+  which destroys the nice analytical properties of the Green's function :
+  indeed, the exponent can be anywhere in the complex plane while we only had
+  a small imaginary shift in the zero temperature case and generates
+  numerical instability as it induces large oscillations. So let's go fully
+  on the imaginary axis and \Ptake <math|t> imaginary\Q <math|\<rightarrow\>>
+  for any operator <math|\<b-O\>>, define<\footnote>
     <em|Warning !> The imaginary time Heisenberg rep.<nbsp>does not preserve
     the conjugation operation : <math|<around*|(|\<b-O\><around*|(|\<tau\>|)>|)><rsup|\<dag\>>=\<b-O\><around*|(|-\<tau\>|)>\<neq\>\<b-O\><rsup|\<dag\>><around*|(|\<tau\>|)>>.
     Moreover, we should write <math|\<b-O\><around*|(|-\<mathi\>*\<tau\>|)>>
@@ -477,8 +482,13 @@
   <small|[ Direct computation from the hamiltonian
   <math|\<b-H\>=<big|sum><rsub|<wide|k|\<vect\>>>\<epsilon\><around*|(|<wide|k|\<vect\>>|)>*\<b-c\><rsub|<wide|k|\<vect\>>><rsup|\<dag\>>*\<b-c\><rsub|<wide|k|\<vect\>>>>
   : <slink|http://folk.ntnu.no/johnof/green-2013.pdf> p.<nbsp>18. ]> which is
-  <em|independant of the temperature>. Computing the Matsubara sum, we get
-  (again from the tables)
+  <em|independent of the temperature><\footnote>
+    The only kind of temperature \Pdependence\Q we can have for
+    non-interacting systems is by populating the single particle states
+    differently, namely according to a Fermi distribution function. But the
+    Green's function still doesn't depend explicitly on the temperature even
+    in that case.
+  </footnote>. Computing the Matsubara sum, we get (again from the tables)
 
   <\equation*>
     <with|color|dark cyan|G<rsub|0,\<beta\>>><around*|(|<wide|k|\<vect\>>,\<tau\>|)>=-\<mathe\><rsup|<around*|(|<with|color|dark
@@ -698,8 +708,10 @@
 
   <page-break*><section|The Hubbard model and the DMFT LISA approximation>
 
-  Single-orbital nearest-neighbor Hubbard model on a lattice
-  <math|<around*|{|i|}>> :
+  The Hubbard model is the simplest model to describe the interplay between
+  the local Coulomb interaction and the kinetic energy. In particular, the
+  hamiltonian of a single-orbital nearest-neighbor Hubbard model on a lattice
+  <math|<around*|{|i|}>> writes as :
 
   <\equation>
     \<b-H\><separating-space|0.2em>=<smash|<separating-space|0.2em><wide*|-<big|sum><rsub|<around*|\<langle\>|i,j|\<rangle\>>,\<sigma\>><with|color|dark
@@ -744,11 +756,17 @@
   recover the non-interacting Green's function
   (<reference|green-func-matsubara-non-interacting>).
 
+  The eigenstates of this hamiltonian are Slater determinants of Bloch waves,
+  where the states are described with the quantum number <math|k>.
+
   <subsubsection|Atomic limit>
 
   The <math|<with|color|#bf4040|U>\<gg\>t> limit leads to a sum of isolated
   sites <math|\<b-H\><rsub|<math-up|<name|gc>>><rsup|<around*|(|1|)>><rsub|>=<with|color|#bf4040|U>*\<b-n\><rsub|\<uparrow\>>*\<b-n\><rsub|\<downarrow\>>-\<mu\>*<around*|(|\<b-n\><rsub|\<uparrow\>>+\<b-n\><rsub|\<downarrow\>>|)>>.
-  The possible states are
+  The electrons stay on their respective atom to minimize Coulomb
+  interactions, and the eigenstates of the hamiltonian are Slater
+  determinants of localized states on the atom. The possible states,
+  described with the quantum number <math|n>, are
 
   <\small>
     <\padded-center>
@@ -786,6 +804,18 @@
   <\equation*>
     <with|color|#bf4040|G><rsub|\<beta\>><around*|(|\<mathi\>*\<omega\><rsub|n>|)>=<tfrac|1|2>*<frac|1|\<mathi\>*\<omega\><rsub|n>-<tfrac|<with|color|#bf4040|U>|2>>+<tfrac|1|2>*<frac|1|\<mathi\>*\<omega\><rsub|n>+<tfrac|<with|color|#bf4040|U>|2>>=<frac|-\<mathi\>*\<omega\><rsub|n>|\<omega\><rsub|n><rsup|2>+<around*|<left|(|-1>|<tfrac|<with|color|#bf4040|U>|2>|<right|)|-1>><rsup|2>><space|1em>\<Leftrightarrow\><space|1em><with|color|#bf4040|G><rsub|\<beta\>><around*|(|\<tau\>|)>=-<frac|1|2>*<frac|\<mathe\><rsup|-\<tau\>*U/2>|1+\<mathe\><rsup|-\<beta\>*U/2>>-<frac|1|2>*<frac|\<mathe\><rsup|+\<tau\>*U/2>|1+\<mathe\><rsup|+\<beta\>*U/2>>
   </equation*>
+
+  <subsubsection|In between>
+
+  In between, electrons both want to be localized and delocalized. In fact,
+  their behavior separates on energy scales :
+
+  <\itemize-dot>
+    <item>At low energy, electrons stay band-like but with heavy mass, which
+    leads to delocalization.
+
+    <item>At high energy, they display localized behavior.
+  </itemize-dot>
 
   <subsection|Self-energy>
 
@@ -1083,7 +1113,7 @@
     solve it (at least numerically). But there is actually no specific
     conditions on it, in particular it does not need to be non-interacting.
   </footnote> We can't reduce to non-interacting problem if we want to
-  describe the on-site repeulsion. This is really still a many-body problem,
+  describe the on-site repulsion. This is really still a many-body problem,
   the site being described by creation operators
   <math|<smash|<with|color|dark magenta|\<b-c\>><rsup|\<dag\>><rsub|\<sigma\>>>>,
   but a much simpler one where spatial fluctuations have been eliminated.
@@ -1132,11 +1162,15 @@
   blue|\<b-a\>><rsub|\<ell\> \<sigma\>><rsup|\<dag\>>|}>> is described by
   effective energy levels <math|<with|color|dark blue|E<rsub|\<ell\>>>>, here
   discrete, but it is a band structure really, which can be <em|metalic> or
-  <em|insulating> depending if there are states at the Fermi energy
-  <math|\<mu\>> or not. The effective coupling constants
-  <math|<with|color|dark blue|V<rsub|\<ell\>>>> and effective energy levels
-  <math|<with|color|dark blue|E<rsub|\<ell\>>>> <em|are choosen/solved so as
-  to reproduce our initial Hubbard system self-consistently> at a given
+  <em|insulating><\footnote>
+    Here, only local Coulomb interactions are considered. Therefore, systems
+    such as semi-conductors with long range interactions cannot be described
+    by this model.
+  </footnote> depending if there are states at the Fermi energy <math|\<mu\>>
+  or not. The effective coupling constants <math|<with|color|dark
+  blue|V<rsub|\<ell\>>>> and effective energy levels <math|<with|color|dark
+  blue|E<rsub|\<ell\>>>> <em|are choosen/solved so as to reproduce our
+  initial Hubbard system self-consistently> at a given
   <math|<with|color|#bf4040|U>>. However, there is an unnecessary freedom of
   choice and complexity in this description and we'd better of using an
   action representation<\footnote>
@@ -1145,7 +1179,7 @@
     magenta|\<b-c\>><rsup|\<dag\>>*\<mathD\><with|color|dark
     magenta|\<b-c\>><separating-space|0.2em>\<mathe\><rsup|-\<b-S\><around*|[|<with|color|dark
     magenta|\<b-c\>><rsup|\<dag\>>,<with|color|dark
-    magenta|\<b-c\>>|]>><rsup|>>.
+    magenta|\<b-c\>>|]>><rsup|>> in Fock space.
   </footnote> of <math|<math|\<b-H\><rsub|<text|imp>><rsup|<math-up|<name|gc>>>>>
   :
 
@@ -1160,10 +1194,10 @@
     magenta|\<b-n\>><rsub|\<downarrow\>><around*|(|\<tau\>|)><label|impurity-action>
   </equation>
 
-  (and <math|<big|sum><rsub|\<sigma\>><with|color|dark
+  (or <math|<big|sum><rsub|\<sigma\>><with|color|dark
   magenta|\<b-c\>><rsub|\<sigma\>><rsup|\<dag\>><around*|(|\<tau\>|)>*<with|color|dark
   blue|\<cal-G\><rsub|0>><rsub|,\<sigma\>><around*|(|\<tau\>-\<tau\><rprime|'>|)><rsup|-1>*<with|color|dark
-  magenta|\<b-c\>><rsub|\<sigma\>><around*|(|\<tau\>|)>> is there is magnetic
+  magenta|\<b-c\>><rsub|\<sigma\>><around*|(|\<tau\>|)>> if there is magnetic
   order) where the degrees of freedom of the bath has been formally
   integrated<\footnote>
     The hamiltonian <math|\<b-H\><rsub|<text|imp>>> is <em|quadratic> in
@@ -1200,6 +1234,8 @@
   blue|\<cal-G\><rsub|0>><around*|(|\<mathi\>*\<omega\><rsub|n>|)>\<Leftrightarrow\><with|color|dark
   blue|\<Delta\>><around*|(|\<mathi\>*\<omega\><rsub|n>|)>>) and goes back
   somewhere in the bath\Q<\footnote>
+    The \Pwaits a bit\Q part cannot be implemented in an Hamiltonian unless
+    there is an infinite number of baths, hence the path integral formalism.
     More comments : <verbatim|mesm-silke-4.mp4> @ 1:26:20
   </footnote>. The second term <math|<with|color|#bf4040|U>*<with|color|dark
   magenta|\<b-n\>><rsub|\<uparrow\>><around*|(|\<tau\>|)>*<with|color|dark
@@ -1214,6 +1250,38 @@
   blue|\<cal-G\><rsub|0>>> is already the non-interacting Green's function
   <em|of the impurity model>. <with|color|#faa|[todo; see
   <verbatim|mesm-silke-4.mp4> @ 1:35:30]>\ 
+
+  Indeed, in Fourier space, the Hamiltonian is diagonalized by Slater
+  determinants of Bloch waves,
+
+  <\equation*>
+    \<b-H\><rsub|0>=-<big|sum><rsub|<around*|\<langle\>|i,j|\<rangle\>>,\<sigma\>><with|color|dark
+    cyan|t<rsub|i j>>*<around*|(|\<b-c\><rsub|i
+    \<sigma\>><rsup|\<dag\>>*\<b-c\><rsub|j \<sigma\>>+\<b-c\><rsub|j
+    \<sigma\>><rsup|\<dag\>>*\<b-c\><rsub|i
+    \<sigma\>>|)>=<big|sum><rsub|k,\<sigma\>>\<varepsilon\><rsub|k>*\<b-c\><rsub|k
+    \<sigma\>><rsup|\<dag\>>*\<b-c\><rsub|k \<sigma\>>
+  </equation*>
+
+  Therefore, the Green's function we are looking for is of the form
+
+  <\equation*>
+    <with|color|dark blue|\<cal-G\><rsub|0>><around*|(|\<mathi\>*\<omega\>|)>=<frac|1|\<mathi\>*\<omega\>-\<epsilon\><rsub|0>+\<mu\>-\<varepsilon\><rsub|k>>
+  </equation*>
+
+  Then, using the action formalism, and doing the Fourier transform in
+  Matsubara space, we get
+
+  <\equation*>
+    <with|color|dark magenta|\<b-S\><rsup|<text|imp>>><separating-space|0.2em>=<separating-space|0.2em><rigid|-<big|int><rsub|0><rsup|\<beta\>>\<mathd\>\<tau\>
+    <big|int><rsub|0><rsup|\<beta\>>\<mathd\>\<tau\><rprime|'>><big|sum><rsub|\<sigma\>>
+    <with|color|dark magenta|\<b-c\>><rsub|\<sigma\>><rsup|\<dag\>><around*|(|\<tau\>|)>*<around*|(|\<partial\><rsub|\<tau\>>+\<mu\>-\<varepsilon\><rsub|k>|)>*<with|color|dark
+    magenta|\<b-c\>><rsub|\<sigma\>><around*|(|\<tau\>|)>=<big|sum><rsub|n>\<b-c\><rsub|
+    \<sigma\>><rsup|\<dag\>><around*|(|i\<omega\><rsub|n>|)>*<around*|(|i\<omega\><rsub|n>+\<mu\>-\<varepsilon\><rsub|k>|)>*\<b-c\><rsub|\<sigma\>>
+  </equation*>
+
+  From that, as the quantity inside the sum is gaussian, we can deduce the
+  expression of <math|\<cal-G\><rsub|0>>.
 
   <small|\<#26A0\> It is however <em|not>, in general, the non-interacting
   Green's function of the original problem <math|<with|color|dark
@@ -1923,42 +1991,43 @@
 
 <\references>
   <\collection>
-    <associate|DMFT-interacting-green-func-self-energy|<tuple|38|10>>
+    <associate|DMFT-interacting-green-func-self-energy|<tuple|38|11>>
     <associate|DMFT-local-approx|<tuple|37|10>>
     <associate|G0loc-with-Hilbert-tr-DOS|<tuple|28|7>>
-    <associate|Gimp-def|<tuple|40|?>>
+    <associate|Gimp-def|<tuple|40|11>>
     <associate|Gloc-with-Hilbert-tr-DOS|<tuple|36|10>>
     <associate|Hilbert-tr-DOS|<tuple|27|7>>
     <associate|Hubbard-model|<tuple|29|8>>
-    <associate|IPT|<tuple|49|15>>
-    <associate|LISA-self-consistency|<tuple|41|11>>
+    <associate|IPT|<tuple|49|16>>
+    <associate|LISA-self-consistency|<tuple|41|12>>
     <associate|atomic-limit-self-energy|<tuple|34|9>>
     <associate|auto-1|<tuple|1|1>>
     <associate|auto-10|<tuple|2|8>>
     <associate|auto-11|<tuple|2.1|8>>
     <associate|auto-12|<tuple|2.1.1|8>>
     <associate|auto-13|<tuple|2.1.2|8>>
-    <associate|auto-14|<tuple|2.2|8>>
-    <associate|auto-15|<tuple|5|9>>
-    <associate|auto-16|<tuple|6|10>>
-    <associate|auto-17|<tuple|2.3|10>>
-    <associate|auto-18|<tuple|2.4|11>>
-    <associate|auto-19|<tuple|2.4.1|11>>
+    <associate|auto-14|<tuple|2.1.3|8>>
+    <associate|auto-15|<tuple|2.2|9>>
+    <associate|auto-16|<tuple|5|10>>
+    <associate|auto-17|<tuple|6|10>>
+    <associate|auto-18|<tuple|2.3|11>>
+    <associate|auto-19|<tuple|2.4|11>>
     <associate|auto-2|<tuple|1.1|1>>
-    <associate|auto-20|<tuple|2.4.2|12>>
-    <associate|auto-21|<tuple|2.5|13>>
-    <associate|auto-22|<tuple|7|13>>
-    <associate|auto-23|<tuple|2.6|14>>
-    <associate|auto-24|<tuple|2.6.1|14>>
-    <associate|auto-25|<tuple|8|14>>
-    <associate|auto-26|<tuple|2.6.2|15>>
-    <associate|auto-27|<tuple|2.7|15>>
-    <associate|auto-28|<tuple|2.7.1|15>>
-    <associate|auto-29|<tuple|2.7.2|15>>
+    <associate|auto-20|<tuple|2.4.1|12>>
+    <associate|auto-21|<tuple|2.4.2|13>>
+    <associate|auto-22|<tuple|2.5|14>>
+    <associate|auto-23|<tuple|7|14>>
+    <associate|auto-24|<tuple|2.6|15>>
+    <associate|auto-25|<tuple|2.6.1|15>>
+    <associate|auto-26|<tuple|8|15>>
+    <associate|auto-27|<tuple|2.6.2|16>>
+    <associate|auto-28|<tuple|2.7|16>>
+    <associate|auto-29|<tuple|2.7.1|16>>
     <associate|auto-3|<tuple|1|1>>
-    <associate|auto-30|<tuple|2.7.3|16>>
-    <associate|auto-31|<tuple|2.8|16>>
-    <associate|auto-32|<tuple|2.9|?>>
+    <associate|auto-30|<tuple|2.7.2|17>>
+    <associate|auto-31|<tuple|2.7.3|17>>
+    <associate|auto-32|<tuple|2.8|18>>
+    <associate|auto-33|<tuple|2.9|?>>
     <associate|auto-4|<tuple|1.2|2>>
     <associate|auto-5|<tuple|1.3|3>>
     <associate|auto-6|<tuple|2|4>>
@@ -1967,7 +2036,7 @@
     <associate|auto-9|<tuple|4|7>>
     <associate|bath-G-with-Delta-func|<tuple|43|12>>
     <associate|def-self-energy|<tuple|32|8>>
-    <associate|def-wannier|<tuple|23|?>>
+    <associate|def-wannier|<tuple|23|6>>
     <associate|dyson-impurity|<tuple|44|12>>
     <associate|footnote-1|<tuple|1|2>>
     <associate|footnote-10|<tuple|10|11>>
@@ -1978,12 +2047,14 @@
     <associate|footnote-15|<tuple|15|12>>
     <associate|footnote-16|<tuple|16|13>>
     <associate|footnote-17|<tuple|17|14>>
+    <associate|footnote-18|<tuple|18|?>>
+    <associate|footnote-19|<tuple|19|?>>
     <associate|footnote-2|<tuple|2|2>>
     <associate|footnote-3|<tuple|3|2>>
     <associate|footnote-4|<tuple|4|3>>
     <associate|footnote-5|<tuple|5|5>>
     <associate|footnote-6|<tuple|6|5>>
-    <associate|footnote-7|<tuple|7|9>>
+    <associate|footnote-7|<tuple|7|8>>
     <associate|footnote-8|<tuple|8|9>>
     <associate|footnote-9|<tuple|9|9>>
     <associate|footnr-1|<tuple|1|2>>
@@ -1995,12 +2066,14 @@
     <associate|footnr-15|<tuple|15|12>>
     <associate|footnr-16|<tuple|16|13>>
     <associate|footnr-17|<tuple|17|14>>
+    <associate|footnr-18|<tuple|18|?>>
+    <associate|footnr-19|<tuple|19|?>>
     <associate|footnr-2|<tuple|2|2>>
     <associate|footnr-3|<tuple|3|2>>
     <associate|footnr-4|<tuple|4|3>>
     <associate|footnr-5|<tuple|5|5>>
     <associate|footnr-6|<tuple|6|5>>
-    <associate|footnr-7|<tuple|7|9>>
+    <associate|footnr-7|<tuple|7|8>>
     <associate|footnr-8|<tuple|8|9>>
     <associate|footnr-9|<tuple|9|9>>
     <associate|green-atomic-limit|<tuple|31|8>>
@@ -2010,23 +2083,23 @@
     <associate|green-func-matsubara-from-spectral-func|<tuple|20|5>>
     <associate|green-func-matsubara-non-interacting|<tuple|21|6>>
     <associate|green-func-non-interacting|<tuple|12|3>>
-    <associate|green-func-spatial-FT|<tuple|7|?>>
+    <associate|green-func-spatial-FT|<tuple|7|2>>
     <associate|green-func-thermal|<tuple|13|3>>
     <associate|green-func-time-FT|<tuple|8|2>>
     <associate|hubbard-non-interacting-band|<tuple|30|8>>
     <associate|impurity-action|<tuple|42|12>>
-    <associate|impurity-bath-Delta-from-tij|<tuple|50|16>>
-    <associate|impurity-hamiltonian|<tuple|39|?>>
-    <associate|impurity-solving|<tuple|2.7|15>>
+    <associate|impurity-bath-Delta-from-tij|<tuple|50|17>>
+    <associate|impurity-hamiltonian|<tuple|39|11>>
+    <associate|impurity-solving|<tuple|2.7|16>>
     <associate|interacting-green-func-self-energy|<tuple|35|9>>
     <associate|matsubara-green-func-def|<tuple|15|3>>
-    <associate|section-cavity-method|<tuple|2.8|16>>
+    <associate|section-cavity-method|<tuple|2.8|17>>
     <associate|section-lisa-self-consistency|<tuple|2.4.2|12>>
-    <associate|self-consistent-eq-Gloc|<tuple|45|12>>
-    <associate|self-consistent-eq-Gloc-fromcavity|<tuple|53|17>>
-    <associate|self-consistent-eq-Hilbert-tr-zeta-fromcavity|<tuple|52|17>>
+    <associate|self-consistent-eq-Gloc|<tuple|45|13>>
+    <associate|self-consistent-eq-Gloc-fromcavity|<tuple|53|18>>
+    <associate|self-consistent-eq-Hilbert-tr-zeta-fromcavity|<tuple|52|18>>
     <associate|self-consistent-eq-reciproc-Hilbert|<tuple|46|13>>
-    <associate|self-consistent-eq-reciproc-Hilbert-fromcavity|<tuple|54|17>>
+    <associate|self-consistent-eq-reciproc-Hilbert-fromcavity|<tuple|54|18>>
     <associate|spectral-func-NIEG|<tuple|4|1>>
     <associate|spectral-func-beta|<tuple|18|5>>
     <associate|spectral-func-def|<tuple|1|1>>
@@ -2061,15 +2134,15 @@
         Wannier function (site <with|font-family|<quote|rm>|<with|mode|<quote|math>|x=0>>)
         of the lowest band from a <with|font-family|<quote|rm>|<with|mode|<quote|math>|V<around*|(|x|)>=V<rsub|0>*sin<rsup|2><around*|(|\<pi\>x/a|)>>>
         potential of period <with|font-family|<quote|rm>|<with|mode|<quote|math>|a>>.
-        <with|font-family|<quote|rm>|<with|mode|<quote|math>|q<rsub|R>=\<pi\>/a>>,
-        <with|font-family|<quote|rm>|<with|mode|<quote|math>|\<epsilon\><rsub|R>=\<hbar\><rsup|2>q<rsub|R><rsup|2>/2m>>.
-        Here <with|font-family|<quote|rm>|<with|mode|<quote|math>|V<rsub|0>=3*\<epsilon\><rsub|R>>>.
+        <with|font-family|<quote|rm>|<with|mode|<quote|math>|q<rsub|<with|font-family|<quote|rm>|<with|mode|<quote|text>|R>>>=\<pi\>/a>>,
+        <with|font-family|<quote|rm>|<with|mode|<quote|math>|\<epsilon\><rsub|<with|font-family|<quote|rm>|<with|mode|<quote|text>|R>>>=\<hbar\><rsup|2>q<rsub|<with|font-family|<quote|rm>|<with|mode|<quote|text>|R>>><rsup|2>/2m>>.
+        Here <with|font-family|<quote|rm>|<with|mode|<quote|math>|V<rsub|0>=3*\<epsilon\><rsub|<with|font-family|<quote|rm>|<with|mode|<quote|text>|R>>>>>.
       </surround>|<pageref|auto-9>>
 
       <tuple|normal|<\surround|<hidden-binding|<tuple>|5>|>
         <with|color|<quote|dark cyan>|Band structure> vs.
         <no-break><specific|screen|<resize|<move|<with|color|<quote|#A0A0FF>|->|-0.3em|>|0em||0em|>>spectral
-        function of <with|font-family|<quote|rm>|<with|mode|<quote|math>|<rigid|<with|font-family|<quote|ss>|<with|mode|<quote|text>|<with|font-family|<quote|rm>|font-shape|<quote|right>|LaFeAsO>>>>>>
+        function of <with|font-family|<quote|rm>|<with|mode|<quote|math>|<rigid|<with|font-family|<quote|rm>|<with|mode|<quote|text>|<with|font-family|<quote|rm>|font-shape|<quote|right>|LaFeAsO>>>>>>
         by <with|font-shape|<quote|small-caps>|dmft>.
         <with|color|<quote|#bf4040>|Washed-out peaks>
         <with|font-family|<quote|rm>|<with|mode|<quote|math>|\<leftarrow\>>>
@@ -2077,12 +2150,12 @@
       </surround>|<pageref|auto-15>>
 
       <tuple|normal|<\surround|<hidden-binding|<tuple>|6>|>
-        Heavily dopped <with|font-family|<quote|rm>|<with|mode|<quote|math>|<rigid|<with|font-family|<quote|ss>|<with|mode|<quote|text>|<with|font-family|<quote|rm>|font-shape|<quote|right>|LaFeAsO>>>><rsub|<with|math-condensed|<quote|true>|1-x>><rigid|<with|font-family|<quote|ss>|<with|mode|<quote|text>|<with|font-family|<quote|rm>|font-shape|<quote|right>|H>>>><rsub|x>>>
+        Heavily dopped <with|font-family|<quote|rm>|<with|mode|<quote|math>|<rigid|<with|font-family|<quote|rm>|<with|mode|<quote|text>|<with|font-family|<quote|rm>|font-shape|<quote|right>|LaFeAsO>>>><rsub|<with|math-condensed|<quote|true>|1-x>><rigid|<with|font-family|<quote|rm>|<with|mode|<quote|text>|<with|font-family|<quote|rm>|font-shape|<quote|right>|H>>>><rsub|x>>>
         spectral function : <with|color|<quote|#bf4040>|very washed-out,
         renormalized and deformed> band near
-        <with|font-family|<quote|rm>|<with|mode|<quote|math>|\<epsilon\><rsub|<rigid|<with|font-family|<quote|ss>|<with|mode|<quote|text>|<with|font-family|<quote|rm>|font-shape|<quote|right>|F>>>>>>>,
+        <with|font-family|<quote|rm>|<with|mode|<quote|math>|\<epsilon\><rsub|<rigid|<with|font-family|<quote|rm>|<with|mode|<quote|text>|<with|font-family|<quote|rm>|font-shape|<quote|right>|F>>>>>>>,
         and fuzzy/new structures away from
-        <with|font-family|<quote|rm>|<with|mode|<quote|math>|\<epsilon\><rsub|<rigid|<with|font-family|<quote|ss>|<with|mode|<quote|text>|<with|font-family|<quote|rm>|font-shape|<quote|right>|F>>>>>>>.
+        <with|font-family|<quote|rm>|<with|mode|<quote|math>|\<epsilon\><rsub|<rigid|<with|font-family|<quote|rm>|<with|mode|<quote|text>|<with|font-family|<quote|rm>|font-shape|<quote|right>|F>>>>>>>.
       </surround>|<pageref|auto-16>>
 
       <tuple|normal|<\surround|<hidden-binding|<tuple>|7>|>
@@ -2096,105 +2169,109 @@
       </surround>|<pageref|auto-25>>
     </associate>
     <\associate|toc>
-      <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|1.<space|2spc>Green's
+      <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|1<space|2spc>Green's
       functions framework> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-1><vspace|0.5fn>
 
-      <with|par-left|<quote|1tab>|1.1.<space|2spc>Spectral function
+      <with|par-left|<quote|1tab>|1.1<space|2spc>Spectral function
       <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-2>>
 
-      <with|par-left|<quote|1tab>|1.2.<space|2spc>Green's function
+      <with|par-left|<quote|1tab>|1.2<space|2spc>Green's function
       <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-4>>
 
-      <with|par-left|<quote|1tab>|1.3.<space|2spc>Green's functions at finite
+      <with|par-left|<quote|1tab>|1.3<space|2spc>Green's functions at finite
       temperature, Matsubara time <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-5>>
 
-      <with|par-left|<quote|1tab>|1.4.<space|2spc>Green's function in Wannier
+      <with|par-left|<quote|1tab>|1.4<space|2spc>Green's function in Wannier
       basis <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-8>>
 
-      <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|2.<space|2spc>The
+      <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|2<space|2spc>The
       Hubbard model and the DMFT LISA approximation>
       <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-10><vspace|0.5fn>
 
-      <with|par-left|<quote|1tab>|2.1.<space|2spc>Limits
+      <with|par-left|<quote|1tab>|2.1<space|2spc>Limits
       <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-11>>
 
-      <with|par-left|<quote|2tab>|2.1.1.<space|2spc>Non-interacting limit
+      <with|par-left|<quote|2tab>|2.1.1<space|2spc>Non-interacting limit
       <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-12>>
 
-      <with|par-left|<quote|2tab>|2.1.2.<space|2spc>Atomic limit
+      <with|par-left|<quote|2tab>|2.1.2<space|2spc>Atomic limit
       <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-13>>
 
-      <with|par-left|<quote|1tab>|2.2.<space|2spc>Self-energy
+      <with|par-left|<quote|1tab>|2.2<space|2spc>Self-energy
       <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-14>>
 
-      <with|par-left|<quote|1tab>|2.3.<space|2spc>The Hubbard model in
+      <with|par-left|<quote|1tab>|2.3<space|2spc>The Hubbard model in
       infinite dimensions : towards a DMFT
       <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-17>>
 
-      <with|par-left|<quote|1tab>|2.4.<space|2spc>The LISA framework
+      <with|par-left|<quote|1tab>|2.4<space|2spc>The LISA framework
       <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-18>>
 
-      <with|par-left|<quote|2tab>|2.4.1.<space|2spc>An impurity model on
-      which the Hubbard model is reduced <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <with|par-left|<quote|2tab>|2.4.1<space|2spc>An impurity model on which
+      the Hubbard model is reduced <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-19>>
 
-      <with|par-left|<quote|2tab>|2.4.2.<space|2spc>Computing the mean field
+      <with|par-left|<quote|2tab>|2.4.2<space|2spc>Computing the mean field
       <with|font-family|<quote|rm>|<with|mode|<quote|math>|<with|color|<quote|dark
       blue>|\<cal-G\><rsub|0>>>> describing the bath : Self-consistency
       <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-20>>
 
-      <with|par-left|<quote|1tab>|2.5.<space|2spc>The DMFT self-consistent
+      <with|par-left|<quote|1tab>|2.5<space|2spc>The DMFT self-consistent
       loop <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-21>>
 
-      <with|par-left|<quote|1tab>|2.6.<space|2spc>Lattices
+      <with|par-left|<quote|1tab>|2.6<space|2spc>Lattices
       <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-23>>
 
-      <with|par-left|<quote|2tab>|2.6.1.<space|2spc>The Bethe lattice
+      <with|par-left|<quote|2tab>|2.6.1<space|2spc>The Bethe lattice
       <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-24>>
 
-      <with|par-left|<quote|2tab>|2.6.2.<space|2spc>The cubic lattice in
+      <with|par-left|<quote|2tab>|2.6.2<space|2spc>The cubic lattice in
       infinite dimensions <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-26>>
 
-      <with|par-left|<quote|1tab>|2.7.<space|2spc>Solving the impurity
-      problem <with|font-family|<quote|rm>|<with|mode|<quote|math>|<with|color|<quote|#bf4040>|G><rsup|<with|font-family|<quote|ss>|<with|mode|<quote|text>|<with|color|<quote|dark
+      <with|par-left|<quote|1tab>|2.7<space|2spc>Solving the impurity problem
+      <with|font-family|<quote|rm>|<with|mode|<quote|math>|<with|color|<quote|#bf4040>|G><rsup|<with|font-family|<quote|rm>|<with|mode|<quote|text>|<with|color|<quote|dark
       magenta>|imp>>>>=<with|color|<quote|dark
       magenta>|ImpuritySolver><around*|[|<with|color|<quote|dark
       blue>|\<cal-G\><rsub|0>>,<with|color|<quote|#bf4040>|U>|]>>>
       <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-27>>
 
-      <with|par-left|<quote|2tab>|2.7.1.<space|2spc>Quantum Monte Carlo
+      <with|par-left|<quote|2tab>|2.7.1<space|2spc>Quantum Monte Carlo
       techniques <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-28>>
 
-      <with|par-left|<quote|2tab>|2.7.2.<space|2spc>Iterated Perturabtion
+      <with|par-left|<quote|2tab>|2.7.2<space|2spc>Iterated Perturabtion
       Theory approximation <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-29>>
 
-      <with|par-left|<quote|1tab>|2.8.<space|2spc>Practical considerations.
-      Random things to do. <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <with|par-left|<quote|2tab>|2.7.3<space|2spc>Real time methods
+      <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-30>>
 
-      <with|par-left|<quote|1tab>|2.9.<space|2spc>Deriving LISA using the
+      <with|par-left|<quote|1tab>|2.8<space|2spc>Deriving LISA using the
       cavity method <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-31>>
+
+      <with|par-left|<quote|1tab>|2.9<space|2spc>Practical considerations.
+      Random things to do. <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-32>>
     </associate>
   </collection>
 </auxiliary>
