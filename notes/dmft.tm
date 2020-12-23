@@ -1,4 +1,4 @@
-<TeXmacs|1.99.16>
+<TeXmacs|1.99.17>
 
 <style|<tuple|base|british>>
 
@@ -1573,8 +1573,9 @@
       (23) p21|green>
     </equation>
 
-    <item>Alternatively, we can start from the density of states, which is
-    semi-circular :
+    <item>Alternatively, we can start from the density of states per number
+    of unit cells, which is semi-circular. At half-filling, we are in a
+    symmetric situation; the density of states is particle-hole symmetric.
 
     <\equation>
       <with|color|dark cyan|\<eta\><rsub|<text|Bethe>>><around*|(|\<epsilon\>|)><separating-space|0.2em>=<separating-space|0.2em><tfrac|1|2*\<pi\>*t<rsup|2>>*<sqrt|4*t<rsup|2>-\<epsilon\><rsup|2>><space|1em><text|for><space|1em><around*|\||\<epsilon\>|\|>\<less\>2*t<flag|GKKR
@@ -1991,92 +1992,92 @@
 
 <\references>
   <\collection>
-    <associate|DMFT-interacting-green-func-self-energy|<tuple|38|11>>
-    <associate|DMFT-local-approx|<tuple|37|10>>
-    <associate|G0loc-with-Hilbert-tr-DOS|<tuple|28|7>>
-    <associate|Gimp-def|<tuple|40|11>>
-    <associate|Gloc-with-Hilbert-tr-DOS|<tuple|36|10>>
-    <associate|Hilbert-tr-DOS|<tuple|27|7>>
-    <associate|Hubbard-model|<tuple|29|8>>
-    <associate|IPT|<tuple|49|16>>
-    <associate|LISA-self-consistency|<tuple|41|12>>
-    <associate|atomic-limit-self-energy|<tuple|34|9>>
+    <associate|DMFT-interacting-green-func-self-energy|<tuple|38|12>>
+    <associate|DMFT-local-approx|<tuple|37|12>>
+    <associate|G0loc-with-Hilbert-tr-DOS|<tuple|28|8>>
+    <associate|Gimp-def|<tuple|40|13>>
+    <associate|Gloc-with-Hilbert-tr-DOS|<tuple|36|11>>
+    <associate|Hilbert-tr-DOS|<tuple|27|8>>
+    <associate|Hubbard-model|<tuple|29|9>>
+    <associate|IPT|<tuple|49|18>>
+    <associate|LISA-self-consistency|<tuple|41|13>>
+    <associate|atomic-limit-self-energy|<tuple|34|10>>
     <associate|auto-1|<tuple|1|1>>
-    <associate|auto-10|<tuple|2|8>>
-    <associate|auto-11|<tuple|2.1|8>>
-    <associate|auto-12|<tuple|2.1.1|8>>
-    <associate|auto-13|<tuple|2.1.2|8>>
-    <associate|auto-14|<tuple|2.1.3|8>>
-    <associate|auto-15|<tuple|2.2|9>>
-    <associate|auto-16|<tuple|5|10>>
-    <associate|auto-17|<tuple|6|10>>
+    <associate|auto-10|<tuple|2|9>>
+    <associate|auto-11|<tuple|2.1|9>>
+    <associate|auto-12|<tuple|2.1.1|9>>
+    <associate|auto-13|<tuple|2.1.2|9>>
+    <associate|auto-14|<tuple|2.1.3|10>>
+    <associate|auto-15|<tuple|2.2|10>>
+    <associate|auto-16|<tuple|5|11>>
+    <associate|auto-17|<tuple|6|11>>
     <associate|auto-18|<tuple|2.3|11>>
-    <associate|auto-19|<tuple|2.4|11>>
+    <associate|auto-19|<tuple|2.4|12>>
     <associate|auto-2|<tuple|1.1|1>>
     <associate|auto-20|<tuple|2.4.1|12>>
-    <associate|auto-21|<tuple|2.4.2|13>>
-    <associate|auto-22|<tuple|2.5|14>>
-    <associate|auto-23|<tuple|7|14>>
-    <associate|auto-24|<tuple|2.6|15>>
-    <associate|auto-25|<tuple|2.6.1|15>>
-    <associate|auto-26|<tuple|8|15>>
-    <associate|auto-27|<tuple|2.6.2|16>>
-    <associate|auto-28|<tuple|2.7|16>>
-    <associate|auto-29|<tuple|2.7.1|16>>
+    <associate|auto-21|<tuple|2.4.2|14>>
+    <associate|auto-22|<tuple|2.5|15>>
+    <associate|auto-23|<tuple|7|15>>
+    <associate|auto-24|<tuple|2.6|16>>
+    <associate|auto-25|<tuple|2.6.1|17>>
+    <associate|auto-26|<tuple|8|17>>
+    <associate|auto-27|<tuple|2.6.2|17>>
+    <associate|auto-28|<tuple|2.7|18>>
+    <associate|auto-29|<tuple|2.7.1|18>>
     <associate|auto-3|<tuple|1|1>>
-    <associate|auto-30|<tuple|2.7.2|17>>
-    <associate|auto-31|<tuple|2.7.3|17>>
-    <associate|auto-32|<tuple|2.8|18>>
-    <associate|auto-33|<tuple|2.9|?>>
+    <associate|auto-30|<tuple|2.7.2|18>>
+    <associate|auto-31|<tuple|2.7.3|19>>
+    <associate|auto-32|<tuple|2.8|19>>
+    <associate|auto-33|<tuple|2.9|20>>
     <associate|auto-4|<tuple|1.2|2>>
     <associate|auto-5|<tuple|1.3|3>>
     <associate|auto-6|<tuple|2|4>>
     <associate|auto-7|<tuple|3|6>>
-    <associate|auto-8|<tuple|1.4|6>>
+    <associate|auto-8|<tuple|1.4|7>>
     <associate|auto-9|<tuple|4|7>>
-    <associate|bath-G-with-Delta-func|<tuple|43|12>>
-    <associate|def-self-energy|<tuple|32|8>>
-    <associate|def-wannier|<tuple|23|6>>
-    <associate|dyson-impurity|<tuple|44|12>>
+    <associate|bath-G-with-Delta-func|<tuple|43|13>>
+    <associate|def-self-energy|<tuple|32|10>>
+    <associate|def-wannier|<tuple|23|7>>
+    <associate|dyson-impurity|<tuple|44|14>>
     <associate|footnote-1|<tuple|1|2>>
-    <associate|footnote-10|<tuple|10|11>>
-    <associate|footnote-11|<tuple|11|11>>
-    <associate|footnote-12|<tuple|12|12>>
-    <associate|footnote-13|<tuple|13|12>>
-    <associate|footnote-14|<tuple|14|12>>
-    <associate|footnote-15|<tuple|15|12>>
-    <associate|footnote-16|<tuple|16|13>>
+    <associate|footnote-10|<tuple|10|10>>
+    <associate|footnote-11|<tuple|11|12>>
+    <associate|footnote-12|<tuple|12|13>>
+    <associate|footnote-13|<tuple|13|13>>
+    <associate|footnote-14|<tuple|14|13>>
+    <associate|footnote-15|<tuple|15|13>>
+    <associate|footnote-16|<tuple|16|14>>
     <associate|footnote-17|<tuple|17|14>>
-    <associate|footnote-18|<tuple|18|?>>
-    <associate|footnote-19|<tuple|19|?>>
+    <associate|footnote-18|<tuple|18|15>>
+    <associate|footnote-19|<tuple|19|16>>
     <associate|footnote-2|<tuple|2|2>>
     <associate|footnote-3|<tuple|3|2>>
     <associate|footnote-4|<tuple|4|3>>
     <associate|footnote-5|<tuple|5|5>>
     <associate|footnote-6|<tuple|6|5>>
-    <associate|footnote-7|<tuple|7|8>>
-    <associate|footnote-8|<tuple|8|9>>
-    <associate|footnote-9|<tuple|9|9>>
+    <associate|footnote-7|<tuple|7|6>>
+    <associate|footnote-8|<tuple|8|10>>
+    <associate|footnote-9|<tuple|9|10>>
     <associate|footnr-1|<tuple|1|2>>
-    <associate|footnr-10|<tuple|10|11>>
-    <associate|footnr-11|<tuple|11|11>>
-    <associate|footnr-12|<tuple|12|12>>
-    <associate|footnr-13|<tuple|13|12>>
-    <associate|footnr-14|<tuple|14|12>>
-    <associate|footnr-15|<tuple|15|12>>
-    <associate|footnr-16|<tuple|16|13>>
+    <associate|footnr-10|<tuple|10|10>>
+    <associate|footnr-11|<tuple|11|12>>
+    <associate|footnr-12|<tuple|12|13>>
+    <associate|footnr-13|<tuple|13|13>>
+    <associate|footnr-14|<tuple|14|13>>
+    <associate|footnr-15|<tuple|15|13>>
+    <associate|footnr-16|<tuple|16|14>>
     <associate|footnr-17|<tuple|17|14>>
-    <associate|footnr-18|<tuple|18|?>>
-    <associate|footnr-19|<tuple|19|?>>
+    <associate|footnr-18|<tuple|18|15>>
+    <associate|footnr-19|<tuple|19|16>>
     <associate|footnr-2|<tuple|2|2>>
     <associate|footnr-3|<tuple|3|2>>
     <associate|footnr-4|<tuple|4|3>>
     <associate|footnr-5|<tuple|5|5>>
     <associate|footnr-6|<tuple|6|5>>
-    <associate|footnr-7|<tuple|7|8>>
-    <associate|footnr-8|<tuple|8|9>>
-    <associate|footnr-9|<tuple|9|9>>
-    <associate|green-atomic-limit|<tuple|31|8>>
+    <associate|footnr-7|<tuple|7|6>>
+    <associate|footnr-8|<tuple|8|10>>
+    <associate|footnr-9|<tuple|9|10>>
+    <associate|green-atomic-limit|<tuple|31|9>>
     <associate|green-func-from-spectral-func|<tuple|10|2>>
     <associate|green-func-matsubara-IFT|<tuple|16|3>>
     <associate|green-func-matsubara-freq-from-spectral-func|<tuple|19|5>>
@@ -2086,20 +2087,20 @@
     <associate|green-func-spatial-FT|<tuple|7|2>>
     <associate|green-func-thermal|<tuple|13|3>>
     <associate|green-func-time-FT|<tuple|8|2>>
-    <associate|hubbard-non-interacting-band|<tuple|30|8>>
-    <associate|impurity-action|<tuple|42|12>>
-    <associate|impurity-bath-Delta-from-tij|<tuple|50|17>>
-    <associate|impurity-hamiltonian|<tuple|39|11>>
-    <associate|impurity-solving|<tuple|2.7|16>>
-    <associate|interacting-green-func-self-energy|<tuple|35|9>>
+    <associate|hubbard-non-interacting-band|<tuple|30|9>>
+    <associate|impurity-action|<tuple|42|13>>
+    <associate|impurity-bath-Delta-from-tij|<tuple|50|19>>
+    <associate|impurity-hamiltonian|<tuple|39|13>>
+    <associate|impurity-solving|<tuple|2.7|18>>
+    <associate|interacting-green-func-self-energy|<tuple|35|10>>
     <associate|matsubara-green-func-def|<tuple|15|3>>
-    <associate|section-cavity-method|<tuple|2.8|17>>
-    <associate|section-lisa-self-consistency|<tuple|2.4.2|12>>
-    <associate|self-consistent-eq-Gloc|<tuple|45|13>>
-    <associate|self-consistent-eq-Gloc-fromcavity|<tuple|53|18>>
-    <associate|self-consistent-eq-Hilbert-tr-zeta-fromcavity|<tuple|52|18>>
-    <associate|self-consistent-eq-reciproc-Hilbert|<tuple|46|13>>
-    <associate|self-consistent-eq-reciproc-Hilbert-fromcavity|<tuple|54|18>>
+    <associate|section-cavity-method|<tuple|2.8|19>>
+    <associate|section-lisa-self-consistency|<tuple|2.4.2|14>>
+    <associate|self-consistent-eq-Gloc|<tuple|45|14>>
+    <associate|self-consistent-eq-Gloc-fromcavity|<tuple|53|20>>
+    <associate|self-consistent-eq-Hilbert-tr-zeta-fromcavity|<tuple|52|20>>
+    <associate|self-consistent-eq-reciproc-Hilbert|<tuple|46|15>>
+    <associate|self-consistent-eq-reciproc-Hilbert-fromcavity|<tuple|54|20>>
     <associate|spectral-func-NIEG|<tuple|4|1>>
     <associate|spectral-func-beta|<tuple|18|5>>
     <associate|spectral-func-def|<tuple|1|1>>
@@ -2147,7 +2148,7 @@
         <with|color|<quote|#bf4040>|Washed-out peaks>
         <with|font-family|<quote|rm>|<with|mode|<quote|math>|\<leftarrow\>>>
         has some width.
-      </surround>|<pageref|auto-15>>
+      </surround>|<pageref|auto-16>>
 
       <tuple|normal|<\surround|<hidden-binding|<tuple>|6>|>
         Heavily dopped <with|font-family|<quote|rm>|<with|mode|<quote|math>|<rigid|<with|font-family|<quote|rm>|<with|mode|<quote|text>|<with|font-family|<quote|rm>|font-shape|<quote|right>|LaFeAsO>>>><rsub|<with|math-condensed|<quote|true>|1-x>><rigid|<with|font-family|<quote|rm>|<with|mode|<quote|text>|<with|font-family|<quote|rm>|font-shape|<quote|right>|H>>>><rsub|x>>>
@@ -2156,17 +2157,17 @@
         <with|font-family|<quote|rm>|<with|mode|<quote|math>|\<epsilon\><rsub|<rigid|<with|font-family|<quote|rm>|<with|mode|<quote|text>|<with|font-family|<quote|rm>|font-shape|<quote|right>|F>>>>>>>,
         and fuzzy/new structures away from
         <with|font-family|<quote|rm>|<with|mode|<quote|math>|\<epsilon\><rsub|<rigid|<with|font-family|<quote|rm>|<with|mode|<quote|text>|<with|font-family|<quote|rm>|font-shape|<quote|right>|F>>>>>>>.
-      </surround>|<pageref|auto-16>>
+      </surround>|<pageref|auto-17>>
 
       <tuple|normal|<\surround|<hidden-binding|<tuple>|7>|>
         The LISA DMFT self-consistent loop.
-      </surround>|<pageref|auto-22>>
+      </surround>|<pageref|auto-23>>
 
       <tuple|normal|<\surround|<hidden-binding|<tuple>|8>|>
         The Bethe lattice <with|font-family|<quote|rm>|<with|mode|<quote|math>|z=4>>.
         Density of states of the <with|font-family|<quote|rm>|<with|mode|<quote|math>|z=\<infty\>>>
         Bethe lattice.
-      </surround>|<pageref|auto-25>>
+      </surround>|<pageref|auto-26>>
     </associate>
     <\associate|toc>
       <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|1<space|2spc>Green's
@@ -2206,44 +2207,48 @@
       <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-13>>
 
-      <with|par-left|<quote|1tab>|2.2<space|2spc>Self-energy
+      <with|par-left|<quote|2tab>|2.1.3<space|2spc>In between
       <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-14>>
+
+      <with|par-left|<quote|1tab>|2.2<space|2spc>Self-energy
+      <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-15>>
 
       <with|par-left|<quote|1tab>|2.3<space|2spc>The Hubbard model in
       infinite dimensions : towards a DMFT
       <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
-      <no-break><pageref|auto-17>>
+      <no-break><pageref|auto-18>>
 
       <with|par-left|<quote|1tab>|2.4<space|2spc>The LISA framework
       <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
-      <no-break><pageref|auto-18>>
+      <no-break><pageref|auto-19>>
 
       <with|par-left|<quote|2tab>|2.4.1<space|2spc>An impurity model on which
       the Hubbard model is reduced <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
-      <no-break><pageref|auto-19>>
+      <no-break><pageref|auto-20>>
 
       <with|par-left|<quote|2tab>|2.4.2<space|2spc>Computing the mean field
       <with|font-family|<quote|rm>|<with|mode|<quote|math>|<with|color|<quote|dark
       blue>|\<cal-G\><rsub|0>>>> describing the bath : Self-consistency
       <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
-      <no-break><pageref|auto-20>>
+      <no-break><pageref|auto-21>>
 
       <with|par-left|<quote|1tab>|2.5<space|2spc>The DMFT self-consistent
       loop <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
-      <no-break><pageref|auto-21>>
+      <no-break><pageref|auto-22>>
 
       <with|par-left|<quote|1tab>|2.6<space|2spc>Lattices
       <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
-      <no-break><pageref|auto-23>>
+      <no-break><pageref|auto-24>>
 
       <with|par-left|<quote|2tab>|2.6.1<space|2spc>The Bethe lattice
       <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
-      <no-break><pageref|auto-24>>
+      <no-break><pageref|auto-25>>
 
       <with|par-left|<quote|2tab>|2.6.2<space|2spc>The cubic lattice in
       infinite dimensions <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
-      <no-break><pageref|auto-26>>
+      <no-break><pageref|auto-27>>
 
       <with|par-left|<quote|1tab>|2.7<space|2spc>Solving the impurity problem
       <with|font-family|<quote|rm>|<with|mode|<quote|math>|<with|color|<quote|#bf4040>|G><rsup|<with|font-family|<quote|rm>|<with|mode|<quote|text>|<with|color|<quote|dark
@@ -2251,27 +2256,27 @@
       magenta>|ImpuritySolver><around*|[|<with|color|<quote|dark
       blue>|\<cal-G\><rsub|0>>,<with|color|<quote|#bf4040>|U>|]>>>
       <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
-      <no-break><pageref|auto-27>>
+      <no-break><pageref|auto-28>>
 
       <with|par-left|<quote|2tab>|2.7.1<space|2spc>Quantum Monte Carlo
       techniques <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
-      <no-break><pageref|auto-28>>
+      <no-break><pageref|auto-29>>
 
       <with|par-left|<quote|2tab>|2.7.2<space|2spc>Iterated Perturabtion
       Theory approximation <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
-      <no-break><pageref|auto-29>>
+      <no-break><pageref|auto-30>>
 
       <with|par-left|<quote|2tab>|2.7.3<space|2spc>Real time methods
       <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
-      <no-break><pageref|auto-30>>
+      <no-break><pageref|auto-31>>
 
       <with|par-left|<quote|1tab>|2.8<space|2spc>Deriving LISA using the
       cavity method <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
-      <no-break><pageref|auto-31>>
+      <no-break><pageref|auto-32>>
 
       <with|par-left|<quote|1tab>|2.9<space|2spc>Practical considerations.
       Random things to do. <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
-      <no-break><pageref|auto-32>>
+      <no-break><pageref|auto-33>>
     </associate>
   </collection>
 </auxiliary>
