@@ -54,7 +54,7 @@ class Generator:
         }
 
     @staticmethod
-    def data(ws, U_max, N_samples, seed=42, shape='quadratic'):
+    def data(ws, U_max, N_samples, seed=42, shape='quadratic', nw_cutoff=300):
         np.random.seed(seed)  # for reproductibility
         data = []
         for _ in trange(N_samples, desc='Generating input (A and G)'):
@@ -62,7 +62,7 @@ class Generator:
             # print(np.sum(A) * dw)
             data.append({
                 'params': params,
-                'greens': Green.compute_greens(A, ws)
+                'greens': Green.compute_greens(A, ws, nw_cutoff=nw_cutoff)
             })
         return data
 
