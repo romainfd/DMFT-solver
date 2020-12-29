@@ -61,6 +61,7 @@ class Evaluator:
         plt.plot(ws, y_pred, label='Predicted density function', color='orange')
         plt.ylabel('A($\omega$)')
         plt.xlabel('$\omega$')
+        plt.legend()
         plt.show()
 
     @staticmethod
