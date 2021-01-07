@@ -71,6 +71,8 @@ class Generator:
         values = Peak.aggregate(datum['params']['peaks'], ws)
         print(Peak.integral(values, ws))
         plt.figure()
+        plt.xlabel('$\omega$')
+        plt.ylabel('$A(\omega)$')
         plt.plot(ws, values)
         plt.show()
 
