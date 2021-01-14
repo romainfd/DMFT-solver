@@ -4,8 +4,9 @@ A LISA DMFT solver for the single-orbital Hubbard model at half-filling, based o
 
 Basically 100 lines on Python, just a modest introductory DMFT / Green function formalism project.
 
-Shipped with detailed review / lecture notes on Green functions and DMFT : [Lecture notes](https://raw.githubusercontent.com/romainfd/DMFT-solver/main/notes/dmft.pdf)
-[Papier-like report](https://raw.githubusercontent.com/romainfd/DMFT-solver/main/report/main.pdf)
+Shipped with detailed review / lecture notes on Green functions and DMFT : [Lecture notes](https://raw.githubusercontent.com/romainfd/DMFT_solver/main/notes/dmft.pdf)
+
+[Papier-like report](https://raw.githubusercontent.com/romainfd/DMFT_solver/main/report/main.pdf)
 
 ## Resources
 - [GKKR Review](https://www.physics.rutgers.edu/~gkguest/papers/rmp63_1996_p13_Kotliar.pdf)
